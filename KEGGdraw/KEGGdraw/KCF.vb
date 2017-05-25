@@ -4,13 +4,18 @@ Public Class KCF
 
     Public Property Entry As Entry
     Public Property Atoms As Atom()
-    Public Property Bounds  As  Bound ()
+    Public Property Bounds As Bound()
 
 End Class
 
 Public Structure Entry
+
     Public Property Id As String
     Public Property Type As String
+
+    Public Overrides Function ToString() As String
+        Return $"Dim {Id} As {Type}"
+    End Function
 End Structure
 
 Public Structure Atom
@@ -25,11 +30,21 @@ Public Structure Atom
     ''' <returns></returns>
     Public Property Atom2D_coordinates As Coordinate
 
+    Public Overrides Function ToString() As String
+        Return $"[{Index}] {KEGGAtom} --> {Atom2D_coordinates.ToString}"
+    End Function
+
 End Structure
 
 Public Structure Bound
+
     Public Property from As Integer
     Public Property [to] As Integer
     Public Property bounds As Integer
     Public Property direction As String
+
+    Public Overrides Function ToString() As String
+        Return $"{from} => {[to]}, {bounds} bounds; {direction}"
+    End Function
+
 End Structure
