@@ -9,15 +9,18 @@ Public Module IO
         End If
 
         Dim lines$() = stream.lTokens
-        Dim sections = lines.Split(Function(s) Not InStr(s, "    ") = 1, DelimiterLocation.NextFirst)
+        Dim sections = lines _
+            .Split(Function(s) Not InStr(s, "    ") = 1, DelimiterLocation.NextFirst) _
+            .Skip(1) _
+            .ToArray
         Dim t$() = sections(Scan0) _
             .First _
             .StringSplit("\s+") _
             .Where(Function(s) Not s.StringEmpty) _
             .ToArray
         Dim entry As New Entry With {
-            .Id = t(0),
-            .Type = t(1)
+            .Id = t(1),
+            .Type = t(2)
         }
         Dim atoms = sections(1) _
             .Skip(1) _
