@@ -24,14 +24,16 @@ Public Module Canvas
                          Optional bg$ = "white",
                          Optional font$ = CSSFont.Win7Normal) As GraphicsData
 
-        Dim atoms = kcf.Atoms _
+        Dim atoms As (pt As PointF, atom$)() =
+            kcf _
+            .Atoms _
             .Select(Function(a)
                         With a.Atom2D_coordinates.ToPointF(100000)
                             Dim pt As New PointF(.X, .Y * -1)
                             Return (pt:=pt, Atom:=a.KEGGAtom)
                         End With
                     End Function) _
-            .ToArray
+            .ToArray Or die("No atom elements to plot!", Function(l) DirectCast(l, Array).Length = 0)
         Dim dot = Brushes.Gray
         Dim plotInternal =
             Sub(ByRef g As IGraphics, region As GraphicsRegion)
@@ -44,7 +46,7 @@ Public Module Canvas
                 atoms = atoms _
                     .Select(Function(a)
                                 Dim pt As New PointF(a.pt.X * scale.Width, a.pt.Y * scale.Height)
-                                Return (pt, a.Atom)
+                                Return (pt, a.atom)
                             End Function) _
                     .ToArray
 

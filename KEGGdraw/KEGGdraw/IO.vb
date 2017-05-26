@@ -5,7 +5,7 @@ Public Module IO
 
     <Extension> Public Function LoadKCF(stream$) As KCF
         If stream.FileExists Then
-            stream = stream.ReadAllText
+            stream = stream.ReadAllText Or die("No content data!", Function(s) DirectCast(s, String).StringEmpty)
         End If
 
         Dim lines$() = stream.lTokens
