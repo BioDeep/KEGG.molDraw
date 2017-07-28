@@ -4,7 +4,7 @@ Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.MIME.Markup.HTML.CSS
-Imports Microsoft.VisualBasic.Scripting
+Imports Microsoft.VisualBasic.Scripting.Runtime
 
 Public Module Canvas
 
@@ -28,7 +28,7 @@ Public Module Canvas
             kcf _
             .Atoms _
             .Select(Function(a)
-                        With a.Atom2D_coordinates.ToPointF(100000)
+                        With a.Atom2D_coordinates
                             Dim pt As New PointF(.X, .Y * -1)
                             Return (pt:=pt, Atom:=a.KEGGAtom)
                         End With

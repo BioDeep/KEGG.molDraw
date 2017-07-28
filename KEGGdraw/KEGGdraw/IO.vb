@@ -47,9 +47,7 @@ Public Module IO
                             .Index = Val(t(0)),
                             .KEGGAtom = t(1),
                             .Atom = t(2),
-                            .Atom2D_coordinates = Coordinate.FromPointF(
-                                Val(t(3)), Val(t(4)), 100000
-                            )
+                            .Atom2D_coordinates = New Coordinate With {.X = Val(t(3)), .Y = Val(t(4))}
                         }
                     End Function) _
             .ToArray
