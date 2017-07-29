@@ -73,6 +73,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="KCF.vb" />
+    <Compile Include="kegDraw\ChemConteiner.vb" />
+    <Compile Include="kegDraw\ChemObject.vb" />
+    <Compile Include="kegDraw\Canvas.vb" />
+    <Compile Include="kegDraw\EditMode.vb" />
     <Compile Include="Module1.vb" />
     <Compile Include="IO.vb" />
     <Compile Include="Canvas.vb" />
