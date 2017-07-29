@@ -1,8 +1,16 @@
 ﻿Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.Text.Xml.Models
 
+''' <summary>
+''' KCF molecular structure file IO provider
+''' </summary>
 Public Module IO
 
+    ''' <summary>
+    ''' Load a text file and creates a KCF model from this data
+    ''' </summary>
+    ''' <param name="stream$">Can be text data or file path</param>
+    ''' <returns></returns>
     <Extension> Public Function LoadKCF(stream$) As KCF
         If stream.FileExists Then
             stream = stream.ReadAllText Or die("No content data!", Function(s) DirectCast(s, String).StringEmpty)
@@ -47,7 +55,10 @@ Public Module IO
                             .Index = Val(t(0)),
                             .KEGGAtom = t(1),
                             .Atom = t(2),
-                            .Atom2D_coordinates = New Coordinate With {.X = Val(t(3)), .Y = Val(t(4))}
+                            .Atom2D_coordinates = New Coordinate With {
+                                .X = Val(t(3)),
+                                .Y = Val(t(4))
+                            }
                         }
                     End Function) _
             .ToArray
