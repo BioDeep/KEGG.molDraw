@@ -1,6 +1,7 @@
 Imports System.Drawing
 Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.Imaging.LayoutModel
+Imports System.Drawing.Drawing2D
 
 Namespace keg.compound
 
@@ -68,8 +69,8 @@ Namespace keg.compound
         Public Overridable Sub flipVertical(paramDouble1 As Double, paramDouble2 As Double)
         End Sub
 
-        Public Overridable Function inside(paramPolygon As path) As ChemObject
-            If paramPolygon.inside(Me.displayX, Me.displayY) Then
+        Public Overridable Function inside(paramPolygon As GraphicsPath) As ChemObject
+            If paramPolygon.IsVisible(Me.displayX, Me.displayY) Then
                 Return Me
             End If
             Return DirectCast(Nothing, ChemObject)

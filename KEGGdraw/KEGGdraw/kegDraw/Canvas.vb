@@ -24,17 +24,17 @@ Namespace keg.compound.gui
         Private Shared ReadOnly TAN_60DEG As Double = Math.tan(1.0471975511965976D)
         Friend parentK As CompoundPanel = Nothing
         Private conteiner As keg.compound.ChemConteiner
-        Public foreC As java.awt.Color = java.awt.Color.black
-        Public labelC As java.awt.Color = java.awt.Color.black
-        Public label1C As java.awt.Color = java.awt.Color.black
-        Public label2C As java.awt.Color = java.awt.Color.black
-        Public reactantC As java.awt.Color = java.awt.Color.blue
-        Public productC As java.awt.Color = java.awt.Color.red
-        Public backC As java.awt.Color = java.awt.Color.white
-        Private shrinkBackC As java.awt.Color = New java.awt.Color(245, 250, 255)
-        Private grounedAtomColor As java.awt.Color = New java.awt.Color(240, 245, 250)
-        Public highC As java.awt.Color = java.awt.Color.magenta
-        Public select_frameC As java.awt.Color = java.awt.Color.darkGray
+        Public foreC As Color = Color.black
+        Public labelC As Color = Color.black
+        Public label1C As Color = Color.black
+        Public label2C As Color = Color.black
+        Public reactantC As Color = Color.blue
+        Public productC As Color = Color.red
+        Public backC As Color = Color.white
+        Private shrinkBackC As Color = New Color(245, 250, 255)
+        Private grounedAtomColor As Color = New Color(240, 245, 250)
+        Public highC As Color = Color.magenta
+        Public select_frameC As Color = Color.darkGray
         Public lFont As java.awt.Font
         Public lFontSUP As java.awt.Font
         Public lFont1 As java.awt.Font
@@ -43,8 +43,8 @@ Namespace keg.compound.gui
         Public lFont2SUP As java.awt.Font
         Public font_margin As Integer
         Public bFont As java.awt.Font
-        Public bC As java.awt.Color = java.awt.Color.black
-        Public blC As java.awt.Color = java.awt.Color.black
+        Public bC As Color = Color.black
+        Public blC As Color = Color.black
         Friend vHeight As Integer
         Friend vWidth As Integer
         Friend h0 As Integer = 0
@@ -84,8 +84,8 @@ Namespace keg.compound.gui
         Friend menuY As Integer
         Public bracket_text As java.awt.TextField
         Friend handlesize As Integer = 5
-        Friend selectRegion As java.awt.Rectangle = New java.awt.Rectangle(-1, -1, 0, 0)
-        Friend vec0 As keg.common.math.Vector2D
+        Friend selectRegion As Rectangle = New Rectangle(-1, -1, 0, 0)
+        Friend vec0 As Vector2D
         Friend cx As Integer
         Friend cy As Integer
         Friend rx1 As Integer
@@ -124,7 +124,7 @@ Namespace keg.compound.gui
         Friend mouseDragDraw2_draw As Boolean
         Private rtrTolerance As Integer = 5
         Friend selectedText As keg.compound.Text = Nothing
-        Private _prevDraggedTextBorder As java.awt.Rectangle = Nothing
+        Private _prevDraggedTextBorder As Rectangle = Nothing
         Friend textDialog As TextPreferenceDialog
         Friend lfontSUPHt As Hashtable = New Hashtable()
         Friend lfontHt As Hashtable = New Hashtable()
@@ -168,7 +168,7 @@ Namespace keg.compound.gui
         Me.g = Convert.ToInt32(keg.compound.DEBT.p.get("FORE_COLOR_G"))
         Me.b = Convert.ToInt32(keg.compound.DEBT.p.get("FORE_COLOR_B"))
 		  normalizeRGB()
-		  Me.foreC = New java.awt.Color(Me.r, Me.g, Me.b)
+		  Me.foreC = New Color(Me.r, Me.g, Me.b)
         Catch localException1 As Exception
 		  Console.WriteLine("Can not set parameter 'FORE_COLOR'.")
 		  Console.WriteLine(localException1)
@@ -178,7 +178,7 @@ Namespace keg.compound.gui
         Me.g = Convert.ToInt32(keg.compound.DEBT.p.get("LABEL_COLOR_G"))
         Me.b = Convert.ToInt32(keg.compound.DEBT.p.get("LABEL_COLOR_B"))
 		  normalizeRGB()
-		  Me.labelC = New java.awt.Color(Me.r, Me.g, Me.b)
+		  Me.labelC = New Color(Me.r, Me.g, Me.b)
         Catch localException2 As Exception
 		  Console.WriteLine("Can not set parameter 'LABEL_COLOR'.")
 		  Console.WriteLine(localException2)
@@ -188,7 +188,7 @@ Namespace keg.compound.gui
         Me.g = Convert.ToInt32(keg.compound.DEBT.p.get("REACTANT_COLOR_G"))
         Me.b = Convert.ToInt32(keg.compound.DEBT.p.get("REACTANT_COLOR_B"))
 		  normalizeRGB()
-		  Me.reactantC = New java.awt.Color(Me.r, Me.g, Me.b)
+		  Me.reactantC = New Color(Me.r, Me.g, Me.b)
         Catch localException3 As Exception
 		  Console.WriteLine("Can not set parameter 'REACTANT_COLOR'.")
 		  Console.WriteLine(localException3)
@@ -198,7 +198,7 @@ Namespace keg.compound.gui
         Me.g = Convert.ToInt32(keg.compound.DEBT.p.get("PRODUCT_COLOR_G"))
         Me.b = Convert.ToInt32(keg.compound.DEBT.p.get("PRODUCT_COLOR_B"))
 		  normalizeRGB()
-		  Me.productC = New java.awt.Color(Me.r, Me.g, Me.b)
+		  Me.productC = New Color(Me.r, Me.g, Me.b)
         Catch localException4 As Exception
 		  Console.WriteLine("Can not set parameter 'PRODUCT_COLOR'.")
 		  Console.WriteLine(localException4)
@@ -208,7 +208,7 @@ Namespace keg.compound.gui
         Me.g = Convert.ToInt32(keg.compound.DEBT.p.get("BRACKET_COLOR_G"))
         Me.b = Convert.ToInt32(keg.compound.DEBT.p.get("BRACKET_COLOR_B"))
 		  normalizeRGB()
-		  Me.bC = New java.awt.Color(Me.r, Me.g, Me.b)
+		  Me.bC = New Color(Me.r, Me.g, Me.b)
         Me.blC = Me.bC
         Catch localException5 As Exception
 		  Console.WriteLine(localException5)
@@ -218,7 +218,7 @@ Namespace keg.compound.gui
         Me.g = Convert.ToInt32(keg.compound.DEBT.p.get("BACK_COLOR_G"))
         Me.b = Convert.ToInt32(keg.compound.DEBT.p.get("BACK_COLOR_B"))
 		  normalizeRGB()
-		  Me.backC = New java.awt.Color(Me.r, Me.g, Me.b)
+		  Me.backC = New Color(Me.r, Me.g, Me.b)
         Catch localException6 As Exception
 		  Console.WriteLine("Can not set parameter 'BACK_COLOR'.")
 		  Console.WriteLine(localException6)
@@ -228,7 +228,7 @@ Namespace keg.compound.gui
         Me.g = Convert.ToInt32(keg.compound.DEBT.p.get("HIGHLIGHT_G"))
         Me.b = Convert.ToInt32(keg.compound.DEBT.p.get("HIGHLIGHT_B"))
 		  normalizeRGB()
-		  Me.highC = New java.awt.Color(Me.r, Me.g, Me.b)
+		  Me.highC = New Color(Me.r, Me.g, Me.b)
         Catch localException7 As Exception
 		  Console.WriteLine("Can not set parameter 'HIGHLIGHT'.")
 		  Console.WriteLine(localException7)
@@ -238,7 +238,7 @@ Namespace keg.compound.gui
         Me.g = Convert.ToInt32(keg.compound.DEBT.p.get("SELECT_FRAME_G"))
         Me.b = Convert.ToInt32(keg.compound.DEBT.p.get("SELECT_FRAME_B"))
 		  normalizeRGB()
-		  Me.select_frameC = New java.awt.Color(Me.r, Me.g, Me.b)
+		  Me.select_frameC = New Color(Me.r, Me.g, Me.b)
         Catch localException8 As Exception
 		  Console.WriteLine("Can not set parameter 'SELECT_FRAME'.")
 		  Console.WriteLine(localException8)
@@ -312,8 +312,8 @@ Namespace keg.compound.gui
 	  Private void initTextFileds() 
 	  {
 		Me.element_text = New java.awt.TextField(8)
-        Me.element_text.Background = java.awt.Color.white
-        Me.element_text.Foreground = java.awt.Color.black
+        Me.element_text.Background = Color.white
+        Me.element_text.Foreground = Color.black
 		add(Me.element_text)
 		Me.element_text.hide()
         Me.element_text.resize(0, 0)
@@ -352,8 +352,8 @@ Namespace keg.compound.gui
         Next
 		add(Me.element_choice)
 		Me.bracket_text = New java.awt.TextField(8)
-        Me.bracket_text.Background = java.awt.Color.white
-        Me.bracket_text.Foreground = java.awt.Color.black
+        Me.bracket_text.Background = Color.white
+        Me.bracket_text.Foreground = Color.black
 		add("Center", Me.bracket_text)
 		Me.bracket_text.hide()
         Me.bracket_text.resize(0, 0)
@@ -409,11 +409,11 @@ Namespace keg.compound.gui
         End Set
         End Property
 
-        Public Overridable Property VirtualScreen() As java.awt.Dimension
+        Public Overridable Property VirtualScreen() As DblRect
             Get
-                Return New java.awt.Dimension(Me.vWidth, Me.vHeight)
+                Return New DblRect(Me.vWidth, Me.vHeight)
             End Get
-            Set(ByVal Value As java.awt.Dimension)
+            Set(ByVal Value As DblRect)
                 setVirtualScreen(value.width, value.height)
             End Set
         End Property
@@ -679,7 +679,7 @@ Namespace keg.compound.gui
         Dim bool3 As Boolean = paramMouseEvent.MetaDown
         Me.selectFlagWhenChangeFromDownToDrag = True
         Me.selectFlagWhenChangeFromDownToDrag2 = True
-        Me.vec0 = New keg.common.math.Vector2D(Me.downP.x - Me.cx, Me.downP.y - Me.cy)
+        Me.vec0 = New Vector2D(Me.downP.x - Me.cx, Me.downP.y - Me.cy)
         Me.rx1 = (Me.rx2 = Me.rx3 = Me.rx4 = 0)
         Me.ry1 = (Me.ry2 = Me.ry3 = Me.ry4 = 0)
         If ((Me.editmode.operation = 8) And (Me.rfr.contains(Me.downP.x, Me.downP.y)))
@@ -699,7 +699,7 @@ Namespace keg.compound.gui
 			{
 			  Me.cx = (Me.editmode.select_area.x - Me.tolerance + (Me.editmode.select_area.width + Me.tolerance * 2 + 1 + Me.handlesize) / 2)
         Me.cy = (Me.editmode.select_area.y - Me.tolerance + (Me.editmode.select_area.height + Me.tolerance * 2) / 2)
-        Me.vec0 = New keg.common.math.Vector2D(Me.downP.x - Me.cx, Me.downP.y - Me.cy)
+        Me.vec0 = New Vector2D(Me.downP.x - Me.cx, Me.downP.y - Me.cy)
         Me.rfr.x = Me.cx
         Me.rfr.y = Me.cy
 			}
@@ -738,7 +738,7 @@ Namespace keg.compound.gui
 		  If ((Me.editmode.select_mode = 0) Or (Me.editmode.operation = 8))
 		  {
 			Me.lasso_points.Clear()
-        Me.lasso_points.Add(New java.awt.Dimension(Me.downP.x, Me.downP.y))
+        Me.lasso_points.Add(New DblRect(Me.downP.x, Me.downP.y))
 		  }
 		}
  ElseIf (bool3)
@@ -781,7 +781,7 @@ Namespace keg.compound.gui
         If ((Me.editmode.select_mode = 0) Or (Me.editmode.operation = 8))
 			{
 			  Me.lasso_points.Clear()
-        Me.lasso_points.Add(New java.awt.Dimension(Me.downP.x, Me.downP.y))
+        Me.lasso_points.Add(New DblRect(Me.downP.x, Me.downP.y))
 			}
 			Me.editmode.atom = localAtom
 			hideAtomTextFiled()
@@ -843,7 +843,7 @@ Namespace keg.compound.gui
         If ((Me.editmode.select_mode = 0) Or (Me.editmode.operation = 8))
 			{
 			  Me.lasso_points.Clear()
-        Me.lasso_points.Add(New java.awt.Dimension(Me.downP.x, Me.downP.y))
+        Me.lasso_points.Add(New DblRect(Me.downP.x, Me.downP.y))
 			}
 			Me.editmode.clear()
 			hideAtomTextFiled()
@@ -886,8 +886,8 @@ Namespace keg.compound.gui
 			Me.element_text.Text = ""
 		  }
 		  Me.element_text.resize(Me.element_text.preferredSize())
-        Dim localDimension2 As java.awt.Dimension = size()
-        Dim localDimension1 As java.awt.Dimension = Me.element_text.size()
+        Dim localDimension2 As DblRect = size()
+        Dim localDimension1 As DblRect = Me.element_text.size()
         Dim i As Integer = paramInt1 - 4
         Dim j As Integer = paramInt2 - localDimension1.height / 2
         If (i < 0)
@@ -955,8 +955,8 @@ Namespace keg.compound.gui
 		  Me.bracket_text.Text = Me.editmode.bracket.Label
 		}
 		Me.bracket_text.resize(Me.bracket_text.preferredSize())
-        Dim localDimension1 As java.awt.Dimension = size()
-        Dim localDimension2 As java.awt.Dimension = Me.bracket_text.size()
+        Dim localDimension1 As DblRect = size()
+        Dim localDimension2 As DblRect = Me.bracket_text.size()
         Dim i As Integer = paramInt1 - 4
         Dim j As Integer = paramInt2 - localDimension2.height / 2
         If (i < 0)
@@ -1102,14 +1102,14 @@ Namespace keg.compound.gui
 		  repaint()
 		  Dim localGraphics As java.awt.Graphics = Graphics
 		  localGraphics.XORMode = Me.backC
-		  Dim localRectangle1 As java.awt.Rectangle = Me._prevDraggedTextBorder
-        Dim localRectangle2 As java.awt.Rectangle = Me.selectedText.Bounds
+		  Dim localRectangle1 As Rectangle = Me._prevDraggedTextBorder
+        Dim localRectangle2 As Rectangle = Me.selectedText.Bounds
         If (localRectangle1 <> Nothing)
 		  {
 			localGraphics.drawRect(localRectangle1.x, localRectangle1.y, localRectangle1.width, localRectangle1.height)
 		  }
 		  localGraphics.drawRect(localRectangle2.x + i, localRectangle2.y + j, localRectangle2.width, localRectangle2.height)
-		  Me._prevDraggedTextBorder = New java.awt.Rectangle(localRectangle2.x + i, localRectangle2.y + j, localRectangle2.width, localRectangle2.height)
+		  Me._prevDraggedTextBorder = New Rectangle(localRectangle2.x + i, localRectangle2.y + j, localRectangle2.width, localRectangle2.height)
         Return @bool
 		}
 		Select Case Me.editmode.operation
@@ -1358,7 +1358,7 @@ Namespace keg.compound.gui
 			localMolecule1 = New keg.compound.Molecule()
 			localAtom1 = New keg.compound.Atom(localMolecule1, Me.downP.x / Me.dispscale, Me.downP.y / Me.dispscale, 0.0D, "")
 			localMolecule1.addAtom(localAtom1)
-			localMolecule1.set0point(New java.awt.Dimension(0,0))
+			localMolecule1.set0point(New DblRect(0,0))
 			((keg.compound.Reaction)Me.conteiner).addObject(localMolecule1, 0)
 			localAtom1.select(Me.editmode)
 		  }
@@ -1384,7 +1384,7 @@ Namespace keg.compound.gui
 		  }
 		  Dim localMolecule2 As keg.compound.Molecule = New keg.compound.Molecule()
         Dim localAtom2 As keg.compound.Atom = New keg.compound.Atom(localMolecule2, d5 / Me.dispscale, d6 / Me.dispscale, 0.0D, "")
-		  localMolecule2.set0point(New java.awt.Dimension(0,0))
+		  localMolecule2.set0point(New DblRect(0,0))
 		  localMolecule2.addAtom(localAtom2)
 		  ((keg.compound.Reaction)Me.conteiner).addObject(localMolecule2, 0)
 		  localAtom2.select(Me.editmode)
@@ -1699,20 +1699,20 @@ Namespace keg.compound.gui
 		  Me.graphicsForMove = Nothing
         Me.imageForMove = Nothing
 		  System.gc()
-		  Me.imageForMove = createImage(((java.awt.Dimension)localObject1).width, ((java.awt.Dimension)localObject1).height)
+		  Me.imageForMove = createImage(((DblRect)localObject1).width, ((DblRect)localObject1).height)
 		  Me.graphicsForMove = Me.imageForMove.Graphics
 		  paint(Me.graphicsForMove)
 		}
 		Dim localObject1 As Object = Graphics
         If (Me.imageForMove <> Nothing)
 		{
-		  ((java.awt.Graphics)localObject1).drawImage(Me.imageForMove, 0, 0, java.awt.Color.white, Me)
+		  ((java.awt.Graphics)localObject1).drawImage(Me.imageForMove, 0, 0, Color.white, Me)
 		}
  Else
 		{
 		  Console.Error.WriteLine("imageForMove = null")
 		}
-		Dim localColor As java.awt.Color = Me.foreC
+		Dim localColor As Color = Me.foreC
         Dim j As Integer = Me.dragP.x - Me.downP.x
         Dim k As Integer = Me.dragP.y - Me.downP.y
 		((java.awt.Graphics)localObject1).Color = Me.select_frameC
@@ -1793,9 +1793,9 @@ Namespace keg.compound.gui
 		localGraphics.setPaintMode()
 		If ((Me.editmode.select_mode = 0) Or (Me.editmode.operation = 8))
 		{
-		  Dim localDimension As java.awt.Dimension = (java.awt.Dimension)Me.lasso_points(Me.lasso_points.Count - 1) 
+		  Dim localDimension As DblRect = (DblRect)Me.lasso_points(Me.lasso_points.Count - 1) 
 		  drawLine(localGraphics, localDimension.width, localDimension.height, Me.dragP.x, Me.dragP.y)
-		  Me.lasso_points.Add(New java.awt.Dimension(Me.dragP.x, Me.dragP.y))
+		  Me.lasso_points.Add(New DblRect(Me.dragP.x, Me.dragP.y))
 		}
  Else
 		{
@@ -1838,8 +1838,8 @@ Namespace keg.compound.gui
 		  drawLine(localGraphics, Me.rx3, Me.ry3, Me.rx4, Me.ry4)
 		  drawLine(localGraphics, Me.rx4, Me.ry4, Me.rx1, Me.ry1)
 		}
-		Dim localVector2D As keg.common.math.Vector2D = New keg.common.math.Vector2D(Me.dragP.x - Me.cx, Me.dragP.y - Me.cy)
-        Dim d1 As Double = keg.common.math.VecMath2D.angle(Me.vec0, localVector2D)
+		Dim localVector2D As Vector2D = New Vector2D(Me.dragP.x - Me.cx, Me.dragP.y - Me.cy)
+        Dim d1 As Double = VecMath2D.angle(Me.vec0, localVector2D)
         Dim * As d1 =  -1.0D 
 		Dim d2 As Double = Math.Cos(d1)
         Dim d3 As Double = Math.Sin(d1)
@@ -2117,7 +2117,7 @@ Namespace keg.compound.gui
 				d4 = d9 * Math.Sin(d10) + d6
 				localMolecule3 = New keg.compound.Molecule()
 				localAtom2 = New keg.compound.Atom(localMolecule3, d3, d4, 0.0D, "")
-				localMolecule3.set0point(New java.awt.Dimension(0,0))
+				localMolecule3.set0point(New DblRect(0,0))
 				localMolecule3.addAtom(localAtom2)
 				((keg.compound.Reaction)Me.conteiner).addObject(localMolecule3, 0)
 				localAtom2.select(Me.editmode)
@@ -2135,7 +2135,7 @@ Namespace keg.compound.gui
 		  localMolecule2 = New keg.compound.Molecule()
 		  localAtom1 = New keg.compound.Atom(localMolecule2, Me.downP.x / Me.dispscale, Me.downP.y / Me.dispscale, 0.0D, str)
 		  localMolecule2.addAtom(localAtom1)
-		  localMolecule2.set0point(New java.awt.Dimension(0,0))
+		  localMolecule2.set0point(New DblRect(0,0))
 		  ((keg.compound.Reaction)Me.conteiner).addObject(localMolecule2, 0)
 		  localAtom1.select(Me.editmode)
 		}
@@ -2180,7 +2180,7 @@ Namespace keg.compound.gui
 			localMolecule3 = New keg.compound.Molecule()
 			localAtom2 = New keg.compound.Atom(localMolecule3, localObject2(0), localObject2(1), 0.0D, str)
 			localMolecule3.addAtom(localAtom2)
-			localMolecule3.set0point(New java.awt.Dimension(0,0))
+			localMolecule3.set0point(New DblRect(0,0))
 			((keg.compound.Reaction)Me.conteiner).addObject(localMolecule3, 0)
 			localAtom2.select(Me.editmode)
 		  }
@@ -2413,7 +2413,7 @@ Namespace keg.compound.gui
 			{
 			  localMolecule3 = New keg.compound.Molecule()
 			  localAtom2 = New keg.compound.Atom(localMolecule3, d3, d4, 0.0D, str)
-			  localMolecule3.set0point(New java.awt.Dimension(0,0))
+			  localMolecule3.set0point(New DblRect(0,0))
 			  localMolecule3.addAtom(localAtom2)
 			  ((keg.compound.Reaction)Me.conteiner).addObject(localMolecule3, 0)
 			  localAtom2.select(Me.editmode)
@@ -2513,10 +2513,10 @@ Namespace keg.compound.gui
         Dim d3 As Double = Double.MaxValue
         Dim d4 As Double = Double.MaxValue
         Dim d5 As Double = Double.MaxValue
-        Dim localVector2D1 As keg.common.math.Vector2D = New keg.common.math.Vector2D(localAtom2.x - localAtom1.x, localAtom2.y - localAtom1.y)
+        Dim localVector2D1 As Vector2D = New Vector2D(localAtom2.x - localAtom1.x, localAtom2.y - localAtom1.y)
         Dim localBond As keg.compound.Bond
         Dim localAtom3 As keg.compound.Atom
-        Dim localVector2D2 As keg.common.math.Vector2D
+        Dim localVector2D2 As Vector2D
         Dim d8 As Double
         Dim m As Integer
         For m = 0 To localAtom1.numBond() - 1 Step m + 1
@@ -2524,8 +2524,8 @@ Namespace keg.compound.gui
 		  If (localBond <> paramBond)
 		  {
 			localAtom3 = localBond.pairAtom(localAtom1)
-			localVector2D2 = New keg.common.math.Vector2D(localAtom3.x - localAtom1.x, localAtom3.y - localAtom1.y)
-			d8 = keg.common.math.VecMath2D.angle(localVector2D1, localVector2D2)
+			localVector2D2 = New Vector2D(localAtom3.x - localAtom1.x, localAtom3.y - localAtom1.y)
+			d8 = VecMath2D.angle(localVector2D1, localVector2D2)
 			If (Math.Abs(d1) > Math.Abs(d8))
 			{
 			  d1 = d8
@@ -2534,28 +2534,28 @@ Namespace keg.compound.gui
 			}
 		  }
 		Next
-		localVector2D1 = New keg.common.math.Vector2D(localAtom1.x - ((keg.compound.Atom)localObject2).x, localAtom1.y - ((keg.compound.Atom)localObject2).y)
+		localVector2D1 = New Vector2D(localAtom1.x - ((keg.compound.Atom)localObject2).x, localAtom1.y - ((keg.compound.Atom)localObject2).y)
 		For m = 0 To ((keg.compound.Atom)localObject2).numBond()- 1  Step m + 1
 		  localBond = ((keg.compound.Atom)localObject2).getBond(m)
 		  If (localBond <> localObject1)
 		  {
 			localAtom3 = localBond.pairAtom((keg.compound.Atom)localObject2)
-			localVector2D2 = New keg.common.math.Vector2D(localAtom3.x - ((keg.compound.Atom)localObject2).x, localAtom3.y - ((keg.compound.Atom)localObject2).y)
-			d8 = keg.common.math.VecMath2D.angle(localVector2D1, localVector2D2)
+			localVector2D2 = New Vector2D(localAtom3.x - ((keg.compound.Atom)localObject2).x, localAtom3.y - ((keg.compound.Atom)localObject2).y)
+			d8 = VecMath2D.angle(localVector2D1, localVector2D2)
 			If (Math.Abs(d2) > Math.Abs(d8))
 			{
 			  d2 = d8
 			}
 		  }
 		Next
-		localVector2D1 = New keg.common.math.Vector2D(localAtom1.x - localAtom2.x, localAtom1.y - localAtom2.y)
+		localVector2D1 = New Vector2D(localAtom1.x - localAtom2.x, localAtom1.y - localAtom2.y)
 		For m = 0 To localAtom2.numBond() - 1 Step m + 1
 		  localBond = localAtom2.getBond(m)
 		  If (localBond <> paramBond)
 		  {
 			localAtom3 = localBond.pairAtom(localAtom2)
-			localVector2D2 = New keg.common.math.Vector2D(localAtom3.x - localAtom2.x, localAtom3.y - localAtom2.y)
-			d8 = keg.common.math.VecMath2D.angle(localVector2D1, localVector2D2)
+			localVector2D2 = New Vector2D(localAtom3.x - localAtom2.x, localAtom3.y - localAtom2.y)
+			d8 = VecMath2D.angle(localVector2D1, localVector2D2)
 			If (Math.Abs(d3) > Math.Abs(d8))
 			{
 			  d3 = d8
@@ -2564,14 +2564,14 @@ Namespace keg.compound.gui
 			}
 		  }
 		Next
-		localVector2D1 = New keg.common.math.Vector2D(localAtom2.x - ((keg.compound.Atom)localObject2).x, localAtom2.y - ((keg.compound.Atom)localObject2).y)
+		localVector2D1 = New Vector2D(localAtom2.x - ((keg.compound.Atom)localObject2).x, localAtom2.y - ((keg.compound.Atom)localObject2).y)
 		For m = 0 To ((keg.compound.Atom)localObject2).numBond()- 1  Step m + 1
 		  localBond = ((keg.compound.Atom)localObject2).getBond(m)
 		  If (localBond <> localObject1)
 		  {
 			localAtom3 = localBond.pairAtom((keg.compound.Atom)localObject2)
-			localVector2D2 = New keg.common.math.Vector2D(localAtom3.x - ((keg.compound.Atom)localObject2).x, localAtom3.y - ((keg.compound.Atom)localObject2).y)
-			d8 = keg.common.math.VecMath2D.angle(localVector2D1, localVector2D2)
+			localVector2D2 = New Vector2D(localAtom3.x - ((keg.compound.Atom)localObject2).x, localAtom3.y - ((keg.compound.Atom)localObject2).y)
+			d8 = VecMath2D.angle(localVector2D1, localVector2D2)
 			If (Math.Abs(d4) > Math.Abs(d8))
 			{
 			  d4 = d8
@@ -2650,11 +2650,11 @@ Namespace keg.compound.gui
 	  Private Point2D createPointAuto(Point2D paramPoint2D1, Point2D paramPoint2D2, Point2D paramPoint2D3, Double paramDouble) 
 	  {
 		Dim localPoint2D As Point2D = New Point2D(Me)
-        Dim localVector2D2 As keg.common.math.Vector2D = New keg.common.math.Vector2D(paramPoint2D2.x - paramPoint2D1.x, paramPoint2D2.y - paramPoint2D1.y)
-        Dim localVector2D3 As keg.common.math.Vector2D = New keg.common.math.Vector2D(paramPoint2D3.x - paramPoint2D1.x, paramPoint2D3.y - paramPoint2D1.y)
+        Dim localVector2D2 As Vector2D = New Vector2D(paramPoint2D2.x - paramPoint2D1.x, paramPoint2D2.y - paramPoint2D1.y)
+        Dim localVector2D3 As Vector2D = New Vector2D(paramPoint2D3.x - paramPoint2D1.x, paramPoint2D3.y - paramPoint2D1.y)
 		localVector2D2 = localVector2D2.multiple(1.0D / localVector2D2.length())
 		localVector2D3 = localVector2D3.multiple(1.0D / localVector2D3.length())
-		Dim localVector2D1 As keg.common.math.Vector2D = keg.common.math.VecMath2D.add(localVector2D2, localVector2D3)
+		Dim localVector2D1 As Vector2D = VecMath2D.add(localVector2D2, localVector2D3)
         If ((localVector2D1.x = 0.0D) And (localVector2D1.y = 0.0D))
 		{
 		  Dim arrayOfDouble1() As Double = {paramPoint2D2.x - paramPoint2D1.x, paramPoint2D2.y - paramPoint2D1.y}
@@ -2696,14 +2696,14 @@ Namespace keg.compound.gui
 		  arrayOfBoolean(i2) = False
 		Next
         While i > 0
-		  localVector2D3 = New keg.common.math.Vector2D(((Point2D)paramVector(j)).x - paramPoint2D.x, ((Point2D)paramVector(j)).y - paramPoint2D.y)
+		  localVector2D3 = New Vector2D(((Point2D)paramVector(j)).x - paramPoint2D.x, ((Point2D)paramVector(j)).y - paramPoint2D.y)
 		  d2 = 360.0D
 		  m = -1
 		  For k = 0 To paramVector.Count - 1 Step k + 1
         If ((arrayOfBoolean(k) = 0) And (j <> k))
 			{
-			  localVector2D2 = New keg.common.math.Vector2D(((Point2D)paramVector(k)).x - paramPoint2D.x, ((Point2D)paramVector(k)).y - paramPoint2D.y)
-			  d1 = keg.common.math.VecMath2D.angleDeg(localVector2D3, localVector2D2)
+			  localVector2D2 = New Vector2D(((Point2D)paramVector(k)).x - paramPoint2D.x, ((Point2D)paramVector(k)).y - paramPoint2D.y)
+			  d1 = VecMath2D.angleDeg(localVector2D3, localVector2D2)
 			  If (d1 < 0.0D)
 			  {
 				d1 += 360.0D
@@ -2725,11 +2725,11 @@ Namespace keg.compound.gui
 		  arrayOfBoolean(m) = True
 		  i = i - 1
 		End While
-        Dim localVector2D3 As keg.common.math.Vector2D = New keg.common.math.Vector2D(((Point2D)paramVector(n)).x - paramPoint2D.x,((Point2D)paramVector(n)).y - paramPoint2D.y) 
-		Dim localVector2D2 As keg.common.math.Vector2D = New keg.common.math.Vector2D(((Point2D)paramVector(i1)).x - paramPoint2D.x,((Point2D)paramVector(i1)).y - paramPoint2D.y) 
+        Dim localVector2D3 As Vector2D = New Vector2D(((Point2D)paramVector(n)).x - paramPoint2D.x,((Point2D)paramVector(n)).y - paramPoint2D.y) 
+		Dim localVector2D2 As Vector2D = New Vector2D(((Point2D)paramVector(i1)).x - paramPoint2D.x,((Point2D)paramVector(i1)).y - paramPoint2D.y) 
 		localVector2D3 = localVector2D3.multiple(1.0D / localVector2D3.length())
 		localVector2D2 = localVector2D2.multiple(1.0D / localVector2D2.length())
-		Dim localVector2D1 As keg.common.math.Vector2D = keg.common.math.VecMath2D.add(localVector2D3, localVector2D2)
+		Dim localVector2D1 As Vector2D = VecMath2D.add(localVector2D3, localVector2D2)
         If ((localVector2D1.x = 0.0D) And (localVector2D1.y = 0.0D))
 		{
 		  Dim arrayOfDouble1() As Double = {localVector2D3.x, localVector2D3.y}
@@ -3201,7 +3201,7 @@ Namespace keg.compound.gui
 				d4 = d9 * Math.Sin(d15) + d6
 				localMolecule3 = New keg.compound.Molecule()
 				localAtom2 = New keg.compound.Atom(localMolecule3, d3, d4, 0.0D, "")
-				localMolecule3.set0point(New java.awt.Dimension(0,0))
+				localMolecule3.set0point(New DblRect(0,0))
 				localMolecule3.addAtom(localAtom2)
 				((keg.compound.Reaction)Me.conteiner).addObject(localMolecule3, 0)
 				localAtom2.select(Me.editmode)
@@ -4072,7 +4072,7 @@ Namespace keg.compound.gui
 			d1 = d4 + arrayOfDouble2(0)
 			d2 = d5 + arrayOfDouble2(1)
 		  }
-		  paramGraphics.Color = java.awt.Color.gray
+		  paramGraphics.Color = Color.gray
 		  drawLine(paramGraphics, (Integer)d1, (Integer)d2, (Integer)d4, (Integer)d5)
 		  d6 = d4
 		  d7 = d5
@@ -4295,7 +4295,7 @@ Namespace keg.compound.gui
 		  localGraphics.setPaintMode()
 		  localGraphics.Color = Me.select_frameC
 		  drawLine(localGraphics, Me.upP.x, Me.upP.y, Me.prevDragP.x, Me.prevDragP.y)
-		  Me.lasso_points.Add(New java.awt.Dimension(Me.upP.x, Me.upP.y))
+		  Me.lasso_points.Add(New DblRect(Me.upP.x, Me.upP.y))
         Me.conteiner.selectItems(Me.lasso_points, Me.dispscale, Me.editmode, @bool, ShrinkMode)
         Me.lasso_points.Clear()
 		}
@@ -4389,7 +4389,7 @@ Namespace keg.compound.gui
 		}
 		Dim localGraphics As java.awt.Graphics = Graphics
         Me.editmode.UNDO = (keg.compound.Reaction)Me.conteiner
-		Dim localDimension As java.awt.Dimension = ((keg.compound.Reaction)Me.conteiner).Coordinate 
+		Dim localDimension As DblRect = ((keg.compound.Reaction)Me.conteiner).Coordinate 
 		If (Math.Abs(Me.upP.x - Me.downP.x) < Me.tolerance)
 		{
 		  Return False
@@ -4410,15 +4410,15 @@ Namespace keg.compound.gui
         Dim j As Integer = Math.Max(Me.downP.x, Me.upP.x)
         Dim k As Integer = Math.Min(Me.downP.y, Me.upP.y)
         Dim m As Integer = Math.Max(Me.downP.y, Me.upP.y)
-        Dim localVector2D1 As keg.common.math.Vector2D = New keg.common.math.Vector2D((i - localDimension.width) / Me.dispscale, (k - localDimension.height) / Me.dispscale)
-        Dim localVector2D2 As keg.common.math.Vector2D = New keg.common.math.Vector2D((j - localDimension.width) / Me.dispscale, (m - localDimension.height) / Me.dispscale)
-        Dim localVector2D3 As keg.common.math.Vector2D = New keg.common.math.Vector2D((j - localDimension.width + 8D) / Me.dispscale, (m - localDimension.height - 8D) / Me.dispscale)
+        Dim localVector2D1 As Vector2D = New Vector2D((i - localDimension.width) / Me.dispscale, (k - localDimension.height) / Me.dispscale)
+        Dim localVector2D2 As Vector2D = New Vector2D((j - localDimension.width) / Me.dispscale, (m - localDimension.height) / Me.dispscale)
+        Dim localVector2D3 As Vector2D = New Vector2D((j - localDimension.width + 8D) / Me.dispscale, (m - localDimension.height - 8D) / Me.dispscale)
         Dim localBracket As keg.compound.Bracket = New keg.compound.Bracket((keg.compound.Reaction)Me.conteiner, localVector2D1, localVector2D2, localVector2D3)
 		localBracket.select(Me.editmode)
 		localBracket.set0point(localDimension)
 		localGraphics.Font = Me.bFont
 		Dim localFontMetrics As java.awt.FontMetrics = localGraphics.FontMetrics
-		localBracket.Size = New java.awt.Dimension(localFontMetrics.stringWidth(localBracket.Label), localFontMetrics.Height - Me.fHeight_discount)
+		localBracket.Size = New DblRect(localFontMetrics.stringWidth(localBracket.Label), localFontMetrics.Height - Me.fHeight_discount)
 		((keg.compound.Reaction)Me.conteiner).addBracket(localBracket)
 		((keg.compound.Reaction)Me.conteiner).checkOverlapedBracketWithRefine()
 		Me.editmode.resetArea()
@@ -4455,8 +4455,8 @@ Namespace keg.compound.gui
 		  Return False
 		}
 		Dim localMolecule As keg.compound.Molecule = Nothing
-        Dim localVector2D As keg.common.math.Vector2D = New keg.common.math.Vector2D(Me.upP.x - Me.cx, Me.upP.y - Me.cy)
-        Dim d As Double = keg.common.math.VecMath2D.angle(Me.vec0, localVector2D)
+        Dim localVector2D As Vector2D = New Vector2D(Me.upP.x - Me.cx, Me.upP.y - Me.cy)
+        Dim d As Double = VecMath2D.angle(Me.vec0, localVector2D)
         Dim * As d =  -1.0D 
 		Dim i As Integer
         For i = 0 To Me.editmode.selected.Count - 1 Step i + 1
@@ -4688,7 +4688,7 @@ Namespace keg.compound.gui
 			localBracket.Label = str
 			localGraphics.Font = Me.bFont
 			Dim localFontMetrics As java.awt.FontMetrics = localGraphics.FontMetrics
-			localBracket.Size = New java.awt.Dimension(localFontMetrics.stringWidth(str), localFontMetrics.Height - Me.fHeight_discount)
+			localBracket.Size = New DblRect(localFontMetrics.stringWidth(str), localFontMetrics.Height - Me.fHeight_discount)
 		  }
 		  Me.bracket_text.hide()
         Me.bracket_text.resize(0, 0)
@@ -4720,12 +4720,12 @@ Namespace keg.compound.gui
 		}
 	  }
  
-	  internal virtual void setAtomLabel(String paramString, java.awt.Font paramFont, java.awt.Color paramColor) 
+	  internal virtual void setAtomLabel(String paramString, java.awt.Font paramFont, Color paramColor) 
 	  {
 		setAtomLabel(Me.editmode.atom, paramString, paramFont, paramColor)
 	  }
  
-	  Private void setAtomLabel(keg.compound.Atom paramAtom, String paramString, java.awt.Font paramFont, java.awt.Color paramColor) 
+	  Private void setAtomLabel(keg.compound.Atom paramAtom, String paramString, java.awt.Font paramFont, Color paramColor) 
 	  {
 		Me.editmode.status = 0
         Me.editmode.UNDO = (keg.compound.Reaction)Me.conteiner
@@ -4748,7 +4748,7 @@ Namespace keg.compound.gui
 		  Dim localMolecule As keg.compound.Molecule = New keg.compound.Molecule()
         Dim localAtom As keg.compound.Atom = New keg.compound.Atom(localMolecule, 0.0D, 0.0D, 0.0D, "")
 		  localMolecule.addAtom(localAtom)
-		  localMolecule.set0point(New java.awt.Dimension(Me.downP.x,Me.downP.y))
+		  localMolecule.set0point(New DblRect(Me.downP.x,Me.downP.y))
 		  localAtom.FullLabel = Me.editmode.atom_label
 		  localAtom.calcImplicitHydrogen()
 		  localAtom.decisideHydrogenDraw()
@@ -4804,9 +4804,9 @@ Namespace keg.compound.gui
 			paramGraphics.Font = localText.Font
 			paramGraphics.Color = localText.Color
 			paramGraphics.drawString(localText.Text, localText.X, localText.Y)
-			paramGraphics.Color = java.awt.Color.gray
+			paramGraphics.Color = Color.gray
 			Dim localFontMetrics As java.awt.FontMetrics = paramGraphics.FontMetrics
-        Dim localRectangle As java.awt.Rectangle = localFontMetrics.getStringBounds(localText.Text, paramGraphics).Bounds
+        Dim localRectangle As Rectangle = localFontMetrics.getStringBounds(localText.Text, paramGraphics).Bounds
 			localRectangle.x = localText.X
 			localRectangle.y = localText.Y
 			Dim - As localRectangle.y =  localRectangle.height 
@@ -4842,8 +4842,8 @@ Namespace keg.compound.gui
  
 	  Public virtual void update(java.awt.Graphics paramGraphics) 
 	  {
-		Dim localDimension As java.awt.Dimension = Size
-        Dim localRectangle1 As java.awt.Rectangle = ((keg.compound.Reaction)Me.conteiner).getBound(Me.dispscale) 
+		Dim localDimension As DblRect = Size
+        Dim localRectangle1 As Rectangle = ((keg.compound.Reaction)Me.conteiner).getBound(Me.dispscale) 
 		If (localRectangle1.width > localDimension.width)
 		{
 		  localDimension.width = (localRectangle1.width + 10)
@@ -4872,7 +4872,7 @@ Namespace keg.compound.gui
 		If ((Me.conteiner Is keg.compound.Reaction))
 		{
 		  paintReaction(localGraphics, (keg.compound.Reaction)Me.conteiner)
-		  Dim localRectangle2 As java.awt.Rectangle = ((keg.compound.Reaction)Me.conteiner).getBound(Me.dispscale) 
+		  Dim localRectangle2 As Rectangle = ((keg.compound.Reaction)Me.conteiner).getBound(Me.dispscale) 
 		  paintTexts(localGraphics, ((keg.compound.Reaction)Me.conteiner).Texts)
 		}
 		If (Me.mouseDragDraw2_draw)
@@ -4969,10 +4969,10 @@ Namespace keg.compound.gui
 		}
 	  }
  
-	  Private void drawGrid(java.awt.Graphics paramGraphics, java.awt.Dimension paramDimension) 
+	  Private void drawGrid(java.awt.Graphics paramGraphics, DblRect paramDimension) 
 	  {
-		Dim localColor1 As java.awt.Color = java.awt.Color.gray
-        Dim localColor2 As java.awt.Color = java.awt.Color.gray
+		Dim localColor1 As Color = Color.gray
+        Dim localColor2 As Color = Color.gray
         Dim n As Integer = 0
         Dim i1 As Integer = 0
         Dim i2 As Integer = 10
@@ -5083,7 +5083,7 @@ Namespace keg.compound.gui
 		{
 		  ((java.awt.Graphics2D)paramGraphics).setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON)
 		}
-		Dim localRectangle As java.awt.Rectangle = ((keg.compound.Reaction)Me.conteiner).getBound(Me.dispscale) 
+		Dim localRectangle As Rectangle = ((keg.compound.Reaction)Me.conteiner).getBound(Me.dispscale) 
 		Dim j As Integer = localRectangle.x
         Dim k As Integer = localRectangle.x + localRectangle.width
         Dim m As Integer = localRectangle.y
@@ -5109,8 +5109,8 @@ Namespace keg.compound.gui
 		  Me.editmode.resetArea()
 		}
 		Dim i As Integer = paramReaction.objectNum()
-        Dim localColor1 As java.awt.Color = Me.labelC
-        Dim localColor2 As java.awt.Color = Me.foreC
+        Dim localColor1 As Color = Me.labelC
+        Dim localColor2 As Color = Me.foreC
         For n = 0 To i - 1 Step n + 1
         Dim localChemObject As keg.compound.ChemObject = paramReaction.getObject(n)
         If (paramReaction.isReactant(n))
@@ -5151,7 +5151,7 @@ Namespace keg.compound.gui
 		Next
 	  }
  
-	  Public virtual void paintReactionArrow(java.awt.Graphics paramGraphics, keg.compound.ReactionArrow paramReactionArrow, java.awt.Color paramColor) 
+	  Public virtual void paintReactionArrow(java.awt.Graphics paramGraphics, keg.compound.ReactionArrow paramReactionArrow, Color paramColor) 
 	  {
 		paramGraphics.Color = paramColor
 		Dim i As Integer = paramReactionArrow.DX1()
@@ -5162,26 +5162,26 @@ Namespace keg.compound.gui
 		Dim localVector As ArrayList = paramReactionArrow.arrowHead()
         Dim n As Integer
         For n = 0 To 5 - 1 Step n + 1
-        Me.xPoints(n) = (((java.awt.Dimension)localVector(n)).width - Me.h0)
-		  Me.yPoints(n) = (((java.awt.Dimension)localVector(n)).height - Me.v0)
+        Me.xPoints(n) = (((DblRect)localVector(n)).width - Me.h0)
+		  Me.yPoints(n) = (((DblRect)localVector(n)).height - Me.v0)
 		Next
 		paramGraphics.fillPolygon(Me.xPoints, Me.yPoints, 5)
 	  }
  
-	  Public virtual void paintReactionArrow(java.awt.Graphics paramGraphics, keg.compound.ReactionArrow paramReactionArrow, java.awt.Color paramColor, Integer paramInt1, Integer paramInt2) 
+	  Public virtual void paintReactionArrow(java.awt.Graphics paramGraphics, keg.compound.ReactionArrow paramReactionArrow, Color paramColor, Integer paramInt1, Integer paramInt2) 
 	  {
 		paramGraphics.Color = paramColor
 		paramGraphics.drawLine(paramReactionArrow.DX1() + paramInt1 - Me.h0, paramReactionArrow.DY1() + paramInt2 - Me.v0, paramReactionArrow.DX2() + paramInt1 - Me.h0, paramReactionArrow.DY2() + paramInt2 - Me.v0)
 		Dim localVector As ArrayList = paramReactionArrow.arrowHead()
         Dim i As Integer
         For i = 0 To 5 - 1 Step i + 1
-        Me.xPoints(i) = (((java.awt.Dimension)localVector(i)).width + paramInt1 - Me.h0)
-		  Me.yPoints(i) = (((java.awt.Dimension)localVector(i)).height + paramInt2 - Me.v0)
+        Me.xPoints(i) = (((DblRect)localVector(i)).width + paramInt1 - Me.h0)
+		  Me.yPoints(i) = (((DblRect)localVector(i)).height + paramInt2 - Me.v0)
 		Next
 		paramGraphics.fillPolygon(Me.xPoints, Me.yPoints, 5)
 	  }
  
-	  Public virtual void paintMolecule(java.awt.Graphics paramGraphics, keg.compound.Molecule paramMolecule, java.awt.Color paramColor1, java.awt.Color paramColor2) 
+	  Public virtual void paintMolecule(java.awt.Graphics paramGraphics, keg.compound.Molecule paramMolecule, Color paramColor1, Color paramColor2) 
 	  {
 		Dim localObject As Object
         Dim localAtom2 As keg.compound.Atom
@@ -5301,7 +5301,7 @@ Namespace keg.compound.gui
         End Property
 
 
-        Public virtual void paintMoleculeOutside(java.awt.Graphics paramGraphics, keg.compound.Molecule paramMolecule, java.awt.Color paramColor1, java.awt.Color paramColor2, Integer paramInt1, Integer paramInt2) 
+        Public virtual void paintMoleculeOutside(java.awt.Graphics paramGraphics, keg.compound.Molecule paramMolecule, Color paramColor1, Color paramColor2, Integer paramInt1, Integer paramInt2) 
 	  {
 		Dim i As Integer
         For i = 1 To paramMolecule.BondNum Step i + 1
@@ -5309,15 +5309,15 @@ Namespace keg.compound.gui
 		  {
 			If (paramMolecule.getBond(i).Select)
 			{
-			  paintBond(paramGraphics,paramMolecule.getBond(i),paramColor1,paramColor2,New java.awt.Dimension(paramInt1,paramInt2))
+			  paintBond(paramGraphics,paramMolecule.getBond(i),paramColor1,paramColor2,New DblRect(paramInt1,paramInt2))
 			}
  ElseIf (paramMolecule.getBond(i).col <> Nothing)
 			{
-			  paintBond(paramGraphics,paramMolecule.getBond(i),paramMolecule.getBond(i).col,paramColor2,New java.awt.Dimension(paramInt1,paramInt2))
+			  paintBond(paramGraphics,paramMolecule.getBond(i),paramMolecule.getBond(i).col,paramColor2,New DblRect(paramInt1,paramInt2))
 			}
  Else
 			{
-			  paintBond(paramGraphics,paramMolecule.getBond(i),Me.foreC,paramColor2,New java.awt.Dimension(paramInt1,paramInt2))
+			  paintBond(paramGraphics,paramMolecule.getBond(i),Me.foreC,paramColor2,New DblRect(paramInt1,paramInt2))
 			}
 		  }
 		Next
@@ -5326,40 +5326,40 @@ Namespace keg.compound.gui
 		  {
 			If (paramMolecule.getBond(i).Select)
 			{
-			  paintBond(paramGraphics,paramMolecule.getBond(i),paramColor1,paramColor2,New java.awt.Dimension(paramInt1,paramInt2))
+			  paintBond(paramGraphics,paramMolecule.getBond(i),paramColor1,paramColor2,New DblRect(paramInt1,paramInt2))
 			}
  ElseIf (paramMolecule.getBond(i).col <> Nothing)
 			{
-			  paintBond(paramGraphics,paramMolecule.getBond(i),paramMolecule.getBond(i).col,paramColor2,New java.awt.Dimension(paramInt1,paramInt2))
+			  paintBond(paramGraphics,paramMolecule.getBond(i),paramMolecule.getBond(i).col,paramColor2,New DblRect(paramInt1,paramInt2))
 			}
  Else
 			{
-			  paintBond(paramGraphics,paramMolecule.getBond(i),Me.foreC,paramColor2,New java.awt.Dimension(paramInt1,paramInt2))
+			  paintBond(paramGraphics,paramMolecule.getBond(i),Me.foreC,paramColor2,New DblRect(paramInt1,paramInt2))
 			}
 		  }
 		Next
         For i = 1 To paramMolecule.AtomNum Step i + 1
         If (paramMolecule.getAtom(i).Select)
 		  {
-			paintAtom(paramGraphics,paramMolecule.getAtom(i),paramColor1,paramColor2,New java.awt.Dimension(paramInt1,paramInt2))
+			paintAtom(paramGraphics,paramMolecule.getAtom(i),paramColor1,paramColor2,New DblRect(paramInt1,paramInt2))
 		  }
  ElseIf (paramMolecule.getAtom(i).col <> Nothing)
 		  {
-			paintAtom(paramGraphics,paramMolecule.getAtom(i),paramMolecule.getAtom(i).col,paramColor2,New java.awt.Dimension(paramInt1,paramInt2))
+			paintAtom(paramGraphics,paramMolecule.getAtom(i),paramMolecule.getAtom(i).col,paramColor2,New DblRect(paramInt1,paramInt2))
 		  }
  Else
 		  {
-			paintAtom(paramGraphics,paramMolecule.getAtom(i),Me.labelC,paramColor2,New java.awt.Dimension(paramInt1,paramInt2))
+			paintAtom(paramGraphics,paramMolecule.getAtom(i),Me.labelC,paramColor2,New DblRect(paramInt1,paramInt2))
 		  }
 		Next
 	  }
  
-	  Public virtual void paintAtom(java.awt.Graphics paramGraphics, keg.compound.Atom paramAtom, java.awt.Color paramColor) 
+	  Public virtual void paintAtom(java.awt.Graphics paramGraphics, keg.compound.Atom paramAtom, Color paramColor) 
 	  {
-		paintAtom(paramGraphics,paramAtom,paramColor,Me.backC,New java.awt.Dimension(Me.h0,Me.v0))
+		paintAtom(paramGraphics,paramAtom,paramColor,Me.backC,New DblRect(Me.h0,Me.v0))
 	  }
  
-	  Public virtual void paintAtom(java.awt.Graphics paramGraphics, keg.compound.Atom paramAtom, java.awt.Color paramColor, java.awt.Dimension paramDimension) 
+	  Public virtual void paintAtom(java.awt.Graphics paramGraphics, keg.compound.Atom paramAtom, Color paramColor, DblRect paramDimension) 
 	  {
 		paintAtom(paramGraphics, paramAtom, paramColor, Me.backC, paramDimension)
 	  }
@@ -5411,7 +5411,7 @@ Namespace keg.compound.gui
 		Return localFont
 	  }
  
-	  Public virtual void paintAtom(java.awt.Graphics paramGraphics, keg.compound.Atom paramAtom, java.awt.Color paramColor1, java.awt.Color paramColor2, java.awt.Dimension paramDimension) 
+	  Public virtual void paintAtom(java.awt.Graphics paramGraphics, keg.compound.Atom paramAtom, Color paramColor1, Color paramColor2, DblRect paramDimension) 
 	  {
 		Dim str As String = Me.editmode.keggatomname_mode ? paramAtom.KEGGAtomName : paramAtom.getDrawLabel(Me.editmode.hydrogen_draw) 
 
@@ -5553,7 +5553,7 @@ Namespace keg.compound.gui
 		}
 	  }
  
-	  Private Integer() paintAtom_Charge(java.awt.Graphics paramGraphics, keg.compound.Atom paramAtom, Integer() paramArrayOfInt, java.awt.Dimension paramDimension, java.awt.Color paramColor) 
+	  Private Integer() paintAtom_Charge(java.awt.Graphics paramGraphics, keg.compound.Atom paramAtom, Integer() paramArrayOfInt, DblRect paramDimension, Color paramColor) 
 	  {
 		Dim i As Integer = paramArrayOfInt(0)
         Dim j As Integer = paramArrayOfInt(1)
@@ -5598,7 +5598,7 @@ Namespace keg.compound.gui
 
 	  }
  
-	  Private Integer() paint_ImpliciteHydrogen(java.awt.Graphics paramGraphics, keg.compound.Atom paramAtom, String paramString, Integer() paramArrayOfInt, java.awt.Dimension paramDimension, java.awt.Color paramColor) 
+	  Private Integer() paint_ImpliciteHydrogen(java.awt.Graphics paramGraphics, keg.compound.Atom paramAtom, String paramString, Integer() paramArrayOfInt, DblRect paramDimension, Color paramColor) 
 	  {
 		Dim i As Integer = paramArrayOfInt(0)
         Dim j As Integer = paramArrayOfInt(1)
@@ -5752,7 +5752,7 @@ Namespace keg.compound.gui
 
 	  }
  
-	  Public virtual void paintAtom(java.awt.Graphics paramGraphics, keg.compound.Atom paramAtom, java.awt.Color paramColor, Integer paramInt1, Integer paramInt2) 
+	  Public virtual void paintAtom(java.awt.Graphics paramGraphics, keg.compound.Atom paramAtom, Color paramColor, Integer paramInt1, Integer paramInt2) 
 	  {
 		Dim str As String = Me.editmode.keggatomname_mode ? paramAtom.KEGGAtomName : paramAtom.getDrawLabel(Me.editmode.hydrogen_draw) 
 
@@ -5788,22 +5788,22 @@ Namespace keg.compound.gui
 		}
 	  }
  
-	  Public virtual void paintBond(java.awt.Graphics paramGraphics, keg.compound.Bond paramBond, java.awt.Color paramColor) 
+	  Public virtual void paintBond(java.awt.Graphics paramGraphics, keg.compound.Bond paramBond, Color paramColor) 
 	  {
-		paintBond(paramGraphics,paramBond,paramColor,Me.backC,New java.awt.Dimension(Me.h0,Me.v0))
+		paintBond(paramGraphics,paramBond,paramColor,Me.backC,New DblRect(Me.h0,Me.v0))
 	  }
  
-	  Public virtual void paintBond(java.awt.Graphics paramGraphics, keg.compound.Bond paramBond, java.awt.Color paramColor, java.awt.Dimension paramDimension) 
+	  Public virtual void paintBond(java.awt.Graphics paramGraphics, keg.compound.Bond paramBond, Color paramColor, DblRect paramDimension) 
 	  {
 		paintBond(paramGraphics, paramBond, paramColor, Me.backC, paramDimension)
 	  }
  
-	  Public virtual void paintBond(java.awt.Graphics paramGraphics, keg.compound.Bond paramBond, java.awt.Color paramColor1, java.awt.Color paramColor2, java.awt.Dimension paramDimension) 
+	  Public virtual void paintBond(java.awt.Graphics paramGraphics, keg.compound.Bond paramBond, Color paramColor1, Color paramColor2, DblRect paramDimension) 
 	  {
-		Dim localDimension4 As java.awt.Dimension
-        Dim localDimension3 As java.awt.Dimension
-        Dim localDimension2 As java.awt.Dimension
-        Dim localDimension1 As java.awt.Dimension = localDimension2 = localDimension3 = localDimension4 = Nothing
+		Dim localDimension4 As DblRect
+        Dim localDimension3 As DblRect
+        Dim localDimension2 As DblRect
+        Dim localDimension1 As DblRect = localDimension2 = localDimension3 = localDimension4 = Nothing
         Dim localAtom1 As keg.compound.Atom = paramBond.Atom1
         Dim localAtom2 As keg.compound.Atom = paramBond.Atom2
 		paramGraphics.Color = paramColor1
@@ -5816,9 +5816,9 @@ Namespace keg.compound.gui
         Case 4 : 
 
 			localVector = paramBond.coordinate(Me.dispscale, Me.font_margin, Me.bold_width)
-			localDimension1 = (java.awt.Dimension)localVector(0)
+			localDimension1 = (DblRect)localVector(0)
 			For i = 1 To localVector.Count - 1 Step i + 1
-			  localDimension2 = (java.awt.Dimension)localVector(i)
+			  localDimension2 = (DblRect)localVector(i)
 			  paramGraphics.drawLine(localDimension1.width - paramDimension.width, localDimension1.height - paramDimension.height, localDimension2.width - paramDimension.width, localDimension2.height - paramDimension.height)
 			  localDimension1 = localDimension2
 			Next
@@ -5833,7 +5833,7 @@ Namespace keg.compound.gui
 
 			localVector = paramBond.coordinate(Me.dispscale, Me.font_margin, Me.bold_width)
 			For i = 0 To localVector.Count - 1 Step i + 1
-			  localDimension1 = (java.awt.Dimension)localVector(i)
+			  localDimension1 = (DblRect)localVector(i)
 			  Me.xPoints(i) = (localDimension1.width - paramDimension.width)
         Me.yPoints(i) = (localDimension1.height - paramDimension.height)
         Next
@@ -5843,38 +5843,38 @@ Namespace keg.compound.gui
 
 			localVector = paramBond.coordinate(Me.dispscale, Me.font_margin, Me.bold_width, Me.hash_spacing)
 			For i = 8 To localVector.Count - 1 Step i += 2
-			  localDimension1 = (java.awt.Dimension)localVector(i)
-			  localDimension2 = (java.awt.Dimension)localVector(i + 1)
+			  localDimension1 = (DblRect)localVector(i)
+			  localDimension2 = (DblRect)localVector(i + 1)
 			  paramGraphics.drawLine(localDimension1.width - paramDimension.width, localDimension1.height - paramDimension.height, localDimension2.width - paramDimension.width, localDimension2.height - paramDimension.height)
 			Next
 			paramGraphics.Color = paramColor2
-			localDimension1 = (java.awt.Dimension)localVector(0)
+			localDimension1 = (DblRect)localVector(0)
 			Me.xPoints(0) = (localDimension1.width - paramDimension.width)
         Me.yPoints(0) = (localDimension1.height - paramDimension.height)
         Me.xPoints(4) = (localDimension1.width - paramDimension.width)
         Me.yPoints(4) = (localDimension1.height - paramDimension.height)
-			localDimension2 = (java.awt.Dimension)localVector(1)
+			localDimension2 = (DblRect)localVector(1)
 			Me.xPoints(1) = (localDimension2.width - paramDimension.width)
         Me.yPoints(1) = (localDimension2.height - paramDimension.height)
-			localDimension3 = (java.awt.Dimension)localVector(2)
+			localDimension3 = (DblRect)localVector(2)
 			Me.xPoints(2) = (localDimension3.width - paramDimension.width)
         Me.yPoints(2) = (localDimension3.height - paramDimension.height)
-			localDimension4 = (java.awt.Dimension)localVector(3)
+			localDimension4 = (DblRect)localVector(3)
 			Me.xPoints(3) = (localDimension4.width - paramDimension.width)
         Me.yPoints(3) = (localDimension4.height - paramDimension.height)
 			paramGraphics.fillPolygon(Me.xPoints, Me.yPoints, 5)
-			localDimension1 = (java.awt.Dimension)localVector(4)
+			localDimension1 = (DblRect)localVector(4)
 			Me.xPoints(0) = (localDimension1.width - paramDimension.width)
         Me.yPoints(0) = (localDimension1.height - paramDimension.height)
         Me.xPoints(4) = (localDimension1.width - paramDimension.width)
         Me.yPoints(4) = (localDimension1.height - paramDimension.height)
-			localDimension2 = (java.awt.Dimension)localVector(5)
+			localDimension2 = (DblRect)localVector(5)
 			Me.xPoints(1) = (localDimension2.width - paramDimension.width)
         Me.yPoints(1) = (localDimension2.height - paramDimension.height)
-			localDimension3 = (java.awt.Dimension)localVector(6)
+			localDimension3 = (DblRect)localVector(6)
 			Me.xPoints(2) = (localDimension3.width - paramDimension.width)
         Me.yPoints(2) = (localDimension3.height - paramDimension.height)
-			localDimension4 = (java.awt.Dimension)localVector(7)
+			localDimension4 = (DblRect)localVector(7)
 			Me.xPoints(3) = (localDimension4.width - paramDimension.width)
         Me.yPoints(3) = (localDimension4.height - paramDimension.height)
 			paramGraphics.fillPolygon(Me.xPoints, Me.yPoints, 5)
@@ -5884,24 +5884,24 @@ Namespace keg.compound.gui
         Case 2 : 
 
 		  localVector = paramBond.coordinate(Me.dispscale, Me.font_margin, Me.bond_spacing)
-		  localDimension1 = (java.awt.Dimension)localVector(0)
-		  localDimension2 = (java.awt.Dimension)localVector(1)
-		  localDimension3 = (java.awt.Dimension)localVector(2)
-		  localDimension4 = (java.awt.Dimension)localVector(3)
+		  localDimension1 = (DblRect)localVector(0)
+		  localDimension2 = (DblRect)localVector(1)
+		  localDimension3 = (DblRect)localVector(2)
+		  localDimension4 = (DblRect)localVector(3)
 		  paramGraphics.drawLine(localDimension1.width - paramDimension.width, localDimension1.height - paramDimension.height, localDimension2.width - paramDimension.width, localDimension2.height - paramDimension.height)
 		  paramGraphics.drawLine(localDimension3.width - paramDimension.width, localDimension3.height - paramDimension.height, localDimension4.width - paramDimension.width, localDimension4.height - paramDimension.height)
 		  Exit For
         Case 3 : 
 
 		  localVector = paramBond.coordinate(Me.dispscale, Me.font_margin, Me.bond_spacing)
-		  localDimension1 = (java.awt.Dimension)localVector(0)
-		  localDimension2 = (java.awt.Dimension)localVector(1)
-		  localDimension3 = (java.awt.Dimension)localVector(2)
-		  localDimension4 = (java.awt.Dimension)localVector(3)
+		  localDimension1 = (DblRect)localVector(0)
+		  localDimension2 = (DblRect)localVector(1)
+		  localDimension3 = (DblRect)localVector(2)
+		  localDimension4 = (DblRect)localVector(3)
 		  paramGraphics.drawLine(localDimension1.width - paramDimension.width, localDimension1.height - paramDimension.height, localDimension2.width - paramDimension.width, localDimension2.height - paramDimension.height)
 		  paramGraphics.drawLine(localDimension3.width - paramDimension.width, localDimension3.height - paramDimension.height, localDimension4.width - paramDimension.width, localDimension4.height - paramDimension.height)
-		  localDimension3 = (java.awt.Dimension)localVector(4)
-		  localDimension4 = (java.awt.Dimension)localVector(5)
+		  localDimension3 = (DblRect)localVector(4)
+		  localDimension4 = (DblRect)localVector(5)
 		  paramGraphics.drawLine(localDimension3.width - paramDimension.width, localDimension3.height - paramDimension.height, localDimension4.width - paramDimension.width, localDimension4.height - paramDimension.height)
 		  Exit For
         Case -1
@@ -5927,12 +5927,12 @@ Namespace keg.compound.gui
         End Select
 	  }
  
-	  Public virtual void paintBond(java.awt.Graphics paramGraphics, keg.compound.Bond paramBond, java.awt.Color paramColor, Integer paramInt1, Integer paramInt2) 
+	  Public virtual void paintBond(java.awt.Graphics paramGraphics, keg.compound.Bond paramBond, Color paramColor, Integer paramInt1, Integer paramInt2) 
 	  {
-		Dim localDimension4 As java.awt.Dimension
-        Dim localDimension3 As java.awt.Dimension
-        Dim localDimension2 As java.awt.Dimension
-        Dim localDimension1 As java.awt.Dimension = localDimension2 = localDimension3 = localDimension4 = Nothing
+		Dim localDimension4 As DblRect
+        Dim localDimension3 As DblRect
+        Dim localDimension2 As DblRect
+        Dim localDimension1 As DblRect = localDimension2 = localDimension3 = localDimension4 = Nothing
         Dim localAtom1 As keg.compound.Atom = paramBond.Atom1
         Dim localAtom2 As keg.compound.Atom = paramBond.Atom2
 		paramGraphics.Color = paramColor
@@ -5945,9 +5945,9 @@ Namespace keg.compound.gui
         Case 4 : 
 
 			localVector = paramBond.coordinate(Me.dispscale, Me.font_margin, Me.bold_width)
-			localDimension1 = (java.awt.Dimension)localVector(0)
+			localDimension1 = (DblRect)localVector(0)
 			For i = 1 To localVector.Count - 1 Step i + 1
-			  localDimension2 = (java.awt.Dimension)localVector(i)
+			  localDimension2 = (DblRect)localVector(i)
 			  paramGraphics.drawLine(localDimension1.width + paramInt1 - Me.h0, localDimension1.height + paramInt2 - Me.v0, localDimension2.width + paramInt1 - Me.h0, localDimension2.height + paramInt2 - Me.v0)
 			  localDimension1 = localDimension2
 			Next
@@ -5962,7 +5962,7 @@ Namespace keg.compound.gui
 
 			localVector = paramBond.coordinate(Me.dispscale, Me.font_margin, Me.bold_width)
 			For i = 0 To localVector.Count - 1 Step i + 1
-			  localDimension1 = (java.awt.Dimension)localVector(i)
+			  localDimension1 = (DblRect)localVector(i)
 			  Me.xPoints(i) = (localDimension1.width + paramInt1 - Me.h0)
         Me.yPoints(i) = (localDimension1.height + paramInt2 - Me.v0)
         Next
@@ -5972,38 +5972,38 @@ Namespace keg.compound.gui
 
 			localVector = paramBond.coordinate(Me.dispscale, Me.font_margin, Me.bold_width, Me.hash_spacing)
 			For i = 8 To localVector.Count - 1 Step i += 2
-			  localDimension1 = (java.awt.Dimension)localVector(i)
-			  localDimension2 = (java.awt.Dimension)localVector(i + 1)
+			  localDimension1 = (DblRect)localVector(i)
+			  localDimension2 = (DblRect)localVector(i + 1)
 			  paramGraphics.drawLine(localDimension1.width + paramInt1 - Me.h0, localDimension1.height + paramInt2 - Me.v0, localDimension2.width + paramInt1 - Me.h0, localDimension2.height + paramInt2 - Me.v0)
 			Next
 			paramGraphics.Color = Me.backC
-			localDimension1 = (java.awt.Dimension)localVector(0)
+			localDimension1 = (DblRect)localVector(0)
 			Me.xPoints(0) = (localDimension1.width + paramInt1 - Me.h0)
         Me.yPoints(0) = (localDimension1.height + paramInt2 - Me.v0)
         Me.xPoints(4) = (localDimension1.width + paramInt1 - Me.h0)
         Me.yPoints(4) = (localDimension1.height + paramInt2 - Me.v0)
-			localDimension2 = (java.awt.Dimension)localVector(1)
+			localDimension2 = (DblRect)localVector(1)
 			Me.xPoints(1) = (localDimension2.width + paramInt1 - Me.h0)
         Me.yPoints(1) = (localDimension2.height + paramInt2 - Me.v0)
-			localDimension3 = (java.awt.Dimension)localVector(2)
+			localDimension3 = (DblRect)localVector(2)
 			Me.xPoints(2) = (localDimension3.width + paramInt1 - Me.h0)
         Me.yPoints(2) = (localDimension3.height + paramInt2 - Me.v0)
-			localDimension4 = (java.awt.Dimension)localVector(3)
+			localDimension4 = (DblRect)localVector(3)
 			Me.xPoints(3) = (localDimension4.width + paramInt1 - Me.h0)
         Me.yPoints(3) = (localDimension4.height + paramInt2 - Me.v0)
 			paramGraphics.fillPolygon(Me.xPoints, Me.yPoints, 5)
-			localDimension1 = (java.awt.Dimension)localVector(4)
+			localDimension1 = (DblRect)localVector(4)
 			Me.xPoints(0) = (localDimension1.width + paramInt1 - Me.h0)
         Me.yPoints(0) = (localDimension1.height + paramInt2 - Me.v0)
         Me.xPoints(4) = (localDimension1.width + paramInt1 - Me.h0)
         Me.yPoints(4) = (localDimension1.height + paramInt2 - Me.v0)
-			localDimension2 = (java.awt.Dimension)localVector(5)
+			localDimension2 = (DblRect)localVector(5)
 			Me.xPoints(1) = (localDimension2.width + paramInt1 - Me.h0)
         Me.yPoints(1) = (localDimension2.height + paramInt2 - Me.v0)
-			localDimension3 = (java.awt.Dimension)localVector(6)
+			localDimension3 = (DblRect)localVector(6)
 			Me.xPoints(2) = (localDimension3.width + paramInt1 - Me.h0)
         Me.yPoints(2) = (localDimension3.height + paramInt2 - Me.v0)
-			localDimension4 = (java.awt.Dimension)localVector(7)
+			localDimension4 = (DblRect)localVector(7)
 			Me.xPoints(3) = (localDimension4.width + paramInt1 - Me.h0)
         Me.yPoints(3) = (localDimension4.height + paramInt2 - Me.v0)
 			paramGraphics.fillPolygon(Me.xPoints, Me.yPoints, 5)
@@ -6013,27 +6013,27 @@ Namespace keg.compound.gui
         Case 2 : 
 
 		  localVector = paramBond.coordinate(Me.dispscale, Me.font_margin, Me.bond_spacing)
-		  localDimension1 = (java.awt.Dimension)localVector(0)
-		  localDimension2 = (java.awt.Dimension)localVector(1)
-		  localDimension3 = (java.awt.Dimension)localVector(2)
-		  localDimension4 = (java.awt.Dimension)localVector(3)
+		  localDimension1 = (DblRect)localVector(0)
+		  localDimension2 = (DblRect)localVector(1)
+		  localDimension3 = (DblRect)localVector(2)
+		  localDimension4 = (DblRect)localVector(3)
 		  paramGraphics.drawLine(localDimension1.width + paramInt1 - Me.h0, localDimension1.height + paramInt2 - Me.v0, localDimension2.width + paramInt1 - Me.h0, localDimension2.height + paramInt2 - Me.v0)
 		  paramGraphics.drawLine(localDimension3.width + paramInt1 - Me.h0, localDimension3.height + paramInt2 - Me.v0, localDimension4.width + paramInt1 - Me.h0, localDimension4.height + paramInt2 - Me.v0)
 		  Exit For
         Case 3 : 
 
 		  localVector = paramBond.coordinate(Me.dispscale, Me.font_margin, Me.bond_spacing)
-		  localDimension1 = (java.awt.Dimension)localVector(0)
-		  localDimension2 = (java.awt.Dimension)localVector(1)
-		  localDimension3 = (java.awt.Dimension)localVector(2)
-		  localDimension4 = (java.awt.Dimension)localVector(3)
+		  localDimension1 = (DblRect)localVector(0)
+		  localDimension2 = (DblRect)localVector(1)
+		  localDimension3 = (DblRect)localVector(2)
+		  localDimension4 = (DblRect)localVector(3)
 		  paramGraphics.drawLine(localDimension1.width - Me.h0, localDimension1.height - Me.v0, localDimension2.width - Me.h0, localDimension2.height - Me.v0)
 		  paramGraphics.drawLine(localDimension3.width - Me.h0, localDimension3.height - Me.v0, localDimension4.width - Me.h0, localDimension4.height - Me.v0)
-		  localDimension3 = (java.awt.Dimension)localVector(4)
-		  localDimension4 = (java.awt.Dimension)localVector(5)
+		  localDimension3 = (DblRect)localVector(4)
+		  localDimension4 = (DblRect)localVector(5)
 		  paramGraphics.drawLine(localDimension3.width - Me.h0, localDimension3.height - Me.v0, localDimension4.width - Me.h0, localDimension4.height - Me.v0)
-		  localDimension1 = New java.awt.Dimension(localAtom1.DX(Me.dispscale), localAtom1.DY(Me.dispscale))
-		  localDimension2 = New java.awt.Dimension(localAtom2.DX(Me.dispscale), localAtom2.DY(Me.dispscale))
+		  localDimension1 = New DblRect(localAtom1.DX(Me.dispscale), localAtom1.DY(Me.dispscale))
+		  localDimension2 = New DblRect(localAtom2.DX(Me.dispscale), localAtom2.DY(Me.dispscale))
 		  paramGraphics.drawLine(localDimension1.width + paramInt1 - Me.h0, localDimension1.height + paramInt2 - Me.v0, localDimension2.width + paramInt1 - Me.h0, localDimension2.height + paramInt2 - Me.v0)
 		  Exit For
         Case -1
@@ -6059,12 +6059,12 @@ Namespace keg.compound.gui
         End Select
 	  }
  
-	  Public virtual void paintBond(java.awt.Graphics paramGraphics, keg.compound.Bond paramBond, java.awt.Color paramColor, Integer paramInt1, Integer paramInt2, keg.compound.Atom paramAtom) 
+	  Public virtual void paintBond(java.awt.Graphics paramGraphics, keg.compound.Bond paramBond, Color paramColor, Integer paramInt1, Integer paramInt2, keg.compound.Atom paramAtom) 
 	  {
-		Dim localDimension4 As java.awt.Dimension
-        Dim localDimension3 As java.awt.Dimension
-        Dim localDimension2 As java.awt.Dimension
-        Dim localDimension1 As java.awt.Dimension = localDimension2 = localDimension3 = localDimension4 = Nothing
+		Dim localDimension4 As DblRect
+        Dim localDimension3 As DblRect
+        Dim localDimension2 As DblRect
+        Dim localDimension1 As DblRect = localDimension2 = localDimension3 = localDimension4 = Nothing
         Dim localAtom As keg.compound.Atom = paramBond.pairAtom(paramAtom)
 		paramGraphics.Color = paramColor
 		Select Case paramBond.Order
@@ -6093,12 +6093,12 @@ Namespace keg.compound.gui
 		  }
  Else
 		  {
-			localDimension1 = New java.awt.Dimension(paramAtom.DX(Me.dispscale) + paramInt1, paramAtom.DY(Me.dispscale) + paramInt2)
+			localDimension1 = New DblRect(paramAtom.DX(Me.dispscale) + paramInt1, paramAtom.DY(Me.dispscale) + paramInt2)
 		  }
 		  localDimension2 = calcInside(localAtom.DX(Me.dispscale), localAtom.DY(Me.dispscale), paramAtom.DX(Me.dispscale), paramAtom.DY(Me.dispscale), Me.margin_width)
 		  If (localAtom.Label.Length <= 0)
 		  {
-			localDimension2 = New java.awt.Dimension(localAtom.DX(Me.dispscale), localAtom.DY(Me.dispscale))
+			localDimension2 = New DblRect(localAtom.DX(Me.dispscale), localAtom.DY(Me.dispscale))
 		  }
 		  Select Case paramBond.Orientation
         Case 1
@@ -6132,8 +6132,8 @@ Namespace keg.compound.gui
 		  Exit For
         Case 3 : 
 
-		  localDimension1 = New java.awt.Dimension(paramAtom.DX(Me.dispscale) + paramInt1, paramAtom.DY(Me.dispscale) + paramInt2)
-		  localDimension2 = New java.awt.Dimension(localAtom.DX(Me.dispscale), localAtom.DY(Me.dispscale))
+		  localDimension1 = New DblRect(paramAtom.DX(Me.dispscale) + paramInt1, paramAtom.DY(Me.dispscale) + paramInt2)
+		  localDimension2 = New DblRect(localAtom.DX(Me.dispscale), localAtom.DY(Me.dispscale))
 		  paramGraphics.drawLine(localDimension1.width - Me.h0, localDimension1.height - Me.v0, localDimension2.width - Me.h0, localDimension2.height - Me.v0)
 		  localDimension3 = calcSidePoint(localDimension1.width, localDimension1.height, localDimension2.width, localDimension2.height, Me.bond_spacing, 1)
 		  localDimension4 = calcSidePoint(localDimension2.width, localDimension2.height, localDimension1.width, localDimension1.height, Me.bond_spacing, 2)
@@ -6167,10 +6167,10 @@ Namespace keg.compound.gui
  
 	  Public virtual void paintBracket(java.awt.Graphics paramGraphics, keg.compound.Bracket paramBracket) 
 	  {
-		paintBracket(paramGraphics,paramBracket,New java.awt.Dimension(Me.h0,Me.v0))
+		paintBracket(paramGraphics,paramBracket,New DblRect(Me.h0,Me.v0))
 	  }
  
-	  Public virtual void paintBracket(java.awt.Graphics paramGraphics, keg.compound.Bracket paramBracket, java.awt.Dimension paramDimension) 
+	  Public virtual void paintBracket(java.awt.Graphics paramGraphics, keg.compound.Bracket paramBracket, DblRect paramDimension) 
 	  {
 		paramGraphics.setPaintMode()
 		If ((paramBracket.Select) And ((paramBracket.SelectAll) Or (paramBracket.SelectSide = 1)))
@@ -6178,8 +6178,8 @@ Namespace keg.compound.gui
 		  If (OnlyOneBracketSelected)
 		  {
 			Dim localVector As ArrayList = paramBracket.Sgroup
-        Dim localColor As java.awt.Color = paramGraphics.Color
-			paramGraphics.Color = java.awt.Color.blue
+        Dim localColor As Color = paramGraphics.Color
+			paramGraphics.Color = Color.blue
 			Dim localObject As Object
         For k = 0 To localVector.Count - 1 Step k + 1
 			  localObject = (keg.compound.Atom)localVector(k)
@@ -6195,7 +6195,7 @@ Namespace keg.compound.gui
         Dim localBond As keg.compound.Bond = ((keg.compound.Molecule)localObject).getBond(n + 1) 
 				  If ((localVector.Contains(localBond.Atom1)) And (localVector.Contains(localBond.Atom2)))
 				  {
-					paintBond(paramGraphics, localBond, java.awt.Color.blue)
+					paintBond(paramGraphics, localBond, Color.blue)
 				  }
 				Next
 			  }
@@ -6357,7 +6357,7 @@ Namespace keg.compound.gui
 	  {
 		paramGraphics.Color = Me.foreC
 		paramGraphics.XORMode = Me.backC
-		Dim localRectangle As java.awt.Rectangle = paramBracket.getBracketLabelMarkArea(Me.dispscale)
+		Dim localRectangle As Rectangle = paramBracket.getBracketLabelMarkArea(Me.dispscale)
 		paramGraphics.fillRect(localRectangle.x - Me.h0, localRectangle.y - Me.v0 + 3, localRectangle.width, localRectangle.height)
 	  }
  
@@ -6375,7 +6375,7 @@ Namespace keg.compound.gui
 		paramGraphics.drawOval(paramBracket.DX(Me.dispscale, 2, 4) - Me.h0 - 3, paramBracket.DY(Me.dispscale, 2, 4) - Me.v0 - 3, 6, 6)
 	  }
  
-	  Private java.awt.Dimension calcInside(Integer paramInt1, Integer paramInt2, Integer paramInt3, Integer paramInt4, Integer paramInt5) 
+	  Private DblRect calcInside(Integer paramInt1, Integer paramInt2, Integer paramInt3, Integer paramInt4, Integer paramInt5) 
 	  {
 		Dim i As Integer = paramInt1
         Dim j As Integer = paramInt2
@@ -6385,10 +6385,10 @@ Namespace keg.compound.gui
 		  i = paramInt1 + (paramInt3 - paramInt1) * paramInt5 / k
 		  j = paramInt2 + (paramInt4 - paramInt2) * paramInt5 / k
 		}
-		Return New java.awt.Dimension(i, j)
+		Return New DblRect(i, j)
 	  }
  
-	  Private java.awt.Dimension calcSidePoint(Integer paramInt1, Integer paramInt2, Integer paramInt3, Integer paramInt4, Double paramDouble, Integer paramInt5) 
+	  Private DblRect calcSidePoint(Integer paramInt1, Integer paramInt2, Integer paramInt3, Integer paramInt4, Double paramDouble, Integer paramInt5) 
 	  {
 		Dim i As Integer = paramInt1
         Dim j As Integer = paramInt2
@@ -6407,10 +6407,10 @@ Namespace keg.compound.gui
 		  j += (paramInt1 - paramInt3) * m / k
 	  Exit For
         End Select
-        Return New java.awt.Dimension(i, j)
+        Return New DblRect(i, j)
 	  }
  
-	  Private java.awt.Dimension calcSidePoint(Integer paramInt1, Integer paramInt2, Integer paramInt3, Integer paramInt4, Integer paramInt5, Integer paramInt6) 
+	  Private DblRect calcSidePoint(Integer paramInt1, Integer paramInt2, Integer paramInt3, Integer paramInt4, Integer paramInt5, Integer paramInt6) 
 	  {
 		Dim i As Integer = paramInt1
         Dim j As Integer = paramInt2
@@ -6428,7 +6428,7 @@ Namespace keg.compound.gui
 		  j += (paramInt1 - paramInt3) * paramInt5 / k
 	  Exit For
         End Select
-        Return New java.awt.Dimension(i, j)
+        Return New DblRect(i, j)
 	  }
  
 	  Public virtual void mouseClicked(java.awt.Event.MouseEvent paramMouseEvent) 
@@ -6535,18 +6535,18 @@ Namespace keg.compound.gui
         Me.grp_jd_combo.SelectedIndex = Me.editmode.atom.GroupLabelDirection
         Me.grp_jd.pack()
         Dim localObject1 As Object = Me.grp_jd.Size
-			  ((java.awt.Dimension)localObject1).width = (((java.awt.Dimension)localObject1).width < 250 ? 250 : ((java.awt.Dimension)localObject1).width)
+			  ((DblRect)localObject1).width = (((DblRect)localObject1).width < 250 ? 250 : ((DblRect)localObject1).width)
 
-			  Me.grp_jd.Size = (java.awt.Dimension)localObject1
+			  Me.grp_jd.Size = (DblRect)localObject1
 			  Dim localObject2 As Object = java.awt.Toolkit.DefaultToolkit.ScreenSize
         Dim localPoint3 As java.awt.Point = New java.awt.Point(localPoint2.x + 70, localPoint2.y)
-        If (((java.awt.Dimension)localObject2).width < localPoint3.x + ((java.awt.Dimension)localObject1).width) 
+        If (((DblRect)localObject2).width < localPoint3.x + ((DblRect)localObject1).width) 
 			  {
-				Dim - As localPoint2.x = ((java.awt.Dimension)localObject1).width 
+				Dim - As localPoint2.x = ((DblRect)localObject1).width 
 			  }
-			  If (((java.awt.Dimension)localObject2).height < localPoint3.y + ((java.awt.Dimension)localObject1).height) 
+			  If (((DblRect)localObject2).height < localPoint3.y + ((DblRect)localObject1).height) 
 			  {
-				Dim - As localPoint3.y =  localPoint3.y +((java.awt.Dimension)localObject1).height -((java.awt.Dimension)localObject2).height 
+				Dim - As localPoint3.y =  localPoint3.y +((DblRect)localObject1).height -((DblRect)localObject2).height 
 			  }
 			  Me.grp_jd.Location = localPoint3
         Me.grp_jd.show()
@@ -7052,7 +7052,7 @@ Namespace keg.compound.gui
 			  Dim localGraphics As java.awt.Graphics = Graphics
 			  localGraphics.Font = Me.bFont
 			  Me.fm = localGraphics.FontMetrics
-			  localBracket.Size = New java.awt.Dimension(Me.fm.stringWidth(str), Me.fm.Height - Me.fHeight_discount)
+			  localBracket.Size = New DblRect(Me.fm.stringWidth(str), Me.fm.Height - Me.fHeight_discount)
 			}
 			Me.bracket_text.hide()
         Me.bracket_text.resize(0, 0)
@@ -7105,10 +7105,10 @@ Namespace keg.compound.gui
 		Return (paramAtom.PerviuseNumberOfConnections <= paramAtom.LimitNumberOfConnections) && (paramAtom.NumberOfConnections > paramAtom.LimitNumberOfConnections)
 	  }
  
-	  Public Overridable ReadOnly Property PointOfCanvasCenter() As java.awt.Dimension
+	  Public Overridable ReadOnly Property PointOfCanvasCenter() As DblRect
             Get
-                Dim localDimension As java.awt.Dimension = Me.parentK.Size
-                Return New java.awt.Dimension(localDimension.width / 2 + Hoffset, localDimension.height / 2 + Voffset)
+                Dim localDimension As DblRect = Me.parentK.Size
+                Return New DblRect(localDimension.width / 2 + Hoffset, localDimension.height / 2 + Voffset)
             End Get
         End Property
 
@@ -7228,12 +7228,12 @@ Namespace keg.compound.gui
 		}
 	  }
  
-	  Public virtual java.awt.Rectangle getBoundSize(java.awt.Graphics paramGraphics, keg.compound.Reaction paramReaction) 
+	  Public virtual Rectangle getBoundSize(java.awt.Graphics paramGraphics, keg.compound.Reaction paramReaction) 
 	  {
 		paramGraphics.Font = Me.lFont
 		Dim localFontMetrics As java.awt.FontMetrics = paramGraphics.FontMetrics
         Dim d As Double = Dispscale
-        Dim localRectangle As java.awt.Rectangle = New java.awt.Rectangle()
+        Dim localRectangle As Rectangle = New Rectangle()
         If ((paramReaction.objectNum() = 0) And (paramReaction.bracketNum() = 0))
 		{
 		  Return localRectangle
@@ -7429,8 +7429,8 @@ Namespace keg.compound.gui
  Else
 		  {
 			localObject = outerInstance.Size
-			outerInstance.cx = (((java.awt.Dimension)localObject).width / 2 + outerInstance.h0)
-			outerInstance.cy = (((java.awt.Dimension)localObject).height / 2 + outerInstance.v0)
+			outerInstance.cx = (((DblRect)localObject).width / 2 + outerInstance.h0)
+			outerInstance.cy = (((DblRect)localObject).height / 2 + outerInstance.v0)
 		  }
 		  Me.x = outerInstance.cx
             Me.y = outerInstance.cy

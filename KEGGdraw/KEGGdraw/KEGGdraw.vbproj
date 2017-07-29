@@ -73,10 +73,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="KCF.vb" />
+    <Compile Include="kegDraw\Atom.vb" />
+    <Compile Include="kegDraw\Bond.vb" />
+    <Compile Include="kegDraw\Bracket.vb" />
     <Compile Include="kegDraw\ChemConteiner.vb" />
     <Compile Include="kegDraw\ChemObject.vb" />
     <Compile Include="kegDraw\Canvas.vb" />
+    <Compile Include="kegDraw\DEBT.vb" />
+    <Compile Include="kegDraw\DEBTPreference.vb" />
     <Compile Include="kegDraw\EditMode.vb" />
+    <Compile Include="kegDraw\Molecule.vb" />
+    <Compile Include="kegDraw\PeriodicTable.vb" />
+    <Compile Include="kegDraw\Reaction.vb" />
+    <Compile Include="kegDraw\ReactionArrow.vb" />
+    <Compile Include="kegDraw\Text.vb" />
+    <Compile Include="kegDraw\UndoUnit.vb" />
     <Compile Include="Module1.vb" />
     <Compile Include="IO.vb" />
     <Compile Include="Canvas.vb" />

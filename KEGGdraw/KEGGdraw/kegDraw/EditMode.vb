@@ -33,9 +33,9 @@ Namespace keg.compound
         Public bracket As Bracket
         Public selected As New ArrayList()
         Public m_clipboard As New ArrayList()
-        Friend clipsize As java.awt.Dimension
+        Friend clipsize As DblRect
         Public clipReaction As Reaction = Nothing
-        Public select_area As New java.awt.Rectangle()
+        Public select_area As New Rectangle()
         Public near_object As Object = Nothing
         Public select_mode As Integer = 0
         Friend dispscale As Double
@@ -92,7 +92,7 @@ Namespace keg.compound
                 Return Me.dispscale
             End Get
             Set
-                Me.dispscale = value
+                Me.dispscale = Value
             End Set
         End Property
 
@@ -151,7 +151,7 @@ Namespace keg.compound
                             k = Integer.MinValue
                             m = Integer.MinValue
                             Dim i2 As Integer
-                            If (localBracket.SelectAll) OrElse (localBracket.SelectSide = 1) Then
+                            If (localBracket.selectAll) OrElse (localBracket.SelectSide = 1) Then
                                 i2 = 1
                                 For i4 = 1 To 4
                                     If localBracket.DX(Me.dispscale, i2, i4) < i Then
@@ -168,7 +168,7 @@ Namespace keg.compound
                                     End If
                                 Next
                             End If
-                            If (localBracket.SelectAll) OrElse (localBracket.SelectSide = 2) Then
+                            If (localBracket.selectAll) OrElse (localBracket.SelectSide = 2) Then
                                 i2 = 2
                                 For i4 = 1 To 4
                                     If localBracket.DX(Me.dispscale, i2, i4) < i Then
@@ -286,7 +286,7 @@ Namespace keg.compound
                         k = Integer.MinValue
                         m = Integer.MinValue
                         Dim i3 As Integer
-                        If (localBracket.SelectAll) OrElse (localBracket.SelectSide = 1) Then
+                        If (localBracket.selectAll) OrElse (localBracket.SelectSide = 1) Then
                             i3 = 1
                             For i4 = 1 To 4
                                 If localBracket.DX(Me.dispscale, i3, i4) < i Then
@@ -303,7 +303,7 @@ Namespace keg.compound
                                 End If
                             Next
                         End If
-                        If (localBracket.SelectAll) OrElse (localBracket.SelectSide = 2) Then
+                        If (localBracket.selectAll) OrElse (localBracket.SelectSide = 2) Then
                             i3 = 2
                             For i4 = 1 To 4
                                 If localBracket.DX(Me.dispscale, i3, i4) < i Then
@@ -422,7 +422,7 @@ Namespace keg.compound
             End If
         End Sub
 
-        Private Function getRectangleAboutSelectedArea(paramVector As ArrayList) As java.awt.Rectangle
+        Private Function getRectangleAboutSelectedArea(paramVector As ArrayList) As Rectangle
             Dim i As Integer = Integer.MaxValue
             Dim j As Integer = Integer.MinValue
             Dim k As Integer = Integer.MaxValue
@@ -442,9 +442,9 @@ Namespace keg.compound
                 End If
             Next
             If n <> 0 Then
-                Return New java.awt.Rectangle(i, k, j - i, m - k)
+                Return New Rectangle(i, k, j - i, m - k)
             End If
-            Return New java.awt.Rectangle()
+            Return New Rectangle()
         End Function
 
         Friend Overridable Function isCollision(paramReaction1 As Reaction, paramReaction2 As Reaction) As Boolean
@@ -465,7 +465,7 @@ Namespace keg.compound
             Return False
         End Function
 
-        Public Overridable Sub getClipboard(paramDimension As java.awt.Dimension, paramReaction As Reaction)
+        Public Overridable Sub getClipboard(paramDimension As DblRect, paramReaction As Reaction)
             Dim i As Integer = 0
             For j As Integer = 0 To paramReaction.objectNum() - 1
                 If (TypeOf paramReaction.getObject(j) Is ReactionArrow) Then
@@ -514,9 +514,9 @@ Namespace keg.compound
                         Me.m_clipboard.Add(localAtom2)
                     End If
                 Next
-                copy(Me.m_clipboard, Me.selected, New java.awt.Dimension(0, 0), paramDimension, True, localArrayList)
+                copy(Me.m_clipboard, Me.selected, New DblRect(0, 0), paramDimension, True, localArrayList)
                 Me.clipReaction.[select](True)
-                Dim localRectangle As java.awt.Rectangle = getRectangleAboutSelectedArea(Me.selected)
+                Dim localRectangle As Rectangle = getRectangleAboutSelectedArea(Me.selected)
                 Me.clipReaction.move(paramDimension.width - (localRectangle.x + localRectangle.width / 2), paramDimension.height - (localRectangle.y + localRectangle.height / 2))
                 Dim bool As Boolean = isCollision(Me.clipReaction, paramReaction)
                 Dim m As Integer = 0
@@ -561,7 +561,7 @@ Namespace keg.compound
             If Me.selected.Count > 0 Then
                 Dim localVector As New ArrayList()
                 Me.flipflag = (Not Me.flipflag)
-                Dim localObject As Object = copy(Me.selected, localVector, New java.awt.Dimension(Me.select_area.x, Me.select_area.y), New java.awt.Dimension(Me.select_area.x + Me.diff, Me.select_area.y + Me.diff))
+                Dim localObject As Object = copy(Me.selected, localVector, New DblRect(Me.select_area.x, Me.select_area.y), New DblRect(Me.select_area.x + Me.diff, Me.select_area.y + Me.diff))
                 Me.flipflag = (Not Me.flipflag)
                 clear()
                 paramReaction.unselect()
@@ -584,7 +584,7 @@ Namespace keg.compound
             Dim localVector1 As New ArrayList()
             If Me.selected.Count > 0 Then
                 Dim localVector2 As New ArrayList()
-                copy(Me.selected, localVector2, New java.awt.Dimension(Me.select_area.x, Me.select_area.y), New java.awt.Dimension(Me.select_area.x - paramInt1, Me.select_area.y - paramInt2), False, Nothing)
+                copy(Me.selected, localVector2, New DblRect(Me.select_area.x, Me.select_area.y), New DblRect(Me.select_area.x - paramInt1, Me.select_area.y - paramInt2), False, Nothing)
                 For i As Integer = 0 To Me.clipReaction.bracketNum() - 1
                     localVector1.Add(Me.clipReaction.getBracket(i))
                 Next
@@ -592,12 +592,12 @@ Namespace keg.compound
                     If (Not (TypeOf Me.clipReaction.getObject(i) Is ReactionArrow)) AndAlso ((TypeOf Me.clipReaction.getObject(i) Is Molecule)) Then
                         Dim localMolecule1 As Molecule = DirectCast(Me.clipReaction.getObject(i), Molecule)
                         Dim arrayOfInt As Integer() = localMolecule1.moleculeRange(Me.dispscale)
-                        localMolecule1.setUpperLeft(Me.dispscale, New java.awt.Dimension(Me.select_area.x - paramInt1, Me.select_area.y - paramInt2))
+                        localMolecule1.setUpperLeft(Me.dispscale, New DblRect(Me.select_area.x - paramInt1, Me.select_area.y - paramInt2))
                         localMolecule1.moveInternal(arrayOfInt(0) - Me.select_area.x, Me.select_area.y - arrayOfInt(1), Me.dispscale)
                         For j As Integer = 0 To localVector1.Count - 1
-                            DirectCast(localVector1(j), Bracket).reset0point(New java.awt.Dimension(Me.select_area.x - paramInt1, Me.select_area.y - paramInt2), Me.dispscale)
+                            DirectCast(localVector1(j), Bracket).reset0point(New DblRect(Me.select_area.x - paramInt1, Me.select_area.y - paramInt2), Me.dispscale)
                         Next
-                        localMolecule = New keg.glycan.Molecule(localMolecule1, localVector1, Me.dispscale, New java.awt.Dimension(Me.select_area.x - paramInt1, Me.select_area.y - paramInt2))
+                        localMolecule = New keg.glycan.Molecule(localMolecule1, localVector1, Me.dispscale, New DblRect(Me.select_area.x - paramInt1, Me.select_area.y - paramInt2))
                         Exit For
                     End If
                 Next
@@ -609,15 +609,15 @@ Namespace keg.compound
             If paramVector1.Count = 0 Then
                 Return Nothing
             End If
-            Me.clipsize = New java.awt.Dimension(Me.select_area.width, Me.select_area.height)
-            Return copy(paramVector1, paramVector2, New java.awt.Dimension(Me.select_area.x + Me.select_area.width / 2, Me.select_area.y + Me.select_area.height / 2), New java.awt.Dimension(0, 0))
+            Me.clipsize = New DblRect(Me.select_area.width, Me.select_area.height)
+            Return copy(paramVector1, paramVector2, New DblRect(Me.select_area.x + Me.select_area.width / 2, Me.select_area.y + Me.select_area.height / 2), New DblRect(0, 0))
         End Function
 
-        Friend Overridable Function copy(paramVector1 As ArrayList, paramVector2 As ArrayList, paramDimension1 As java.awt.Dimension, paramDimension2 As java.awt.Dimension) As Object
+        Friend Overridable Function copy(paramVector1 As ArrayList, paramVector2 As ArrayList, paramDimension1 As DblRect, paramDimension2 As DblRect) As Object
             Return copy(paramVector1, paramVector2, paramDimension1, paramDimension2, True, Nothing)
         End Function
 
-        Friend Overridable Function copy(paramVector1 As ArrayList, paramVector2 As ArrayList, paramDimension1 As java.awt.Dimension, paramDimension2 As java.awt.Dimension, paramBoolean As Boolean, paramArrayList As List(Of Atom)) As Object
+        Friend Overridable Function copy(paramVector1 As ArrayList, paramVector2 As ArrayList, paramDimension1 As DblRect, paramDimension2 As DblRect, paramBoolean As Boolean, paramArrayList As List(Of Atom)) As Object
             If paramVector1.Count = 0 Then
                 Return Nothing
             End If
@@ -646,7 +646,7 @@ Namespace keg.compound
                         Me.atom.Label = New String(localAtom1.Label)
                     End If
                     If DirectCast(localObject, Atom).col IsNot Nothing Then
-                        Me.atom.col = New java.awt.Color(localAtom1.col.RGB)
+                        Me.atom.col = New Color(localAtom1.col.RGB)
                     End If
                     localHashtable(localAtom1) = Me.atom
                     paramVector2.Add(Me.atom)
@@ -723,7 +723,7 @@ Namespace keg.compound
                 localObject = paramVector1(k)
                 If (TypeOf localObject Is Bracket) Then
                     Dim localBracket As Bracket = DirectCast(DirectCast(localObject, Bracket).clone(), Bracket)
-                    Dim localDimension As java.awt.Dimension = localBracket.get0point()
+                    Dim localDimension As DblRect = localBracket.get0point()
                     localBracket.set0point(localDimension.width - paramDimension1.width + paramDimension2.width, localDimension.height - paramDimension1.height + paramDimension2.height)
                     Me.clipReaction.addBracket(localBracket)
                     paramVector2.Add(localBracket)
