@@ -35,6 +35,8 @@ Public Module Canvas
                     End Function) _
             .ToArray Or die("No atom elements to plot!", Function(l) DirectCast(l, Array).Length = 0)
         Dim dot = Brushes.Gray
+        Dim atomFont As Font = CSSFont.TryParse(font).GDIObject
+
         Dim plotInternal =
             Sub(ByRef g As IGraphics, region As GraphicsRegion)
                 Dim bounds = atoms.Select(Function(a) a.pt).GetBounds
@@ -57,6 +59,7 @@ Public Module Canvas
                 For Each atom In atoms
                     Dim pt = atom.pt.OffSet2D(centra)
                     Call g.FillPie(dot, pt.X, pt.Y, 5, 5, 0, 360)
+                    Call g.DrawString(atom.atom, atomFont, Brushes.Black, pt)
                 Next
 
                 Dim bold As New Pen(Color.Black, 3)
@@ -75,4 +78,6 @@ Public Module Canvas
 
         Return g.GraphicsPlots(size.SizeParser, padding, bg, plotInternal)
     End Function
+
+
 End Module
