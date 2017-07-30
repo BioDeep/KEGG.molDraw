@@ -24,13 +24,13 @@ Public Module Canvas
                          Optional bg$ = "white",
                          Optional font$ = CSSFont.Win7Normal) As GraphicsData
 
-        Dim atoms As (pt As PointF, atom$)() =
+        Dim atoms As (pt As PointF, atom$, index%)() =
             kcf _
             .Atoms _
             .Select(Function(a)
                         With a.Atom2D_coordinates
                             Dim pt As New PointF(.X, .Y * -1)
-                            Return (pt:=pt, Atom:=a.KEGGAtom)
+                            Return (pt:=pt, Atom:=a.KEGGAtom, Index:=a.Index)
                         End With
                     End Function) _
             .ToArray Or die("No atom elements to plot!", Function(l) DirectCast(l, Array).Length = 0)
@@ -48,7 +48,7 @@ Public Module Canvas
                 atoms = atoms _
                     .Select(Function(a)
                                 Dim pt As New PointF(a.pt.X * scale.Width, a.pt.Y * scale.Height)
-                                Return (pt, a.atom)
+                                Return (pt, a.atom, a.index)
                             End Function) _
                     .ToArray
 
@@ -59,7 +59,7 @@ Public Module Canvas
                 For Each atom In atoms
                     Dim pt = atom.pt.OffSet2D(centra)
                     Call g.FillPie(dot, pt.X, pt.Y, 5, 5, 0, 360)
-                    Call g.DrawString(atom.atom, atomFont, Brushes.Black, pt)
+                    Call g.DrawString($"[{atom.index}] " & atom.atom, atomFont, Brushes.Black, pt)
                 Next
 
                 Dim bold As New Pen(Color.Black, 3)
