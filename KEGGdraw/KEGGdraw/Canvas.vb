@@ -2,6 +2,7 @@
 Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
+Imports Microsoft.VisualBasic.Imaging.Drawing2D.Vector.Shapes
 Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.MIME.Markup.HTML.CSS
 Imports Microsoft.VisualBasic.Scripting.Runtime
@@ -24,7 +25,8 @@ Public Module Canvas
                          Optional bg$ = "white",
                          Optional font$ = CSSFont.Win7Normal) As GraphicsData
 
-        Dim atoms As (pt As PointF, atom$, index%)() =
+        Dim dot = Brushes.Gray
+        Dim atoms As (pt As PointF, atom$)() =
             kcf _
             .Atoms _
             .Select(Function(a)
@@ -62,17 +64,15 @@ Public Module Canvas
                     Call g.DrawString($"[{atom.index}] " & atom.atom, atomFont, Brushes.Black, pt)
                 Next
 
-                Dim bold As New Pen(Color.Black, 3)
-
-                For Each bound In kcf.Bounds
+                For Each bound As Bound In kcf.Bounds
                     Dim a = atoms(bound.from - 1).pt.OffSet2D(centra)
                     Dim b = atoms(bound.to - 1).pt.OffSet2D(centra)
+                    Dim line As New Line(a, b)
 
-                    If bound.bounds > 1 Then
-                        Call g.DrawLine(bold, a, b)
-                    Else
-                        Call g.DrawLine(Pens.Black, a, b)
-                    End If
+                    For i As Integer = 1 To bound.bounds
+                        Call line.Draw(g)
+                        line = line.ParallelShift(10)
+                    Next
                 Next
             End Sub
 

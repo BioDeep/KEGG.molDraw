@@ -4,16 +4,9 @@ Module Module1
 
     Sub Main()
 
-        Dim c As New Microsoft.VisualBasic.Imaging.SVG.XML.rect With {.attributes = New Dictionary(Of String, String) From {{"123", "ddd"}}}
-
-        Call c.GetXml.__DEBUG_ECHO
-
-        Pause()
-
-
-        Dim kcf As KCF = "G:\KEGG.molDraw\NADPH.txt".LoadKCF
+        Dim kcf As KCF = "D:\KEGG\NADPH.txt".LoadKCF
         Call kcf.GetJson.__DEBUG_ECHO
-        Call kcf.Draw().Save("./test.png")
+        Call kcf.Draw().Save("D:\KEGG\NADPH.png")
 
         Pause()
     End Sub
