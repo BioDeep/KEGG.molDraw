@@ -58,10 +58,14 @@ Public Structure Bound
     Public Property from As Integer
     Public Property [to] As Integer
     Public Property bounds As Integer
-    Public Property direction As String
+    ''' <summary>
+    ''' 化学键两边的官能团的空间层次
+    ''' </summary>
+    ''' <returns></returns>
+    Public Property dimentional_levels As String
 
     Public Overrides Function ToString() As String
-        Return $"{from} => {[to]}, {bounds} bounds; {direction}"
+        Return $"{from} => {[to]}, {bounds} bounds; {dimentional_levels}"
     End Function
 
 End Structure

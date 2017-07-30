@@ -73,7 +73,7 @@ Public Module IO
                             .from = Val(t(1)),
                             .to = Val(t(2)),
                             .bounds = Val(t(3)),
-                            .direction = t.ElementAtOrDefault(4)
+                            .dimentional_levels = t.ElementAtOrDefault(4)
                         }
                     End Function) _
             .ToArray
