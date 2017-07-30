@@ -25,8 +25,9 @@ Public Module Canvas
                          Optional bg$ = "white",
                          Optional font$ = CSSFont.Win7Normal) As GraphicsData
 
+        Dim atomFont As Font = CSSFont.TryParse(font).GDIObject
         Dim dot = Brushes.Gray
-        Dim atoms As (pt As PointF, atom$)() =
+        Dim atoms As (pt As PointF, atom$, index%)() =
             kcf _
             .Atoms _
             .Select(Function(a)
@@ -36,8 +37,6 @@ Public Module Canvas
                         End With
                     End Function) _
             .ToArray Or die("No atom elements to plot!", Function(l) DirectCast(l, Array).Length = 0)
-        Dim dot = Brushes.Gray
-        Dim atomFont As Font = CSSFont.TryParse(font).GDIObject
 
         Dim plotInternal =
             Sub(ByRef g As IGraphics, region As GraphicsRegion)
