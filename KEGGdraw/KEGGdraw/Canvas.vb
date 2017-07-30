@@ -18,12 +18,21 @@ Public Module Canvas
     ''' <param name="bg$"></param>
     ''' <param name="font$"></param>
     ''' <returns></returns>
+    ''' <remarks>
+    ''' 在2D平面上面表现出空间层次：在KCF文件之中，使用下面的标记信息来标识空间的层次信息
+    ''' 
+    ''' + ``#Up``：实箭头
+    ''' + ``#Down``：虚箭头
+    ''' 
+    ''' 对于这两种类型的空间层次，都是箭头指向碳原子，即箭头的尖头的部分是指向碳原子的
+    ''' </remarks>
     <Extension>
     Public Function Draw(kcf As KCF,
-                         Optional size$ = "800,800",
+                         Optional size$ = "1200,800",
                          Optional padding$ = g.DefaultPadding,
                          Optional bg$ = "white",
-                         Optional font$ = CSSFont.Win7Normal) As GraphicsData
+                         Optional font$ = CSSFont.Win7Normal,
+                         Optional scaleFactor# = 0.85) As GraphicsData
 
         Dim atomFont As Font = CSSFont.TryParse(font).GDIObject
         Dim dot = Brushes.Gray
@@ -42,8 +51,8 @@ Public Module Canvas
             Sub(ByRef g As IGraphics, region As GraphicsRegion)
                 Dim bounds = atoms.Select(Function(a) a.pt).GetBounds
                 Dim scale As New SizeF With {
-                    .Width = region.Size.Width / bounds.Width,
-                    .Height = region.Size.Height / bounds.Height
+                    .Width = scaleFactor * region.Size.Width / bounds.Width,
+                    .Height = scaleFactor * region.Size.Height / bounds.Height
                 }
 
                 atoms = atoms _
@@ -77,6 +86,4 @@ Public Module Canvas
 
         Return g.GraphicsPlots(size.SizeParser, padding, bg, plotInternal)
     End Function
-
-
 End Module
