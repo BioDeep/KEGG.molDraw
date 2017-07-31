@@ -4,9 +4,9 @@ Module Module1
 
     Sub Main()
 
-        Dim kcf As KCF = "D:\KEGG\NADPH.txt".LoadKCF
+        Dim kcf As KCF = "../../../../NADPH.txt".LoadKCF
         Call kcf.GetJson.__DEBUG_ECHO
-        Call kcf.Draw().Save("D:\KEGG\NADPH.png")
+        Call kcf.Draw().Save("../../../../NADPH.png")
 
         Pause()
     End Sub
