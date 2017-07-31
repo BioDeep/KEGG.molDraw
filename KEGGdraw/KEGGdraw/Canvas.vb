@@ -75,7 +75,10 @@ Public Module Canvas
 
                         ' 只显示出非碳原子的标签
                         Call g.FillPie(dot, pt.X, pt.Y, 5, 5, 0, 360)
-                        Call g.DrawString($"[{ .atom.Index}] " & .atom.Atom, atomFont, Brushes.Black, pt)
+
+                        If Not .atom.Atom.TextEquals("C") Then
+                            Call g.DrawString($"[{ .atom.Index}] " & .atom.Atom, atomFont, Brushes.Black, pt)
+                        End If
                     End With
                 Next
 
