@@ -129,7 +129,7 @@ Public Module Canvas
         With New Path2D
             Dim vetx As PointF() = Arrow _
                 .ArrowHead(c, l.Length) _
-                .Rotate(-l.Alpha) _
+                .Rotate(-l.Alpha - Math.PI) _
                 .MoveTo(l.Center, MoveTypes.PolygonCentre)
 
             Call .MoveTo(vetx(Scan0))
@@ -168,7 +168,7 @@ Public Module Canvas
         Dim lines As New List(Of PointF)
         Dim len% = l.Length
 
-        For x As Double = 0 To len Step (len / 5)
+        For x As Double = 0 To len Step (len / 10)
             Dim a1 As New PointF(x, line1(x))
             Dim b1 As New PointF(x, line2(x))
 
@@ -178,7 +178,7 @@ Public Module Canvas
         ' 对所构成的新的shape进行旋转和位移即可
         Return Sub(g, pen)
                    For Each line As PointF() In lines _
-                       .Rotate(-l.Alpha) _
+                       .Rotate(-l.Alpha - Math.PI) _
                        .MoveTo(l.Center, MoveTypes.PolygonCentre) _
                        .Split(2)
 
