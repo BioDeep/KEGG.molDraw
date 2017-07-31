@@ -75,4 +75,46 @@ Public Module Canvas
 
         Return g.GraphicsPlots(size.SizeParser, padding, bg, plotInternal)
     End Function
+
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <param name="a"></param>
+    ''' <param name="b"></param>
+    ''' <param name="c%">
+    ''' 碳原子的位置，碳原子为箭头的顶点：
+    ''' 
+    ''' 1 - <paramref name="a"/>
+    ''' 2 - <paramref name="b"/>
+    ''' </param>
+    ''' <returns></returns>
+    Public Function UpArrow(a As PointF, b As PointF, c%) As PointF()
+
+    End Function
+
+    Public Function DownArrow(a As PointF, b As PointF, c%) As PointF()
+        Dim l# = Math.Sqrt((a.X - b.X) ^ 2 + (a.Y - b.Y) ^ 2)  ' 线段长度
+        Dim vetx As PointF() ' 顶点， 底端1， 底端2
+
+        ' vetx 为基本模型
+        '
+        ' | 底端1
+        ' |_________________ 顶点
+        ' |
+        ' | 底端2
+
+        ' 先构建出两条边的线段函数
+        ' y = ax + b
+        Dim line1 As Func(Of Double, Double)
+        Dim line2 As Func(Of Double, Double)
+        Dim lines As New List(Of Line)
+
+        For x As Double = 0 To l Step (l / 5)
+            Dim a1 As New PointF(x, line1(x))
+            Dim b1 As New PointF(x, line2(x))
+            lines.Add(New Line(a1, b1))
+        Next
+
+        ' 对所构成的新的shape进行旋转和唯一即可
+    End Function
 End Module
