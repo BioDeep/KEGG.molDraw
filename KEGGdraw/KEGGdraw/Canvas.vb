@@ -4,10 +4,11 @@ Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Vector.Shapes
 Imports Microsoft.VisualBasic.Imaging.Driver
+Imports Microsoft.VisualBasic.Language
+Imports Microsoft.VisualBasic.Math.LinearAlgebra
 Imports Microsoft.VisualBasic.MIME.Markup.HTML.CSS
 Imports Microsoft.VisualBasic.Scripting.Runtime
 Imports Microsoft.VisualBasic.Serialization.JSON
-Imports Microsoft.VisualBasic.Math.LinearAlgebra
 
 Public Module Canvas
 
@@ -91,9 +92,9 @@ Public Module Canvas
                         Next
                     Else
                         If bound.dimentional_levels = "#Up" Then
-                            Call UpArrow(a, b, 10)(g)
+                            Call UpArrow(a, b, 10)(g, Brushes.Black)
                         ElseIf bound.dimentional_levels = "#Down" Then
-                            Call DownArrow(a, b, 10)(g)
+                            Call DownArrow(a, b, 10)(g, Pens.Black)
                         Else
                             Throw New NotImplementedException(bound.GetJson)
                         End If
@@ -119,8 +120,23 @@ Public Module Canvas
     ''' 2 - <paramref name="b"/>
     ''' </param>
     ''' <returns></returns>
-    Public Function UpArrow(a As PointF, b As PointF, c%) As Action(Of IGraphics)
+    Public Function UpArrow(a As PointF, b As PointF, c%) As Action(Of IGraphics, Brush)
+        Dim l As New Line(a, b)  ' 线段长度
 
+        With New Path2D
+            Dim vetx As PointF() = Arrow _
+                .ArrowHead(c, l.Length) _
+                .MoveTo(l.Center, MoveTypes.PolygonCentre)
+
+            Call .MoveTo(vetx(Scan0))
+            Call .LineTo(vetx(1))
+            Call .LineTo(vetx(2))
+            Call .CloseAllFigures()
+
+            Return Sub(g, br)
+                       Call g.FillPath(br, .Path)
+                   End Sub
+        End With
     End Function
 
     ''' <summary>
@@ -130,9 +146,9 @@ Public Module Canvas
     ''' <param name="b"></param>
     ''' <param name="c%"></param>
     ''' <returns></returns>
-    Public Function DownArrow(a As PointF, b As PointF, c%) As Action(Of IGraphics)
-        Dim l# = Math.Sqrt((a.X - b.X) ^ 2 + (a.Y - b.Y) ^ 2)  ' 线段长度
-        Dim vetx As PointF() = Arrow.ArrowHead(c, l) ' 顶点， 底端1， 底端2
+    Public Function DownArrow(a As PointF, b As PointF, c%) As Action(Of IGraphics, Pen)
+        Dim l As New Line(a, b)  ' 线段长度
+        Dim vetx As PointF() = Arrow.ArrowHead(c, l.Length) ' 顶点， 底端1， 底端2
 
         ' vetx 为基本模型
         '
@@ -145,20 +161,25 @@ Public Module Canvas
         ' y = ax + b
         Dim line1 As Func(Of Double, Double) = PrimitiveLinearEquation(vetx(0), vetx(1))
         Dim line2 As Func(Of Double, Double) = PrimitiveLinearEquation(vetx(0), vetx(2))
-        Dim lines As New List(Of Line)
+        Dim lines As New List(Of PointF)
+        Dim len% = l.Length
 
-        For x As Double = 0 To l Step (l / 5)
+        For x As Double = 0 To len Step (len / 5)
             Dim a1 As New PointF(x, line1(x))
             Dim b1 As New PointF(x, line2(x))
 
-            Call lines.Add(New Line(a1, b1))
+            lines += {a1, b1}
         Next
 
         ' 对所构成的新的shape进行旋转和位移即可
-        For Each line In lines
+        Return Sub(g, pen)
+                   For Each line As PointF() In lines _
+                       .Rotate(l.Alpha) _
+                       .MoveTo(l.Center, MoveTypes.PolygonCentre) _
+                       .Split(2)
 
-        Next
-
-
+                       Call g.DrawLine(pen, line(0), line(1))
+                   Next
+               End Sub
     End Function
 End Module
