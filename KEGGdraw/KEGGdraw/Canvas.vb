@@ -105,4 +105,15 @@ Public Module Canvas
             bg,
             plotInternal)
     End Function
+
+    Sub test()
+        Dim a, b As PointF
+        Dim x0 = a.X
+        Dim y0 = a.Y
+        Dim alpha!
+
+        Dim x1 = x0 * Math.Cos(alpha) + y0 * Math.Sin(alpha)
+        Dim y1 = -x0 * Math.Sin(alpha) + y0 * Math.Cos(alpha)
+
+    End Sub
 End Module
