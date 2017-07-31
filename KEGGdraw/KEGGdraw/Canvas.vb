@@ -7,6 +7,7 @@ Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.MIME.Markup.HTML.CSS
 Imports Microsoft.VisualBasic.Scripting.Runtime
 Imports Microsoft.VisualBasic.Serialization.JSON
+Imports Microsoft.VisualBasic.Math.LinearAlgebra
 
 Public Module Canvas
 
@@ -90,9 +91,9 @@ Public Module Canvas
                         Next
                     Else
                         If bound.dimentional_levels = "#Up" Then
-
+                            Call UpArrow(a, b, 10)(g)
                         ElseIf bound.dimentional_levels = "#Down" Then
-
+                            Call DownArrow(a, b, 10)(g)
                         Else
                             Throw New NotImplementedException(bound.GetJson)
                         End If
@@ -106,14 +107,58 @@ Public Module Canvas
             plotInternal)
     End Function
 
-    Sub test()
-        Dim a, b As PointF
-        Dim x0 = a.X
-        Dim y0 = a.Y
-        Dim alpha!
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <param name="a"></param>
+    ''' <param name="b"></param>
+    ''' <param name="c%">
+    ''' 碳原子的位置，碳原子为箭头的顶点：
+    ''' 
+    ''' 1 - <paramref name="a"/>
+    ''' 2 - <paramref name="b"/>
+    ''' </param>
+    ''' <returns></returns>
+    Public Function UpArrow(a As PointF, b As PointF, c%) As Action(Of IGraphics)
 
-        Dim x1 = x0 * Math.Cos(alpha) + y0 * Math.Sin(alpha)
-        Dim y1 = -x0 * Math.Sin(alpha) + y0 * Math.Cos(alpha)
+    End Function
 
-    End Sub
+    ''' <summary>
+    ''' ``#Down``
+    ''' </summary>
+    ''' <param name="a"></param>
+    ''' <param name="b"></param>
+    ''' <param name="c%"></param>
+    ''' <returns></returns>
+    Public Function DownArrow(a As PointF, b As PointF, c%) As Action(Of IGraphics)
+        Dim l# = Math.Sqrt((a.X - b.X) ^ 2 + (a.Y - b.Y) ^ 2)  ' 线段长度
+        Dim vetx As PointF() = Arrow.ArrowHead(c, l) ' 顶点， 底端1， 底端2
+
+        ' vetx 为基本模型
+        '
+        ' | 底端1
+        ' |_________________ 顶点
+        ' |
+        ' | 底端2
+
+        ' 先构建出两条边的线段函数
+        ' y = ax + b
+        Dim line1 As Func(Of Double, Double) = PrimitiveLinearEquation(vetx(0), vetx(1))
+        Dim line2 As Func(Of Double, Double) = PrimitiveLinearEquation(vetx(0), vetx(2))
+        Dim lines As New List(Of Line)
+
+        For x As Double = 0 To l Step (l / 5)
+            Dim a1 As New PointF(x, line1(x))
+            Dim b1 As New PointF(x, line2(x))
+
+            Call lines.Add(New Line(a1, b1))
+        Next
+
+        ' 对所构成的新的shape进行旋转和位移即可
+        For Each line In lines
+
+        Next
+
+
+    End Function
 End Module
