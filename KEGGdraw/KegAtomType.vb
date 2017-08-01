@@ -1,4 +1,5 @@
-﻿Imports Microsoft.VisualBasic.Text
+﻿Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
+Imports Microsoft.VisualBasic.Text
 
 Public Structure KegAtomType
 
@@ -31,12 +32,54 @@ Public Structure KegAtomType
         Halogen = 255
     End Enum
 
-    Public Shared ReadOnly Property KEGGAtomTypes As New Dictionary(Of String, KegAtomType)
+    ''' <summary>
+    ''' <see cref="code"/>是字典的主键
+    ''' </summary>
+    ''' <returns></returns>
+    Public Shared ReadOnly Property KEGGAtomTypes As New Dictionary(Of String, KegAtomType())
 
     Shared Sub New()
         With KEGGAtomTypes
+            Dim blocks = My.Resources.KEGGAtomTypes _
+                .lTokens _
+                .Split(Function(s) s.StringEmpty, includes:=False) _
+                .ToArray
 
+            For Each part In blocks
+                Dim type As Types = parseType(part(Scan0))
+                Dim atoms = part _
+                    .Skip(1) _
+                    .Select(Function(line)
+                                Dim atom As NamedValue(Of String) = line.GetTagValue(" ")
+                                Dim data = Strings.Split(atom.Value, " / ")
+                                Dim formula$ = "", name$
+
+                                If data.Length = 1 Then
+                                    name = data.First
+                                Else
+                                    formula = data.First
+                                    name = data.Last
+                                End If
+
+                                Return New KegAtomType With {
+                                    .code = atom.Name,
+                                    .formula = formula,
+                                    .name = name,
+                                    .type = type
+                                }
+                            End Function) _
+                    .GroupBy(Function(x) x.code) _
+                    .ToArray
+
+                For Each atom In atoms
+                    Call .Add(atom.Key, atom.ToArray)
+                Next
+            Next
         End With
-
     End Sub
+
+    Private Shared Function parseType(s$) As Types
+        s = s.Trim("+"c).Trim.Split.First
+        Return [Enum].Parse(GetType(Types), s)
+    End Function
 End Structure
