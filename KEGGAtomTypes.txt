@@ -1,0 +1,85 @@
++   Carbon atoms
+C1a R-CH3 / methyl
+C1b R-CH2-R / methylene
+C1c R-CH(-R)-R / tertiary carbon
+C1d R-C(-R)2-R / quaternary carbon
+C1x ring-CH2-ring / methylene in ring
+C1y ring-CH(-R)-ring / tertiary carbon in ring
+C1z ring-C(-R)2-ring / quaternary carbon in ring
+C2a R=CH2 / alkenyl terminus carbon
+C2b R=CH-R / alkenyl secondary carbon
+C2c R=C(-R)2 / alkenyl tertiary carbon
+C2x ring-CH=ring / alkenyl secondary carbon in ring
+C2y ring-C(-R)=ring / alkenyl tertiary carbon in ring
+C2y ring-C(=R)-ring / alkenyl tertiary carbon in ring
+C3a R#CH / alkynyl terminus carbon
+C3b R#C-R / alkynyl secondary carbon
+C4a R-CH=O / aldehyde carbon
+C5a R-C(=O)-R / keto carbon
+C5x ring-C(=O)-ring / keto carbon in ring
+C6a R-C(=O)-OH / carboxylate carbon
+C7a R-C(=O)-O-R / carboxylate ester carbon
+C7x ring-C(=O)-O-ring / lactone carbon
+C8x ring-CH=ring / aromatic secondary carbon
+C8y ring-C(-R)=ring / aromatic tertiary carbon
+C0 Undefined carbon
+
++   Nitrogen atoms
+N1a R-NH2 / primary amine
+N1b R-NH-R / secondary amine
+N1c R-N(-R)2 / tertiary amine
+N1d R-N(-R)3+ / quaternary ammonium
+N1x ring-NH-ring / secondary amine in ring
+N1y ring-N(-R)-ring / tertiary amine in ring
+N2a R=N-H / primary imine
+N2b R=N-R / secondary imine
+N2x ring-N=ring / secondary imine in ring
+N2y ring-N(-R)+=ring / iminium
+N3a R#N / nitrile
+N4x ring-NH-ring / aromatic secondary amine
+N4y ring-N(-R)-ring / aromatic tertiary amine
+N5x ring-N=ring / aromatic secondary imine
+N5y ring-N(-R)+=ring / aromatic tertiary imine
+N0 Undefined nitrogen
+
++   Oxygen atoms
+O1a R-OH / hydroxy
+O1b N-OH / N-hydroxy
+O1c P-OH / P-hydroxy
+O1d S-OH / S-hydroxy
+O2a R-O-R / hydroxy ether
+O2b P-O-R / hydroxy phosphate bond
+O2c P-O-P / pyrophosphate bond
+O2x ring-O-ring / cyclic ether
+O3a N=O / N-oxo
+O3b P=O / P-oxo
+O3c S=O / S-oxo
+O4a R-CH=O / aldehyde oxygen
+O5a R-C(=O)-R / keto oxygen
+O5x ring-C(=O)-ring / keto oxygen in ring
+O6a R-C(=O)-OH / carboxylate oxygen
+O7a R-C(=O)-O-R / carboxylate ester oxygen
+O7x ring-C(=O)-O-ring / lactone oxygen
+O0 Undefined oxygen
+
++   Sulfur atoms
+S1a R-SH / mercapto
+S2a R-S-R / sulfide
+S2x ring-S-ring / sulfide in ring
+S3a R-S-S-R / disulfide
+S3x ring-S-S-ring / disulfide in ring
+S4a R-SO3 / sulfate
+S0 Undefined sulfur
+
++   Phosphorus atoms
+P1a P-R / phosphine
+P1b P-O / phosphate
+
++   Halogen atoms
+X F / fluoride
+X Cl / chloride
+X Br / bromide
+X I / iodide
+
++   Other atoms
+Z Other atoms
