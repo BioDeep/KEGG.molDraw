@@ -1,12 +1,33 @@
 ﻿Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
-Imports Microsoft.VisualBasic.Text
 
 Public Structure KegAtomType
 
+    ''' <summary>
+    ''' KCF文件之中的官能团编码
+    ''' </summary>
     Dim code$
+    ''' <summary>
+    ''' 官能团的化学式
+    ''' </summary>
     Dim formula$
+    ''' <summary>
+    ''' 官能团的名称
+    ''' </summary>
     Dim name$
+    ''' <summary>
+    ''' 官能团的中心原子的类型
+    ''' </summary>
     Dim type As Types
+
+    Public ReadOnly Property FormulaValue As String
+        Get
+            If Not Drawable.ContainsKey(code) Then
+                Return ""
+            Else
+                Return Drawable(code)
+            End If
+        End Get
+    End Property
 
     Sub New(code$, formula$, name$, type As Types)
         Me.code = code
@@ -37,6 +58,7 @@ Public Structure KegAtomType
     ''' </summary>
     ''' <returns></returns>
     Public Shared ReadOnly Property KEGGAtomTypes As New Dictionary(Of String, KegAtomType())
+    Public Shared ReadOnly Property Drawable As New Dictionary(Of String, String)
 
     Shared Sub New()
         With KEGGAtomTypes
@@ -75,6 +97,10 @@ Public Structure KegAtomType
                     Call .Add(atom.Key, atom.ToArray)
                 Next
             Next
+        End With
+
+        With Drawable
+
         End With
     End Sub
 
