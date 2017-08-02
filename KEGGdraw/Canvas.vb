@@ -79,7 +79,11 @@ Public Module Canvas
 
                         ' 只显示出非碳原子的标签
                         If Not .atom.Atom.TextEquals("C") Then
-                            Call g.DrawString(.atom.Atom, atomFont, Brushes.Black, pt)
+                            Dim label$ = .atom.Atom
+                            Dim lbSize = g.MeasureString(label, atomFont)
+
+                            pt = New PointF(pt.X - lbSize.Width / 2, pt.Y - lbSize.Height / 2)
+                            g.DrawString(label, atomFont, Brushes.Black, pt)
                         End If
                     End With
                 Next
