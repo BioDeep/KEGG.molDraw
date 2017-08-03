@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{2FD54B9F-97BC-4254-9111-544CC85C41B1}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <StartupObject>KEGGdraw.Module1</StartupObject>
+    <StartupObject>KEGGdraw.Program</StartupObject>
     <RootNamespace>KEGGdraw</RootNamespace>
     <AssemblyName>KEGGdraw</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -73,7 +73,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="KCF.vb" />
-    <Compile Include="Module1.vb" />
+    <Compile Include="CLI.vb" />
+    <Compile Include="Program.vb" />
     <Compile Include="IO.vb" />
     <Compile Include="Canvas.vb" />
     <Compile Include="KegAtomType.vb" />
