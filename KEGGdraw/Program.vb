@@ -14,9 +14,9 @@ Module Program
 
     Sub test()
 
-        Dim kcf As KCF = "../../../../NADPH.txt".LoadKCF
+        Dim kcf As KCF = "../DATA/NADPH.txt".LoadKCF
         Call kcf.GetJson.__DEBUG_ECHO
-        Call kcf.Draw().Save("../../../../NADPH.png")
+        Call kcf.Draw().Save("../DATA/NADPH.png")
 
 
 

@@ -34,11 +34,13 @@ Public Module Canvas
                          Optional size$ = "1200,800",
                          Optional padding$ = g.DefaultPadding,
                          Optional bg$ = "white",
-                         Optional font$ = CSSFont.Win7Normal,
-                         Optional scaleFactor# = 0.85) As GraphicsData
+                         Optional font$ = CSSFont.Win7LargerNormal,
+                         Optional scaleFactor# = 0.85,
+                         Optional boundStroke$ = Stroke.AxisStroke) As GraphicsData
 
         Dim atomFont As Font = CSSFont.TryParse(font).GDIObject
         Dim dot = Brushes.Gray
+        Dim boundsPen As Pen = Stroke.TryParse(boundStroke).GDIObject
         Dim atoms As (pt As PointF, atom As Atom)() =
             kcf _
             .Atoms _
@@ -73,11 +75,17 @@ Public Module Canvas
                     With atom
                         Dim pt As PointF = .pt.OffSet2D(centra)
 
-                        ' 只显示出非碳原子的标签
-                        Call g.FillPie(dot, pt.X, pt.Y, 5, 5, 0, 360)
+                        ' Call g.FillPie(dot, pt.X, pt.Y, 5, 5, 0, 360)
 
+                        ' 只显示出非碳原子的标签
                         If Not .atom.Atom.TextEquals("C") Then
-                            Call g.DrawString($"[{ .atom.Index}] " & .atom.Atom, atomFont, Brushes.Black, pt)
+                            Dim label$ = .atom.Atom
+
+                            With g.MeasureString(label, atomFont)
+                                pt = New PointF(pt.X - .Width / 2,
+                                                pt.Y - .Height / 2)
+                                g.DrawString(label, atomFont, Brushes.Black, pt)
+                            End With
                         End If
                     End With
                 Next
@@ -87,7 +95,9 @@ Public Module Canvas
                     Dim b = atoms(bound.to - 1).pt.OffSet2D(centra)
 
                     If bound.dimentional_levels.StringEmpty Then
-                        Dim line As New Line(a, b)
+                        Dim line As New Line(a, b) With {
+                            .Stroke = boundsPen
+                        }
 
                         For i As Integer = 1 To bound.bounds
                             Call line.Draw(g)
@@ -97,7 +107,7 @@ Public Module Canvas
                         If bound.dimentional_levels = "#Up" Then
                             Call UpArrow(a, b, 10)(g, Brushes.Black)
                         ElseIf bound.dimentional_levels = "#Down" Then
-                            Call DownArrow(a, b, 10)(g, Pens.Black)
+                            Call DownArrow(a, b, 10)(g, boundsPen)
                         Else
                             Throw New NotImplementedException(bound.GetJson)
                         End If
