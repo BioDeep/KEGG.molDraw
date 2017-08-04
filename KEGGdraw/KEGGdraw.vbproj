@@ -117,9 +117,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\repo\sciBASIC\Data_science\Mathematica\Math\Math\math-core.vbproj">
+    <ProjectReference Include="..\..\repo\sciBASIC\Data_science\Mathematica\Math\Math\math-core.vbproj">
       <Project>{e3367b88-5d0c-495a-8273-331656d4b5aa}</Project>
-      <Name>Microsoft.VisualBasic.Mathematical</Name>
+      <Name>math-core</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\repo\sciBASIC\gr\Microsoft.VisualBasic.Imaging\Microsoft.VisualBasic.Imaging.vbproj">
       <Project>{85e71b4b-9276-4ec8-aadc-c849205f1ea8}</Project>
@@ -132,6 +132,10 @@
     <ProjectReference Include="..\..\..\repo\sciBASIC\mime\text%25html\MIME-htmls.vbproj">
       <Project>{2dd4be80-ddc3-4767-94a7-10f1c3395716}</Project>
       <Name>MIME-htmls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\GCModeller\src\GCModeller\core\Bio.Assembly\Bio.Assembly.vbproj">
+      <Project>{c699d311-9923-4c19-bf70-5048d0e2cf5d}</Project>
+      <Name>Bio.Assembly</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

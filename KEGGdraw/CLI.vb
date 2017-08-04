@@ -1,6 +1,7 @@
 ﻿Imports System.ComponentModel
 Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.Reflection
+Imports SMRUCC.genomics.Assembly.KEGG.DBGET.bGetObject
 
 Module CLI
 
@@ -22,6 +23,11 @@ Module CLI
     Public Function DrawKEGG(args As CommandLine) As Integer
         Dim cpd$ = args <= "/cpd"
         Dim out$ = args.GetValue("/out", App.CurrentDirectory)
+        Dim KCF = Compound.DownloadKCF(cpd, out).LoadKCF
+
+        Return KCF.Draw() _
+            .Save(out) _
+            .CLICode
     End Function
 
     <ExportAPI("/dump.kegg.compounds")>
