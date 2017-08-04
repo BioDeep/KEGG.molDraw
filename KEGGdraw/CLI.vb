@@ -38,7 +38,7 @@ Module CLI
     <Usage("/dump.kegg.compounds [/out <save_dir>]")>
     Public Function DumpKEGGCompounds(args As CommandLine) As Integer
         With args.GetValue("/out", App.CurrentDirectory & "/KEGG.compounds/")
-            Return cpdBriet.DownloadFromResource(EXPORT:= .ref) _
+            Return cpdBriet.DownloadFromResource(EXPORT:= .ref, structInfo:=True) _
                 .GetJson _
                 .SaveTo(.ref & "/failures.json") _
                 .CLICode
