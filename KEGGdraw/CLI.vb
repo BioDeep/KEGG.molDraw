@@ -1,7 +1,10 @@
 ﻿Imports System.ComponentModel
 Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.Reflection
+Imports Microsoft.VisualBasic.Language
+Imports Microsoft.VisualBasic.Serialization.JSON
 Imports SMRUCC.genomics.Assembly.KEGG.DBGET.bGetObject
+Imports cpdBriet = SMRUCC.genomics.Assembly.KEGG.DBGET.BriteHEntry.Compound
 
 Module CLI
 
@@ -34,6 +37,11 @@ Module CLI
     <Description("Dumping the KEGG compounds database")>
     <Usage("/dump.kegg.compounds [/out <save_dir>]")>
     Public Function DumpKEGGCompounds(args As CommandLine) As Integer
-        Dim out$ = args.GetValue("/out", App.CurrentDirectory & "/KEGG.compounds/")
+        With args.GetValue("/out", App.CurrentDirectory & "/KEGG.compounds/")
+            Return cpdBriet.DownloadFromResource(EXPORT:= .ref) _
+                .GetJson _
+                .SaveTo(.ref & "/failures.json") _
+                .CLICode
+        End With
     End Function
 End Module
