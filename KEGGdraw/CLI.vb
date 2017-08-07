@@ -5,6 +5,7 @@ Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Serialization.JSON
 Imports SMRUCC.genomics.Assembly.KEGG.DBGET.bGetObject
 Imports cpdBriet = SMRUCC.genomics.Assembly.KEGG.DBGET.BriteHEntry.Compound
+Imports kegMap = SMRUCC.genomics.Assembly.KEGG.WebServices.Downloader
 
 Module CLI
 
@@ -39,6 +40,18 @@ Module CLI
     Public Function DumpKEGGCompounds(args As CommandLine) As Integer
         With args.GetValue("/out", App.CurrentDirectory & "/KEGG.compounds/")
             Return cpdBriet.DownloadFromResource(EXPORT:= .ref, structInfo:=True) _
+                .GetJson _
+                .SaveTo(.ref & "/failures.json") _
+                .CLICode
+        End With
+    End Function
+
+    <ExportAPI("/dump.kegg.maps")>
+    <Description("Dumping the KEGG maps database")>
+    <Usage("/dump.kegg.maps [/out <save_dir>]")>
+    Public Function DumpKEGGMaps(args As CommandLine) As Integer
+        With args.GetValue("/out", App.CurrentDirectory & "/KEGG.compounds/")
+            Return kegMap.Downloads(EXPORT:= .ref) _
                 .GetJson _
                 .SaveTo(.ref & "/failures.json") _
                 .CLICode
