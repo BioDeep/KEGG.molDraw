@@ -97,12 +97,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App\KCF.vb" />
+    <Compile Include="AppCodes\KCF.vb" />
     <Compile Include="CLI.vb" />
     <Compile Include="Program.vb" />
-    <Compile Include="App\IO.vb" />
-    <Compile Include="App\Canvas.vb" />
-    <Compile Include="App\KegAtomType.vb" />
+    <Compile Include="AppCodes\IO.vb" />
+    <Compile Include="AppCodes\Canvas.vb" />
+    <Compile Include="AppCodes\KegAtomType.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
