@@ -36,10 +36,12 @@ Module CLI
 
     <ExportAPI("/dump.kegg.compounds")>
     <Description("Dumping the KEGG compounds database")>
-    <Usage("/dump.kegg.compounds [/out <save_dir>]")>
+    <Usage("/dump.kegg.compounds [/max.cid <default=25000> /out <save_dir>]")>
     Public Function DumpKEGGCompounds(args As CommandLine) As Integer
         With args.GetValue("/out", App.CurrentDirectory & "/KEGG.compounds/")
-            Return cpdBriet.DownloadFromResource(EXPORT:= .ref, structInfo:=True) _
+            Return cpdBriet.DownloadFromResource(EXPORT:= .ref,
+                                                 structInfo:=True,
+                                                 maxID:=args.GetValue("/max.cid", 25000)) _
                 .GetJson _
                 .SaveTo(.ref & "/failures.json") _
                 .CLICode
