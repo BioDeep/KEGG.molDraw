@@ -8,7 +8,7 @@ Module Program
 
     Sub New()
 #If DEBUG Then
-        Call test()
+        ' Call test()
 #End If
     End Sub
 

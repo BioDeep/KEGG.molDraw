@@ -49,11 +49,13 @@ Module CLI
     End Function
 
     <ExportAPI("/dump.kegg.maps")>
-    <Description("Dumping the KEGG maps database")>
+    <Description("Dumping the KEGG maps database for human species.")>
     <Usage("/dump.kegg.maps [/out <save_dir>]")>
     Public Function DumpKEGGMaps(args As CommandLine) As Integer
-        With args.GetValue("/out", App.CurrentDirectory & "/KEGG.compounds/")
-            Return kegMap.Downloads(EXPORT:= .ref) _
+        With args.GetValue("/out", App.CurrentDirectory & "/KEGG.pathwayMaps/")
+            Dim tmp = App.GetAppSysTempFile(".txt")
+            My.Resources.hsa00001.FlushStream(tmp)
+            Return kegMap.Downloads(EXPORT:= .ref, briefFile:=tmp) _
                 .GetJson _
                 .SaveTo(.ref & "/failures.json") _
                 .CLICode

@@ -61,6 +61,16 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized resource of type System.Byte[].
+        '''</summary>
+        Friend ReadOnly Property hsa00001() As Byte()
+            Get
+                Dim obj As Object = ResourceManager.GetObject("hsa00001", resourceCulture)
+                Return CType(obj,Byte())
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to +   Carbon atoms
         '''C1a R-CH3 / methyl
         '''C1b R-CH2-R / methylene
