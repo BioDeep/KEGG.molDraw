@@ -19,7 +19,7 @@ Module Program
 
         Dim reder As LocalRender = LocalRender.FromRepository("D:\KEGG.pathwayMaps\KEGG.pathwayMaps")
 
-        Call reder.Rendering("http://www.genome.jp/kegg-bin/show_pathway?hsa05034/hsa:3014%09red/hsa:8970%09red/hsa:3845%09red/hsa:3013%09red").SaveAs("./test.png")
+        Call reder.Rendering("http://www.genome.jp/kegg-bin/show_pathway?hsa05034/hsa:3014%09red/hsa:8970%09red/hsa:3845%09red/hsa:3013%09red").SaveAs("D:\KEGG\App\/test.png")
 
 
         Pause()
