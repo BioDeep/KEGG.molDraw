@@ -1,4 +1,6 @@
-﻿Imports Microsoft.VisualBasic.Serialization.JSON
+﻿Imports Microsoft.VisualBasic.Imaging
+Imports Microsoft.VisualBasic.Serialization.JSON
+Imports SMRUCC.genomics.Assembly.KEGG.WebServices
 
 Module Program
 
@@ -8,12 +10,19 @@ Module Program
 
     Sub New()
 #If DEBUG Then
-        ' Call test()
+        Call test()
 #End If
     End Sub
 
     Sub test()
 
+
+        Dim reder As LocalRender = LocalRender.FromRepository("D:\KEGG.pathwayMaps\KEGG.pathwayMaps")
+
+        Call reder.Rendering("http://www.genome.jp/kegg-bin/show_pathway?hsa05034/hsa:3014%09red/hsa:8970%09red/hsa:3845%09red/hsa:3013%09red").SaveAs("D:\KEGG\App\/test.png")
+
+
+        Pause()
         Dim kcf As KCF = "../DATA/NADPH.txt".LoadKCF
         Call kcf.GetJson.__DEBUG_ECHO
         Call kcf.Draw().Save("../DATA/NADPH.png")
