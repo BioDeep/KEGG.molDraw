@@ -43,6 +43,7 @@ Imports kegMap = SMRUCC.genomics.Assembly.KEGG.WebServices.Downloader
     <Group(Groups.KegDatabase)>
     Public Function DumpKEGGCompounds(args As CommandLine) As Integer
         With args.GetValue("/out", App.CurrentDirectory & "/KEGG.compounds/")
+            Call cpdBriet.WorkspaceCleanup(DIR:= .ref)
             Return cpdBriet.DownloadFromResource(EXPORT:= .ref,
                                                  structInfo:=True,
                                                  maxID:=args.GetValue("/max.cid", 25000)) _
@@ -59,7 +60,7 @@ Imports kegMap = SMRUCC.genomics.Assembly.KEGG.WebServices.Downloader
     Public Function DumpKEGGMaps(args As CommandLine) As Integer
         With args.GetValue("/out", App.CurrentDirectory & "/KEGG.pathwayMaps/")
             Dim tmp = App.GetAppSysTempFile(".txt")
-            My.Resources.hsa00001.FlushStream(tmp)
+            Call My.Resources.hsa00001.FlushStream(tmp)
             Return kegMap.Downloads(EXPORT:= .ref, briefFile:=tmp) _
                 .GetJson _
                 .SaveTo(.ref & "/failures.json") _
