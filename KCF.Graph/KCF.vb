@@ -32,14 +32,31 @@ Public Module KCF
         Dim nodes As Dictionary(Of Node) = g.nodes.ToDictionary()
         Dim a, b As String
         Dim edge As Edge
+        Dim length#
+        Dim node1, node2 As Node
+        Dim label$
 
         For Each bound In KCF.Bounds
             a = "#" & bound.from
             b = "#" & bound.to
+            node1 = nodes(a)
+            node2 = nodes(b)
+            length = Imaging.Math2D.Distance(
+                node1.Data.initialPostion.Point2D,
+                node2.Data.initialPostion.Point2D)
+
+            label = $"{a} -> {b}" Or
+                    $"{a} -> {b} ({bound.dimentional_levels})".AsDefault(Function() Not bound.dimentional_levels.StringEmpty)
+
             edge = New Edge With {
-                .Source = nodes(a),
-                .Target = nodes(b),
-                .ID = $"{a} -> {b}" Or $"{a} -> {b} ({bound.dimentional_levels})".AsDefault(Function() Not bound.dimentional_levels.StringEmpty)
+                .Source = node1,
+                .Target = node2,
+                .ID = label,
+                .Data = New EdgeData With {
+                    .weight = bound.bounds,
+                    .length = length,
+                    .label = label
+                }
             }
 
             Call g.AddEdge(edge)
