@@ -13,11 +13,14 @@ Public Module IO
     ''' <returns></returns>
     <Extension> Public Function LoadKCF(stream$) As KCF
         If stream.FileExists Then
-            stream = stream.ReadAllText Or die("No content data!", Function(s) DirectCast(s, String).StringEmpty)
+            stream = stream.ReadAllText Or die("No content data!")
         End If
+        Return parserInternal(stream)
+    End Function
 
-        Dim lines$() = stream.lTokens
-        Dim sections = lines _
+    <Extension> Private Function parserInternal(stream$) As KCF
+        Dim sections = stream _
+            .lTokens _
             .Split(Function(s) Not InStr(s, "    ") = 1, DelimiterLocation.NextFirst) _
             .Skip(1) _
             .ToArray
