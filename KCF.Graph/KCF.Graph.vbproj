@@ -122,10 +122,6 @@
       <Project>{1bafa2bc-68b2-4ee0-9235-c60fae3377a0}</Project>
       <Name>KCF.IO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KEGGdraw\KEGGdraw.vbproj">
-      <Project>{2fd54b9f-97bc-4254-9111-544cc85c41b1}</Project>
-      <Name>KEGGdraw</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
