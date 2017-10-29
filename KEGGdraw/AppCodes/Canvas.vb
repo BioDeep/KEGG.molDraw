@@ -2,13 +2,15 @@
 Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
-Imports Microsoft.VisualBasic.Imaging.Drawing2D.Vector.Shapes
+Imports Microsoft.VisualBasic.Imaging.Drawing2D.Shapes
 Imports Microsoft.VisualBasic.Imaging.Driver
+Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
 Imports Microsoft.VisualBasic.MIME.Markup.HTML.CSS
 Imports Microsoft.VisualBasic.Scripting.Runtime
 Imports Microsoft.VisualBasic.Serialization.JSON
+Imports Line2D = Microsoft.VisualBasic.Imaging.Drawing2D.Shapes.Line
 
 Public Module Canvas
 
@@ -95,7 +97,7 @@ Public Module Canvas
                     Dim b = atoms(bound.to - 1).pt.OffSet2D(centra)
 
                     If bound.dimentional_levels.StringEmpty Then
-                        Dim line As New Line(a, b) With {
+                        Dim line As New Line2D(a, b) With {
                             .Stroke = boundsPen
                         }
 
@@ -134,7 +136,7 @@ Public Module Canvas
     ''' </param>
     ''' <returns></returns>
     Public Function UpArrow(a As PointF, b As PointF, c%) As Action(Of IGraphics, Brush)
-        Dim l As New Line(a, b)  ' 线段长度
+        Dim l As New Line2D(a, b)  ' 线段长度
 
         With New Path2D
             Dim vetx As PointF() = Arrow _
@@ -161,7 +163,7 @@ Public Module Canvas
     ''' <param name="c%"></param>
     ''' <returns></returns>
     Public Function DownArrow(a As PointF, b As PointF, c%) As Action(Of IGraphics, Pen)
-        Dim l As New Line(a, b)  ' 线段长度
+        Dim l As New Line2D(a, b)  ' 线段长度
         Dim vetx As PointF() = Arrow.ArrowHead(c, l.Length) ' 顶点， 底端1， 底端2
 
         ' vetx 为基本模型
