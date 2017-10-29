@@ -1,5 +1,6 @@
 ﻿Imports System.Drawing
 Imports System.Runtime.CompilerServices
+Imports KCF.IO
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Shapes
@@ -32,7 +33,7 @@ Public Module Canvas
     ''' 对于这两种类型的空间层次，都是箭头指向碳原子，即箭头的尖头的部分是指向碳原子的
     ''' </remarks>
     <Extension>
-    Public Function Draw(kcf As KCF,
+    Public Function Draw(kcf As KCF.IO.KCF,
                          Optional size$ = "1200,800",
                          Optional padding$ = g.DefaultPadding,
                          Optional bg$ = "white",

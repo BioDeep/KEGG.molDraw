@@ -39,7 +39,7 @@ Namespace My.Resources
         Friend ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
             Get
                 If Object.ReferenceEquals(resourceMan, Nothing) Then
-                    Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("KEGGdraw.Resources", GetType(Resources).Assembly)
+                    Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("KCF.Graph.Resources", GetType(Resources).Assembly)
                     resourceMan = temp
                 End If
                 Return resourceMan
@@ -58,16 +58,6 @@ Namespace My.Resources
             Set
                 resourceCulture = value
             End Set
-        End Property
-        
-        '''<summary>
-        '''  查詢類型 System.Byte[] 的當地語系化資源。
-        '''</summary>
-        Friend ReadOnly Property hsa00001() As Byte()
-            Get
-                Dim obj As Object = ResourceManager.GetObject("hsa00001", resourceCulture)
-                Return CType(obj,Byte())
-            End Get
         End Property
     End Module
 End Namespace

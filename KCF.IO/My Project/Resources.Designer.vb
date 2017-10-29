@@ -39,7 +39,7 @@ Namespace My.Resources
         Friend ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
             Get
                 If Object.ReferenceEquals(resourceMan, Nothing) Then
-                    Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("KEGGdraw.Resources", GetType(Resources).Assembly)
+                    Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("KCF.IO.Resources", GetType(Resources).Assembly)
                     resourceMan = temp
                 End If
                 Return resourceMan
@@ -61,12 +61,24 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查詢類型 System.Byte[] 的當地語系化資源。
+        '''  查詢類似 +   Carbon atoms
+        '''C1a R-CH3 / methyl
+        '''C1b R-CH2-R / methylene
+        '''C1c R-CH(-R)-R / tertiary carbon
+        '''C1d R-C(-R)2-R / quaternary carbon
+        '''C1x ring-CH2-ring / methylene in ring
+        '''C1y ring-CH(-R)-ring / tertiary carbon in ring
+        '''C1z ring-C(-R)2-ring / quaternary carbon in ring
+        '''C2a R=CH2 / alkenyl terminus carbon
+        '''C2b R=CH-R / alkenyl secondary carbon
+        '''C2c R=C(-R)2 / alkenyl tertiary carbon
+        '''C2x ring-CH=ring / alkenyl secondary carbon in ring
+        '''C2y ring-C(-R)=ring / alkenyl tertiary carbon in ring
+        '''C2y ring-C(=R)-rin [字串的其餘部分已遭截斷]&quot;; 的當地語系化字串。
         '''</summary>
-        Friend ReadOnly Property hsa00001() As Byte()
+        Friend ReadOnly Property KEGGAtomTypes() As String
             Get
-                Dim obj As Object = ResourceManager.GetObject("hsa00001", resourceCulture)
-                Return CType(obj,Byte())
+                Return ResourceManager.GetString("KEGGAtomTypes", resourceCulture)
             End Get
         End Property
     End Module
