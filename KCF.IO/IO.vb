@@ -49,6 +49,7 @@ Public Module IO
         }
     End Function
 
+    <MethodImpl(MethodImplOptions.AggressiveInlining)>
     <Extension> Private Function parseAtoms(atoms$()) As Atom()
         Return atoms _
             .Select(AddressOf Trim) _
@@ -67,6 +68,7 @@ Public Module IO
             .ToArray
     End Function
 
+    <MethodImpl(MethodImplOptions.AggressiveInlining)>
     <Extension> Private Function parseBounds(bounds$()) As Bound()
         Return bounds _
             .Select(AddressOf Trim) _
