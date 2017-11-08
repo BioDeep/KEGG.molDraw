@@ -10,8 +10,7 @@ Imports Microsoft.VisualBasic.Language
 ''' </summary>
 Public Module KCF
 
-    <Extension>
-    Public Function Graph(KCF As Global.KCF.IO.KCF) As NetworkGraph
+    <Extension> Public Function Graph(KCF As Model.KCF) As NetworkGraph
         Dim g As New NetworkGraph
         Dim node As Node
         Dim point As FDGVector2
@@ -36,7 +35,7 @@ Public Module KCF
         Dim node1, node2 As Node
         Dim label$
 
-        For Each bound In KCF.Bounds
+        For Each bound As Bound In KCF.Bounds
             a = "#" & bound.from
             b = "#" & bound.to
             node1 = nodes(a)
