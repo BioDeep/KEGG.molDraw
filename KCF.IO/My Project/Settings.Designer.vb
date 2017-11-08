@@ -64,9 +64,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.KCF.IO.My.MySettings
+        Friend ReadOnly Property Settings() As Global.SMRUCC.Chemistry.Model.My.MySettings
             Get
-                Return Global.KCF.IO.My.MySettings.Default
+                Return Global.SMRUCC.Chemistry.Model.My.MySettings.Default
             End Get
         End Property
     End Module
