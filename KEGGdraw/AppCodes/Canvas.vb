@@ -1,6 +1,5 @@
 ﻿Imports System.Drawing
 Imports System.Runtime.CompilerServices
-Imports KCF.IO
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Shapes
@@ -11,6 +10,7 @@ Imports Microsoft.VisualBasic.Math.LinearAlgebra
 Imports Microsoft.VisualBasic.MIME.Markup.HTML.CSS
 Imports Microsoft.VisualBasic.Scripting.Runtime
 Imports Microsoft.VisualBasic.Serialization.JSON
+Imports SMRUCC.Chemistry.Model
 Imports Line2D = Microsoft.VisualBasic.Imaging.Drawing2D.Shapes.Line
 
 Public Module Canvas
@@ -33,13 +33,14 @@ Public Module Canvas
     ''' 对于这两种类型的空间层次，都是箭头指向碳原子，即箭头的尖头的部分是指向碳原子的
     ''' </remarks>
     <Extension>
-    Public Function Draw(kcf As KCF.IO.KCF,
+    Public Function Draw(kcf As KCF,
                          Optional size$ = "1200,800",
                          Optional padding$ = g.DefaultPadding,
                          Optional bg$ = "white",
                          Optional font$ = CSSFont.Win7LargerNormal,
                          Optional scaleFactor# = 0.85,
-                         Optional boundStroke$ = Stroke.AxisStroke) As GraphicsData
+                         Optional boundStroke$ = Stroke.AxisStroke,
+                         Optional monoColour As Boolean = True) As GraphicsData
 
         Dim atomFont As Font = CSSFont.TryParse(font).GDIObject
         Dim dot = Brushes.Gray
