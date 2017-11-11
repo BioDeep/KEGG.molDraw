@@ -124,6 +124,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\AtomicWeights.csv" />
     <None Include="Resources\KEGGAtomTypes.txt" />
   </ItemGroup>
   <ItemGroup>

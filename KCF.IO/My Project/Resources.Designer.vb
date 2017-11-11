@@ -61,6 +61,33 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  查詢類似 #NO,Symbol,Name,Atomic Weight,Notes
+        '''1,H,Hydrogen,1.008,&quot;3, 5&quot;
+        '''2,He,Helium,4.002 602(2),&quot;1, 2&quot;
+        '''3,Li,Lithium,6.94,&quot;3, 5&quot;
+        '''4,Be,Beryllium,9.012 1831(5),
+        '''5,B,Boron,10.81,&quot;3, 5&quot;
+        '''6,C,Carbon,12.011,5
+        '''7,N,Nitrogen,14.007,5
+        '''8,O,Oxygen,15.999,5
+        '''9,F,Fluorine,18.998 403 163(6),
+        '''10,Ne,Neon,20.1797(6),&quot;1, 3&quot;
+        '''11,Na,Sodium,22.989 769 28(2),
+        '''12,Mg,Magnesium,24.305,5
+        '''13,Al,Aluminium,26.981 5385(7),
+        '''14,Si,Silicon,28.085,5
+        '''15,P,Phosphorus,30.973 761 998(5),
+        '''16,S,Sulfur,32.06,5
+        '''17,Cl,Chlorine,35.45,&quot;3, 5&quot;
+        '''18,Ar [字串的其餘部分已遭截斷]&quot;; 的當地語系化字串。
+        '''</summary>
+        Friend ReadOnly Property AtomicWeights() As String
+            Get
+                Return ResourceManager.GetString("AtomicWeights", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  查詢類似 +   Carbon atoms
         '''C1a R-CH3 / methyl
         '''C1b R-CH2-R / methylene
