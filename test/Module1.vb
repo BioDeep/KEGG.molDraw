@@ -1,12 +1,13 @@
-﻿Imports KCF.Graph
-Imports Microsoft.VisualBasic.Serialization.JSON
+﻿Imports Microsoft.VisualBasic.Serialization.JSON
+Imports SMRUCC.Chemistry.Model
+Imports SMRUCC.Chemistry.Model.Graph
 
 Module Module1
 
     Sub Main()
 
-        Dim list = Global.KCF.IO.KegAtomType.KEGGAtomTypes.GetJson
-        Dim KCF = Global.KCF.IO.LoadKCF("G:\MassSpectrum-toolkits\KCF\DATA\NADPH.txt")
+        Dim list = KegAtomType.KEGGAtomTypes.GetJson
+        Dim KCF = IO.LoadKCF("G:\MassSpectrum-toolkits\KCF\DATA\NADPH.txt")
         Dim g = KCF.Graph
 
 

@@ -1,7 +1,7 @@
-﻿Imports KCF.IO
-Imports Microsoft.VisualBasic.CommandLine
+﻿Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.InteropService.SharedORM
 Imports Microsoft.VisualBasic.CommandLine.Reflection
+Imports SMRUCC.Chemistry.Model
 
 <CLI> Module CLI
 
@@ -11,7 +11,7 @@ Imports Microsoft.VisualBasic.CommandLine.Reflection
     Public Function DrawKCF(args As CommandLine) As Integer
         Dim in$ = args <= "/in"
         Dim out$ = args.GetValue("/out", [in].TrimSuffix & ".png")
-        Dim kcf As KCF.IO.KCF = [in].LoadKCF
+        Dim kcf As KCF = [in].LoadKCF
 
         Return kcf.Draw() _
             .Save(out) _
