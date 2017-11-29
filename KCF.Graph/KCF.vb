@@ -48,8 +48,8 @@ Public Module KCF
                     $"{a} -> {b} ({bound.dimentional_levels})".AsDefault(Function() Not bound.dimentional_levels.StringEmpty)
 
             edge = New Edge With {
-                .Source = node1,
-                .Target = node2,
+                .U = node1,
+                .V = node2,
                 .ID = label,
                 .Data = New EdgeData With {
                     .weight = bound.bounds,
