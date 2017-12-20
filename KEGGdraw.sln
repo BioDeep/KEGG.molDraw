@@ -21,13 +21,15 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "KCF.Graph", "KCF.Graph\KCF.
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Graph", "..\..\GCModeller\src\runtime\sciBASIC#\Data_science\Graph\Graph.vbproj", "{203BC68F-A0CD-443A-AB62-4AF4110F752F}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Network.GraphTheory", "..\..\GCModeller\src\runtime\sciBASIC#\gr\Datavisualization.Network\Datavisualization.Network\Network.GraphTheory.vbproj", "{076315EE-B598-40DC-9280-C71CDF9B6A48}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Network.GraphTheory", "..\..\GCModeller\src\runtime\sciBASIC#\gr\network-visualization\Datavisualization.Network\Network.GraphTheory.vbproj", "{076315EE-B598-40DC-9280-C71CDF9B6A48}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "+VB_DataFrame", "..\..\GCModeller\src\runtime\sciBASIC#\Data\DataFrame\+VB_DataFrame.vbproj", "{7283C179-F852-4EAD-8D8F-B82EF2CBD7DB}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "KCF.IO", "KCF.IO\KCF.IO.vbproj", "{1BAFA2BC-68B2-4EE0-9235-C60FAE3377A0}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "test", "test\test.vbproj", "{F859DF8B-E1BA-4608-B65D-25A2BFFD446E}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "physics", "..\..\GCModeller\src\runtime\sciBASIC#\gr\physics\physics.vbproj", "{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -654,6 +656,60 @@ Global
 		{F859DF8B-E1BA-4608-B65D-25A2BFFD446E}.Release2|x64.Build.0 = Release|Any CPU
 		{F859DF8B-E1BA-4608-B65D-25A2BFFD446E}.Release2|x86.ActiveCfg = Release|Any CPU
 		{F859DF8B-E1BA-4608-B65D-25A2BFFD446E}.Release2|x86.Build.0 = Release|Any CPU
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Biodeep|Any CPU.ActiveCfg = Biodeep|Any CPU
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Biodeep|Any CPU.Build.0 = Biodeep|Any CPU
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Biodeep|x64.ActiveCfg = Biodeep|x64
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Biodeep|x64.Build.0 = Biodeep|x64
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Biodeep|x86.ActiveCfg = Biodeep|x86
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Biodeep|x86.Build.0 = Biodeep|x86
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Debug|x64.ActiveCfg = Debug|x64
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Debug|x64.Build.0 = Debug|x64
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Debug|x86.ActiveCfg = Debug|x86
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Debug|x86.Build.0 = Debug|x86
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.DEMO|Any CPU.ActiveCfg = Debug|Any CPU
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.DEMO|Any CPU.Build.0 = Debug|Any CPU
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.DEMO|x64.ActiveCfg = Debug|x64
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.DEMO|x64.Build.0 = Debug|x64
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.DEMO|x86.ActiveCfg = Debug|x86
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.DEMO|x86.Build.0 = Debug|x86
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.docs|Any CPU.ActiveCfg = Debug|Any CPU
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.docs|Any CPU.Build.0 = Debug|Any CPU
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.docs|x64.ActiveCfg = Debug|x64
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.docs|x64.Build.0 = Debug|x64
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.docs|x86.ActiveCfg = Debug|x86
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.docs|x86.Build.0 = Debug|x86
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.GCModeller(Release_X64)|Any CPU.ActiveCfg = GCModeller(Release_X64)|Any CPU
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.GCModeller(Release_X64)|Any CPU.Build.0 = GCModeller(Release_X64)|Any CPU
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.GCModeller(Release_X64)|x64.ActiveCfg = GCModeller(Release_X64)|x64
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.GCModeller(Release_X64)|x64.Build.0 = GCModeller(Release_X64)|x64
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.GCModeller(Release_X64)|x86.ActiveCfg = GCModeller(Release_X64)|x86
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.GCModeller(Release_X64)|x86.Build.0 = GCModeller(Release_X64)|x86
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.installer_x64|Any CPU.ActiveCfg = installer_x64|Any CPU
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.installer_x64|Any CPU.Build.0 = installer_x64|Any CPU
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.installer_x64|x64.ActiveCfg = installer_x64|x64
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.installer_x64|x64.Build.0 = installer_x64|x64
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.installer_x64|x86.ActiveCfg = installer_x64|x86
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.installer_x64|x86.Build.0 = installer_x64|x86
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Publish|Any CPU.ActiveCfg = GCModeller(Release_X64)|Any CPU
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Publish|Any CPU.Build.0 = GCModeller(Release_X64)|Any CPU
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Publish|x64.ActiveCfg = GCModeller(Release_X64)|x64
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Publish|x64.Build.0 = GCModeller(Release_X64)|x64
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Publish|x86.ActiveCfg = GCModeller(Release_X64)|x86
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Publish|x86.Build.0 = GCModeller(Release_X64)|x86
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Release|x64.ActiveCfg = Release|x64
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Release|x64.Build.0 = Release|x64
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Release|x86.ActiveCfg = Release|x86
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Release|x86.Build.0 = Release|x86
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Release2|Any CPU.ActiveCfg = Release|Any CPU
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Release2|Any CPU.Build.0 = Release|Any CPU
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Release2|x64.ActiveCfg = Release|x64
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Release2|x64.Build.0 = Release|x64
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Release2|x86.ActiveCfg = Release|x86
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2}.Release2|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -667,6 +723,7 @@ Global
 		{203BC68F-A0CD-443A-AB62-4AF4110F752F} = {1E2150B3-786A-4AB1-9996-98B1ABEDEE6D}
 		{076315EE-B598-40DC-9280-C71CDF9B6A48} = {1E2150B3-786A-4AB1-9996-98B1ABEDEE6D}
 		{7283C179-F852-4EAD-8D8F-B82EF2CBD7DB} = {1E2150B3-786A-4AB1-9996-98B1ABEDEE6D}
+		{3291389C-EA87-4B33-A9A5-65A2D60BA3E2} = {1E2150B3-786A-4AB1-9996-98B1ABEDEE6D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BC01B26A-1AA1-4748-9113-2084EC16F342}
