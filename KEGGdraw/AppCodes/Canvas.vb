@@ -36,15 +36,15 @@ Public Module Canvas
     ''' </remarks>
     <Extension>
     Public Function Draw(kcf As KCF,
-                         Optional size$ = "1250,900",
+                         Optional size$ = "1920,1200",
                          Optional padding$ = g.DefaultPadding,
                          Optional bg$ = "white",
-                         Optional font$ = CSSFont.Win7LargeBold,
-                         Optional scaleFactor# = 60,
-                         Optional boundStroke$ = "stroke: black; stroke-width: 8px; stroke-dash: solid;",
+                         Optional font$ = CSSFont.Win7VeryVeryLarge,
+                         Optional scaleFactor# = 0.85,
+                         Optional boundStroke$ = "stroke: black; stroke-width: 9px; stroke-dash: solid;",
                          Optional monoColour As Boolean = False,
                          Optional theme As KCFBrush = Nothing,
-                         Optional dl! = 5) As GraphicsData
+                         Optional dl! = 8) As GraphicsData
 
         Dim background As Brush = bg.GetBrush
         Dim atomFont As Font = CSSFont.TryParse(font).GDIObject
@@ -70,7 +70,13 @@ Public Module Canvas
         Dim plotInternal =
             Sub(ByRef g As IGraphics, region As GraphicsRegion)
                 Dim bounds = atoms.Select(Function(a) a.pt).GetBounds
-                Dim polygon = atoms.Select(Function(a) a.pt).Enlarge(scaleFactor)
+                Dim polygon As PointF()
+
+                If bounds.Width > bounds.Height Then
+                    polygon = atoms.Select(Function(a) a.pt).Enlarge(scaleFactor * region.Size.Width / bounds.Width)
+                Else
+                    polygon = atoms.Select(Function(a) a.pt).Enlarge(scaleFactor * region.Size.Height / bounds.Height)
+                End If
 
                 atoms = atoms _
                     .Select(Function(a, i)
