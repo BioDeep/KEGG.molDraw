@@ -39,15 +39,18 @@ Public Module Canvas
                          Optional size$ = "1200,800",
                          Optional padding$ = g.DefaultPadding,
                          Optional bg$ = "white",
-                         Optional font$ = CSSFont.Win7LargerNormal,
+                         Optional font$ = CSSFont.Win7LargeBold,
                          Optional scaleFactor# = 0.85,
-                         Optional boundStroke$ = Stroke.AxisStroke,
+                         Optional boundStroke$ = "stroke: black; stroke-width: 5px; stroke-dash: solid;",
                          Optional monoColour As Boolean = False,
                          Optional theme As KCFBrush = Nothing) As GraphicsData
 
+        Dim background As Brush = bg.GetBrush
         Dim atomFont As Font = CSSFont.TryParse(font).GDIObject
         Dim dot = Brushes.Gray
         Dim boundsPen As Pen = Stroke.TryParse(boundStroke).GDIObject
+        Dim labelSize!
+        Dim atomLabelLayout As RectangleF
         Dim atoms As (pt As PointF, atom As Atom)() =
             kcf _
             .Atoms _
@@ -82,26 +85,6 @@ Public Module Canvas
                     .Select(Function(a) a.pt) _
                     .CentralOffset(region.Size)
 
-                For Each atom In atoms
-                    With atom
-                        Dim pt As PointF = .pt.OffSet2D(centra)
-
-                        ' Call g.FillPie(dot, pt.X, pt.Y, 5, 5, 0, 360)
-
-                        ' 只显示出非碳原子的标签
-                        If Not .atom.Atom.TextEquals("C") Then
-                            Dim label$ = .atom.Atom
-                            Dim brush = theme.GetBrush(.atom.Atom)
-
-                            With g.MeasureString(label, atomFont)
-                                pt = New PointF(pt.X - .Width / 2,
-                                                pt.Y - .Height / 2)
-                                g.DrawString(label, atomFont, brush, pt)
-                            End With
-                        End If
-                    End With
-                Next
-
                 For Each bound As Bound In kcf.Bounds
                     Dim a = atoms(bound.from - 1).pt.OffSet2D(centra)
                     Dim b = atoms(bound.to - 1).pt.OffSet2D(centra)
@@ -124,6 +107,28 @@ Public Module Canvas
                             Throw New NotImplementedException(bound.GetJson)
                         End If
                     End If
+                Next
+
+                For Each atom In atoms
+                    With atom
+                        Dim pt As PointF = .pt.OffSet2D(centra)
+
+                        ' 只显示出非碳原子的标签
+                        If Not .atom.Atom.TextEquals("C") Then
+                            Dim label$ = .atom.Atom
+                            Dim brush = theme.GetBrush(.atom.Atom)
+
+                            With g.MeasureString(label, atomFont)
+                                pt = New PointF(pt.X - .Width / 2,
+                                                pt.Y - .Height / 2)
+                                labelSize = Math.Max(.Width, .Height)
+                                atomLabelLayout = New RectangleF(New PointF(pt.X + (.Width - labelSize) / 2, pt.Y + (.Height - labelSize) / 2), New SizeF(labelSize, labelSize))
+
+                                g.FillEllipse(background, atomLabelLayout)
+                                g.DrawString(label, atomFont, brush, pt)
+                            End With
+                        End If
+                    End With
                 Next
             End Sub
 

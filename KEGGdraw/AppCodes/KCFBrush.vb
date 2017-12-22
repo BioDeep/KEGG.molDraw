@@ -24,7 +24,7 @@ Public Class KCFBrush
         Return New KCFBrush With {
             .N = Brushes.Blue,
             .O = Brushes.Red,
-            .P = Brushes.Yellow
+            .P = Brushes.Orange
         }
     End Function
 
