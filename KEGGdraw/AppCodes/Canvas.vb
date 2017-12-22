@@ -23,6 +23,8 @@ Public Module Canvas
     ''' <param name="padding$"></param>
     ''' <param name="bg$"></param>
     ''' <param name="font$"></param>
+    ''' <param name="monoColour">禁用所有的颜色设置，出图只会有黑白两种颜色</param>
+    ''' <param name="theme">Default color theme is <see cref="KCFBrush.ChEBITheme()"/></param>
     ''' <returns></returns>
     ''' <remarks>
     ''' 在2D平面上面表现出空间层次：在KCF文件之中，使用下面的标记信息来标识空间的层次信息
@@ -40,7 +42,8 @@ Public Module Canvas
                          Optional font$ = CSSFont.Win7LargerNormal,
                          Optional scaleFactor# = 0.85,
                          Optional boundStroke$ = Stroke.AxisStroke,
-                         Optional monoColour As Boolean = True) As GraphicsData
+                         Optional monoColour As Boolean = False,
+                         Optional theme As KCFBrush = Nothing) As GraphicsData
 
         Dim atomFont As Font = CSSFont.TryParse(font).GDIObject
         Dim dot = Brushes.Gray
@@ -54,7 +57,11 @@ Public Module Canvas
                             Return (pt:=pt, Atom:=a)
                         End With
                     End Function) _
-            .ToArray Or die("No atom elements to plot!", Function(l) DirectCast(l, Array).Length = 0)
+            .ToArray Or die("No atom elements to plot!", Function(l)
+                                                             Return DirectCast(l, Array).Length = 0
+                                                         End Function)
+
+        theme = (theme Or KCFBrush.ChEBITheme) Or (KCFBrush.MonoColour + Function() monoColour)
 
         Dim plotInternal =
             Sub(ByRef g As IGraphics, region As GraphicsRegion)
@@ -84,11 +91,12 @@ Public Module Canvas
                         ' 只显示出非碳原子的标签
                         If Not .atom.Atom.TextEquals("C") Then
                             Dim label$ = .atom.Atom
+                            Dim brush = theme.GetBrush(.atom.Atom)
 
                             With g.MeasureString(label, atomFont)
                                 pt = New PointF(pt.X - .Width / 2,
                                                 pt.Y - .Height / 2)
-                                g.DrawString(label, atomFont, Brushes.Black, pt)
+                                g.DrawString(label, atomFont, brush, pt)
                             End With
                         End If
                     End With

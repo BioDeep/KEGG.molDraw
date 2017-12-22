@@ -95,6 +95,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppCodes\KCFBrush.vb" />
     <Compile Include="Groups.vb" />
     <Compile Include="CLI.vb" />
     <Compile Include="Program.vb" />
