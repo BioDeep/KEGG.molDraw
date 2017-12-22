@@ -118,9 +118,9 @@ Public Module Canvas
                         Next
                     Else
                         If bound.dimentional_levels = "#Up" Then
-                            Call UpArrow(a, b, 10)(g, penColor)
+                            Call UpArrow(a, b, boundsPen.Width * 2)(g, penColor)
                         ElseIf bound.dimentional_levels = "#Down" Then
-                            Call DownArrow(a, b, 10)(g, boundsPen)
+                            Call DownArrow(a, b, boundsPen.Width * 2)(g, boundsPen)
                         Else
                             Throw New NotImplementedException(bound.GetJson)
                         End If
@@ -210,8 +210,8 @@ Public Module Canvas
 
         ' 先构建出两条边的线段函数
         ' y = ax + b
-        Dim line1 As Func(Of Double, Double) = PrimitiveLinearEquation(vetx(0), vetx(1))
-        Dim line2 As Func(Of Double, Double) = PrimitiveLinearEquation(vetx(0), vetx(2))
+        Dim line1 As fx = PrimitiveLinearEquation(vetx(0), vetx(1))
+        Dim line2 As fx = PrimitiveLinearEquation(vetx(0), vetx(2))
         Dim lines As New List(Of PointF)
         Dim len% = l.Length
 
