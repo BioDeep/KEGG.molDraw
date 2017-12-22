@@ -36,15 +36,15 @@ Public Module Canvas
     ''' </remarks>
     <Extension>
     Public Function Draw(kcf As KCF,
-                         Optional size$ = "1920,1200",
+                         Optional size$ = "2000,2000",
                          Optional padding$ = g.DefaultPadding,
                          Optional bg$ = "white",
                          Optional font$ = CSSFont.Win7VeryVeryLarge,
                          Optional scaleFactor# = 0.85,
-                         Optional boundStroke$ = "stroke: black; stroke-width: 9px; stroke-dash: solid;",
+                         Optional boundStroke$ = "stroke: black; stroke-width: 15px; stroke-dash: solid;",
                          Optional monoColour As Boolean = False,
                          Optional theme As KCFBrush = Nothing,
-                         Optional dl! = 8) As GraphicsData
+                         Optional dl! = 12) As GraphicsData
 
         Dim background As Brush = bg.GetBrush
         Dim atomFont As Font = CSSFont.TryParse(font).GDIObject
@@ -215,7 +215,7 @@ Public Module Canvas
         Dim lines As New List(Of PointF)
         Dim len% = l.Length
 
-        For x As Double = 0 To len Step (len / 10)
+        For x As Double = 0 To len Step (len / 5)
             Dim a1 As New PointF(x, line1(x))
             Dim b1 As New PointF(x, line2(x))
 

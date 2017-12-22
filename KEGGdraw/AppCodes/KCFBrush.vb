@@ -6,6 +6,7 @@ Public Class KCFBrush
     Public Property O As Brush
     Public Property N As Brush
     Public Property P As Brush
+    Public Property S As Brush
 
     Public Function GetBrush(atom As String) As Brush
         Select Case atom
@@ -15,6 +16,8 @@ Public Class KCFBrush
                 Return N
             Case "P"
                 Return P
+            Case "S"
+                Return S
             Case Else
                 Return Brushes.Black
         End Select
@@ -24,7 +27,8 @@ Public Class KCFBrush
         Return New KCFBrush With {
             .N = Brushes.Blue,
             .O = Brushes.Red,
-            .P = Brushes.Orange
+            .P = Brushes.Orange,
+            .S = Brushes.DarkOliveGreen
         }
     End Function
 
@@ -32,7 +36,8 @@ Public Class KCFBrush
         Return New KCFBrush With {
             .N = Brushes.Black,
             .O = Brushes.Black,
-            .P = Brushes.Black
+            .P = Brushes.Black,
+            .S = Brushes.Black
         }
     End Function
 End Class
