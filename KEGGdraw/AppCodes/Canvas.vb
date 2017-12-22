@@ -36,11 +36,11 @@ Public Module Canvas
     ''' </remarks>
     <Extension>
     Public Function Draw(kcf As KCF,
-                         Optional size$ = "1200,750",
+                         Optional size$ = "1250,900",
                          Optional padding$ = g.DefaultPadding,
                          Optional bg$ = "white",
                          Optional font$ = CSSFont.Win7LargeBold,
-                         Optional scaleFactor# = 0.85,
+                         Optional scaleFactor# = 60,
                          Optional boundStroke$ = "stroke: black; stroke-width: 8px; stroke-dash: solid;",
                          Optional monoColour As Boolean = False,
                          Optional theme As KCFBrush = Nothing,
@@ -70,15 +70,11 @@ Public Module Canvas
         Dim plotInternal =
             Sub(ByRef g As IGraphics, region As GraphicsRegion)
                 Dim bounds = atoms.Select(Function(a) a.pt).GetBounds
-                Dim scale As New SizeF With {
-                    .Width = scaleFactor * region.Size.Width / bounds.Width,
-                    .Height = scaleFactor * region.Size.Height / bounds.Height
-                }
+                Dim polygon = atoms.Select(Function(a) a.pt).Enlarge(scaleFactor)
 
                 atoms = atoms _
-                    .Select(Function(a)
-                                Dim pt As New PointF(a.pt.X * scale.Width, a.pt.Y * scale.Height)
-                                Return (pt, a.atom)
+                    .Select(Function(a, i)
+                                Return (pt:=polygon(i), Atom:=a.atom)
                             End Function) _
                     .ToArray
 
