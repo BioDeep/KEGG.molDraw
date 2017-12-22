@@ -36,20 +36,23 @@ Public Module Canvas
     ''' </remarks>
     <Extension>
     Public Function Draw(kcf As KCF,
-                         Optional size$ = "1200,800",
+                         Optional size$ = "1200,750",
                          Optional padding$ = g.DefaultPadding,
                          Optional bg$ = "white",
                          Optional font$ = CSSFont.Win7LargeBold,
                          Optional scaleFactor# = 0.85,
-                         Optional boundStroke$ = "stroke: black; stroke-width: 5px; stroke-dash: solid;",
+                         Optional boundStroke$ = "stroke: black; stroke-width: 8px; stroke-dash: solid;",
                          Optional monoColour As Boolean = False,
-                         Optional theme As KCFBrush = Nothing) As GraphicsData
+                         Optional theme As KCFBrush = Nothing,
+                         Optional dl! = 5) As GraphicsData
 
         Dim background As Brush = bg.GetBrush
         Dim atomFont As Font = CSSFont.TryParse(font).GDIObject
         Dim dot = Brushes.Gray
         Dim boundsPen As Pen = Stroke.TryParse(boundStroke).GDIObject
         Dim labelSize!
+        Dim layoutPoint As PointF
+        Dim layoutSize As SizeF
         Dim atomLabelLayout As RectangleF
         Dim atoms As (pt As PointF, atom As Atom)() =
             kcf _
@@ -60,9 +63,7 @@ Public Module Canvas
                             Return (pt:=pt, Atom:=a)
                         End With
                     End Function) _
-            .ToArray Or die("No atom elements to plot!", Function(l)
-                                                             Return DirectCast(l, Array).Length = 0
-                                                         End Function)
+            .ToArray Or die("No atom elements to plot!")
 
         theme = (theme Or KCFBrush.ChEBITheme) Or (KCFBrush.MonoColour + Function() monoColour)
 
@@ -86,21 +87,36 @@ Public Module Canvas
                     .CentralOffset(region.Size)
 
                 For Each bound As Bound In kcf.Bounds
-                    Dim a = atoms(bound.from - 1).pt.OffSet2D(centra)
-                    Dim b = atoms(bound.to - 1).pt.OffSet2D(centra)
+                    Dim U = atoms(bound.from - 1)
+                    Dim V = atoms(bound.to - 1)
+                    Dim a = U.pt.OffSet2D(centra)
+                    Dim b = V.pt.OffSet2D(centra)
+                    Dim penColor As Brush
+
+                    If U.atom.Atom <> "C" Then
+                        penColor = theme.GetBrush(U.atom.Atom)
+                    ElseIf V.atom.Atom <> "C" Then
+                        penColor = theme.GetBrush(V.atom.Atom)
+                    Else
+                        penColor = Brushes.Black
+                    End If
+
+                    boundsPen.Brush = penColor
 
                     If bound.dimentional_levels.StringEmpty Then
                         Dim line As New Line2D(a, b) With {
                             .Stroke = boundsPen
                         }
 
+                        line = line.ParallelShift(-dl)
+
                         For i As Integer = 1 To bound.bounds
                             Call line.Draw(g)
-                            line = line.ParallelShift(10)
+                            line = line.ParallelShift(dl * 2)
                         Next
                     Else
                         If bound.dimentional_levels = "#Up" Then
-                            Call UpArrow(a, b, 10)(g, Brushes.Black)
+                            Call UpArrow(a, b, 10)(g, penColor)
                         ElseIf bound.dimentional_levels = "#Down" Then
                             Call DownArrow(a, b, 10)(g, boundsPen)
                         Else
@@ -111,23 +127,25 @@ Public Module Canvas
 
                 For Each atom In atoms
                     With atom
-                        Dim pt As PointF = .pt.OffSet2D(centra)
-
                         ' 只显示出非碳原子的标签
-                        If Not .atom.Atom.TextEquals("C") Then
-                            Dim label$ = .atom.Atom
-                            Dim brush = theme.GetBrush(.atom.Atom)
-
-                            With g.MeasureString(label, atomFont)
-                                pt = New PointF(pt.X - .Width / 2,
-                                                pt.Y - .Height / 2)
-                                labelSize = Math.Max(.Width, .Height)
-                                atomLabelLayout = New RectangleF(New PointF(pt.X + (.Width - labelSize) / 2, pt.Y + (.Height - labelSize) / 2), New SizeF(labelSize, labelSize))
-
-                                g.FillEllipse(background, atomLabelLayout)
-                                g.DrawString(label, atomFont, brush, pt)
-                            End With
+                        If .atom.Atom.TextEquals("C") Then
+                            Continue For
                         End If
+
+                        Dim pt As PointF = .pt.OffSet2D(centra)
+                        Dim label$ = .atom.Atom
+                        Dim brush = theme.GetBrush(.atom.Atom)
+
+                        With g.MeasureString(label, atomFont)
+                            pt = New PointF(pt.X - .Width / 2, pt.Y - .Height / 2)
+                            labelSize = Math.Min(.Width, .Height)
+                            layoutPoint = New PointF(pt.X + (.Width - labelSize) / 2, pt.Y + (.Height - labelSize) / 2)
+                            layoutSize = New SizeF(labelSize, labelSize)
+                            atomLabelLayout = New RectangleF(layoutPoint, layoutSize)
+
+                            g.FillEllipse(background, atomLabelLayout)
+                            g.DrawString(label, atomFont, brush, pt)
+                        End With
                     End With
                 Next
             End Sub
