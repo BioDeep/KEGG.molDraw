@@ -139,7 +139,9 @@
   <ItemGroup>
     <Compile Include="AtomicWeight.vb" />
     <Compile Include="IO.vb" />
-    <Compile Include="KCF.vb" />
+    <Compile Include="KCF\Models.vb" />
+    <Compile Include="KCF\Entry.vb" />
+    <Compile Include="KCF\KCF.vb" />
     <Compile Include="KegAtomType.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
