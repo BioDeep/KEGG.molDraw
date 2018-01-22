@@ -18,7 +18,7 @@ Imports SMRUCC.Chemistry.Model
             Dim EXPORT$ = args("/out") Or "./"
 
             For Each file As String In ls - l - r - {"*.txt", "*.kcf"} <= [in]
-                Dim kcf As KCF = [in].LoadKCF
+                Dim kcf As KCF = file.LoadKCF
                 Dim out$ = EXPORT & "/" & file.BaseName & ".png"
 
                 Call kcf.Draw() _
