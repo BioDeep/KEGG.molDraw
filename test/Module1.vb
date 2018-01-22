@@ -10,7 +10,7 @@ Module Module1
 
     Sub Main()
 
-        Call layerSourceTest()
+        '  Call layerSourceTest()
         Call drawTest()
 
         Dim list = KegAtomType.KEGGAtomTypes.GetJson
