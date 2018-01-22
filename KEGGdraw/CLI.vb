@@ -1,40 +1,51 @@
 ﻿Imports System.ComponentModel
+Imports System.Drawing
+Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.InteropService.SharedORM
 Imports Microsoft.VisualBasic.CommandLine.Reflection
+Imports Microsoft.VisualBasic.Imaging
+Imports Microsoft.VisualBasic.Imaging.BitmapImage
 Imports Microsoft.VisualBasic.Language.UnixBash
 Imports SMRUCC.Chemistry.Model
 
 <CLI> Module CLI
 
     <ExportAPI("/draw.kcf")>
-    <Usage("/draw.kcf /in <kcf.txt> [/out <out.png>]")>
+    <Usage("/draw.kcf /in <kcf.txt> [/transparent /out <out.png>]")>
     <Description("Draw image from KCF model data file.")>
     <Group(Groups.KCF_tools)>
     Public Function DrawKCF(args As CommandLine) As Integer
         Dim in$ = args <= "/in"
+        Dim isTransparent As Boolean = args("/transparent")
 
         If [in].DirectoryExists Then
             Dim EXPORT$ = args("/out") Or "./"
 
             For Each file As String In ls - l - r - {"*.txt", "*.kcf"} <= [in]
-                Dim kcf As KCF = file.LoadKCF
                 Dim out$ = EXPORT & "/" & file.BaseName & ".png"
-
-                Call kcf.Draw() _
-                    .Save(out) _
-                    .CLICode
+                Call [in].TransCode(out, isTransparent)
             Next
 
             Return 0
         Else
             Dim out$ = args("/out") Or $"{[in].TrimSuffix}.png"
-            Dim kcf As KCF = [in].LoadKCF
-
-            Return kcf.Draw() _
-                .Save(out) _
-                .CLICode
+            Return [in].TransCode(out, isTransparent)
         End If
+    End Function
+
+    <Extension>
+    Public Function TransCode(in$, out$, isTransparent As Boolean) As Boolean
+        Dim kcf As KCF = [in].LoadKCF
+        Dim image As Image = kcf.Draw.AsGDIImage
+
+        If isTransparent Then
+            image = image.ColorReplace(Color.White, Color.Transparent)
+        End If
+
+        Return image _
+            .SaveAs(out, ImageFormats.Png) _
+            .CLICode
     End Function
 
     '<ExportAPI("/draw.kegg")>
