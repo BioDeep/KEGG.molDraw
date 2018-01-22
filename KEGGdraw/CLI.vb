@@ -12,33 +12,39 @@ Imports SMRUCC.Chemistry.Model
 <CLI> Module CLI
 
     <ExportAPI("/draw.kcf")>
-    <Usage("/draw.kcf /in <kcf.txt> [/transparent /out <out.png>]")>
+    <Usage("/draw.kcf /in <kcf.txt> [/transparent /corp /out <out.png>]")>
     <Description("Draw image from KCF model data file.")>
     <Group(Groups.KCF_tools)>
     Public Function DrawKCF(args As CommandLine) As Integer
         Dim in$ = args <= "/in"
         Dim isTransparent As Boolean = args("/transparent")
+        Dim corpBlank As Boolean = args("/corp")
 
         If [in].DirectoryExists Then
             Dim EXPORT$ = args("/out") Or "./"
 
             For Each file As String In ls - l - r - {"*.txt", "*.kcf"} <= [in]
                 Dim out$ = EXPORT & "/" & file.BaseName & ".png"
-                Call file.TransCode(out, isTransparent)
+
+                Call file.TransCode(out, isTransparent, corpBlank)
+                Call out.GetFullPath.ToFileURL.__DEBUG_ECHO
             Next
 
             Return 0
         Else
             Dim out$ = args("/out") Or $"{[in].TrimSuffix}.png"
-            Return [in].TransCode(out, isTransparent)
+            Return [in].TransCode(out, isTransparent, corpBlank)
         End If
     End Function
 
     <Extension>
-    Public Function TransCode(in$, out$, isTransparent As Boolean) As Boolean
+    Public Function TransCode(in$, out$, isTransparent As Boolean, corpBlank As Boolean) As Boolean
         Dim kcf As KCF = [in].LoadKCF
         Dim image As Image = kcf.Draw.AsGDIImage
 
+        If corpBlank Then
+            image = image.CorpBlank(blankColor:=Color.White)
+        End If
         If isTransparent Then
             image = image.ColorReplace(Color.White, Color.Transparent)
         End If
