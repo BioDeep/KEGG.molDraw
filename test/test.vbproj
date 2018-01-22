@@ -147,9 +147,9 @@
       <Project>{076315ee-b598-40dc-9280-c71cdf9b6a48}</Project>
       <Name>Network.GraphTheory</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\47-dotnet_Microsoft.VisualBasic.vbproj">
+    <ProjectReference Include="..\..\runtime\sciBASIC\Microsoft.VisualBasic.Core\47-dotnet_Microsoft.VisualBasic.vbproj">
       <Project>{fecce1fd-e1d4-49e3-a668-60bb5e7aed99}</Project>
-      <Name>+Microsoft.VisualBasic.Architecture.Framework</Name>
+      <Name>47-dotnet_Microsoft.VisualBasic</Name>
     </ProjectReference>
     <ProjectReference Include="..\KCF.Graph\KCF.Graph.vbproj">
       <Project>{c60416d4-b3e2-45e5-bfe0-90d5021647f9}</Project>
