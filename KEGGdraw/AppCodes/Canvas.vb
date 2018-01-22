@@ -39,7 +39,7 @@ Public Module Canvas
                          Optional size$ = "2000,2000",
                          Optional padding$ = g.DefaultPadding,
                          Optional bg$ = "white",
-                         Optional font$ = CSSFont.Win7VeryVeryLarge,
+                         Optional font$ = "font-style: strong; font-size: 81; font-family: " & FontFace.MicrosoftYaHei & ";",
                          Optional scaleFactor# = 0.85,
                          Optional boundStroke$ = "stroke: black; stroke-width: 15px; stroke-dash: solid;",
                          Optional monoColour As Boolean = False,
@@ -122,7 +122,9 @@ Public Module Canvas
                         ElseIf bound.dimentional_levels = "#Down" Then
                             Call DownArrow(a, b, boundsPen.Width * 2)(g, boundsPen)
                         Else
-                            Throw New NotImplementedException(bound.GetJson)
+                            Dim ex As New NotImplementedException(bound.GetJson)
+                            ex = New NotImplementedException(kcf.Entry.Id, ex)
+                            Throw ex
                         End If
                     End If
                 Next
