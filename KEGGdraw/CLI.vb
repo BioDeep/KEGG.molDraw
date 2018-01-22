@@ -24,7 +24,7 @@ Imports SMRUCC.Chemistry.Model
 
             For Each file As String In ls - l - r - {"*.txt", "*.kcf"} <= [in]
                 Dim out$ = EXPORT & "/" & file.BaseName & ".png"
-                Call [in].TransCode(out, isTransparent)
+                Call file.TransCode(out, isTransparent)
             Next
 
             Return 0
