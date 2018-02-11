@@ -22,7 +22,7 @@ Public Class AtomicWeight
                 .Replace(" ", "") _
                 .GetStackValue("[", "]")
 
-                Return Val(.ref)
+                Return Val(.ByRef)
             End With
         End Get
     End Property
