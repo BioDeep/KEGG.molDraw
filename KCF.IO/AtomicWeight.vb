@@ -31,7 +31,7 @@ Public Class AtomicWeight
     Public Shared Function GetTable() As Dictionary(Of String, AtomicWeight)
         Return My.Resources _
             .AtomicWeights _
-            .lTokens _
+            .LineTokens _
             .LoadStream(Of AtomicWeight) _
             .ToDictionary(Function(a)
                               Return a.Symbol
