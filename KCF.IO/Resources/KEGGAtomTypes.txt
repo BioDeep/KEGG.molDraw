@@ -83,3 +83,4 @@ X I / iodide
 
 +   Other atoms
 Z Other atoms
+R Other atoms

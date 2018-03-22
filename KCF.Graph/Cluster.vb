@@ -35,7 +35,7 @@ Public Module Cluster
         Return template.AsNumeric.Takes(atoms).AsVector
     End Function
 
-    ReadOnly KCFAtomVectorCos As New DefaultValue(Of ISimilarity(Of Vector))(Function(a, b) Sim(a, b))
+    ReadOnly KCFAtomVectorCos As New DefaultValue(Of ISimilarity(Of Vector))(Function(a, b) SSM(a, b))
     ReadOnly GetKCFAtomVector As New DefaultValue(Of Func(Of Model.KCF, Vector))(AddressOf KCFAtomVector)
 
     ''' <summary>
