@@ -17,6 +17,7 @@ Public Module Cluster
         .Values _
         .IteratesALL _
         .Select(Function(a) a.code) _
+        .Distinct _
         .ToArray
 
     <MethodImpl(MethodImplOptions.AggressiveInlining)>
