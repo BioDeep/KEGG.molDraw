@@ -20,7 +20,7 @@ Public Module IO
 
     <Extension> Private Function parserInternal(stream$) As KCF
         Dim sections = stream _
-            .lTokens _
+            .LineTokens _
             .Split(Function(s) Not InStr(s, "    ") = 1, DelimiterLocation.NextFirst) _
             .Skip(1) _
             .ToArray

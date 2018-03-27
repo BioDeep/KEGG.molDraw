@@ -52,11 +52,11 @@ Public Structure KegAtomType
     Shared Sub New()
         With KEGGAtomTypes
             Dim blocks = My.Resources.KEGGAtomTypes _
-                .lTokens _
+                .LineTokens _
                 .Split(Function(s) s.StringEmpty, includes:=False) _
                 .ToArray
 
-            For Each part In blocks
+            For Each part As String() In blocks
                 Dim type As Types = parseType(part(Scan0))
                 Dim atoms = part _
                     .Skip(1) _
