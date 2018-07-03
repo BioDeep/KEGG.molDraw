@@ -6,6 +6,9 @@ Imports SMRUCC.Chemistry.Model.Graph
 Module Module1
 
     Sub Main()
+
+        Call moleculeWeightTest()
+
         Dim tree = "D:\KEGG-compounds\OtherUnknowns".ScanDirectory _
                                                     .BinaryTree _
                                                     .PopulateNodes _
@@ -23,6 +26,12 @@ Module Module1
                 Call $"D:\KEGG-compounds\OtherUnknowns\{member.Entry.Id}.gif".FileCopy(dir & $"/{member.Entry.Id}.gif")
             Next
         Next
+
+        Pause()
+    End Sub
+
+    Sub moleculeWeightTest()
+        Dim data = AtomicWeight.GetTable
 
         Pause()
     End Sub
