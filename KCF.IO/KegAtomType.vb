@@ -61,23 +61,7 @@ Public Structure KegAtomType
                 Dim atoms = part _
                     .Skip(1) _
                     .Select(Function(line)
-                                Dim atom As NamedValue(Of String) = line.GetTagValue(" ")
-                                Dim data = Strings.Split(atom.Value, " / ")
-                                Dim formula$ = "", name$
-
-                                If data.Length = 1 Then
-                                    name = data.First
-                                Else
-                                    formula = data.First
-                                    name = data.Last
-                                End If
-
-                                Return New KegAtomType With {
-                                    .code = atom.Name,
-                                    .formula = formula,
-                                    .name = name,
-                                    .type = type
-                                }
+                                Return parserInternal(line, type)
                             End Function) _
                     .GroupBy(Function(x) x.code) _
                     .ToArray
@@ -88,6 +72,26 @@ Public Structure KegAtomType
             Next
         End With
     End Sub
+
+    Private Shared Function parserInternal(line$, type As Types) As KegAtomType
+        Dim atom As NamedValue(Of String) = line.GetTagValue(" ")
+        Dim data = Strings.Split(atom.Value, " / ")
+        Dim formula$ = "", name$
+
+        If data.Length = 1 Then
+            name = data.First
+        Else
+            formula = data.First
+            name = data.Last
+        End If
+
+        Return New KegAtomType With {
+            .code = atom.Name,
+            .formula = formula,
+            .name = name,
+            .type = type
+        }
+    End Function
 
     Private Shared Function parseType(s$) As Types
         s = s.Trim("+"c).Trim.Split.First
