@@ -14,7 +14,10 @@ Public Module IO
     <Extension> Public Function LoadKCF(stream$) As KCF
         If stream.FileExists Then
             stream = stream.ReadAllText Or die("No content data!")
+        ElseIf Not stream.Match("http(s)?[:]//", RegexICSng).StringEmpty Then
+            stream = stream.GET Or die("No content data!")
         End If
+
         Return parserInternal(stream)
     End Function
 
