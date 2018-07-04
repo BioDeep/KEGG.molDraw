@@ -58,9 +58,10 @@ Public Module IO
             .Select(AddressOf Trim) _
             .Select(Function(s) s.StringSplit("\s+")) _
             .Select(Function(t)
+                        Dim type As KegAtomType = KegAtomType.GetAtom(t(1))
                         Return New Atom With {
                             .Index = Val(t(0)),
-                            .KEGGAtom = t(1),
+                            .KEGGAtom = type,
                             .Atom = t(2),
                             .Atom2D_coordinates = New Coordinate With {
                                 .X = Val(t(3)),

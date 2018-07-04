@@ -1,4 +1,5 @@
-﻿Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
+﻿Imports System.Runtime.CompilerServices
+Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 
 Public Structure KegAtomType
 
@@ -46,8 +47,13 @@ Public Structure KegAtomType
     ''' <summary>
     ''' <see cref="code"/>是字典的主键
     ''' </summary>
-    ''' <returns></returns>
+    ''' <returns>在这里值使用一个数组来表示是为了存储``X``分类的卤族元素</returns>
     Public Shared ReadOnly Property KEGGAtomTypes As New Dictionary(Of String, KegAtomType())
+
+    <MethodImpl(MethodImplOptions.AggressiveInlining)>
+    Public Shared Function GetAtom(code As String) As KegAtomType
+        Return KEGGAtomTypes(code)(Scan0)
+    End Function
 
     Shared Sub New()
         With KEGGAtomTypes

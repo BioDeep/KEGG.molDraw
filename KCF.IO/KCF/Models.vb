@@ -3,7 +3,7 @@
 Public Structure Atom
 
     Public Property Index As Integer
-    Public Property KEGGAtom As String
+    Public Property KEGGAtom As KegAtomType
     Public Property Atom As String
     ''' <summary>
     ''' 由于这个坐标对象只能存储<see cref="Integer"/>类型，
