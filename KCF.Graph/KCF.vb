@@ -20,7 +20,7 @@ Public Module KCF
             node = New Node With {
                 .ID = "#" & atom.Index,
                 .Data = New NodeData With {
-                    .label = atom.KEGGAtom,
+                    .label = atom.KEGGAtom.code,
                     .initialPostion = point
                 }
             }
@@ -45,7 +45,7 @@ Public Module KCF
                 node2.Data.initialPostion.Point2D)
 
             label = $"{a} -> {b}" Or
-                    $"{a} -> {b} ({bound.dimentional_levels})".AsDefault(Function() Not bound.dimentional_levels.StringEmpty)
+                    $"{a} -> {b} ({bound.dimentional_levels})".When(Not bound.dimentional_levels.StringEmpty)
 
             edge = New Edge With {
                 .U = node1,

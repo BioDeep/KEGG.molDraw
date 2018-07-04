@@ -29,7 +29,7 @@ Public Module Cluster
         Dim template = createVectorTemplate()
 
         For Each atom In KCF.Atoms
-            Call template(atom.KEGGAtom).Hit()
+            Call template(atom.KEGGAtom.code).Hit()
         Next
 
         Return template.AsNumeric.Takes(atoms).AsVector
