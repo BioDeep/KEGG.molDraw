@@ -13,6 +13,9 @@ Imports Microsoft.VisualBasic.Serialization.JSON
 Imports SMRUCC.Chemistry.Model
 Imports Line2D = Microsoft.VisualBasic.Imaging.Drawing2D.Shapes.Line
 
+''' <summary>
+''' 绘制分子结构图的画布对象
+''' </summary>
 Public Module Canvas
 
     ''' <summary>

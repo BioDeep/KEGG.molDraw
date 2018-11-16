@@ -1,6 +1,9 @@
 ﻿Imports System.Drawing
 Imports Microsoft.VisualBasic.Language.Default
 
+''' <summary>
+''' 原子和化学键的颜色画刷
+''' </summary>
 Public Class KCFBrush
 
     Public Property O As Brush
