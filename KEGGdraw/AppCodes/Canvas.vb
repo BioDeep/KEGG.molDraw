@@ -18,6 +18,19 @@ Imports Line2D = Microsoft.VisualBasic.Imaging.Drawing2D.Shapes.Line
 ''' </summary>
 Public Module Canvas
 
+    <Extension>
+    Private Function getPolygon(atoms As (pt As PointF, atom As Atom)(),
+                                scaleFactor#,
+                                region As GraphicsRegion,
+                                bounds As RectangleF) As PointF()
+
+        If bounds.Width > bounds.Height Then
+            Return atoms.Select(Function(a) a.pt).Enlarge(scaleFactor * region.Size.Width / bounds.Width)
+        Else
+            Return atoms.Select(Function(a) a.pt).Enlarge(scaleFactor * region.Size.Height / bounds.Height)
+        End If
+    End Function
+
     ''' <summary>
     ''' Draw the 2D chemical structure
     ''' </summary>
@@ -73,13 +86,7 @@ Public Module Canvas
         Dim plotInternal =
             Sub(ByRef g As IGraphics, region As GraphicsRegion)
                 Dim bounds = atoms.Select(Function(a) a.pt).GetBounds
-                Dim polygon As PointF()
-
-                If bounds.Width > bounds.Height Then
-                    polygon = atoms.Select(Function(a) a.pt).Enlarge(scaleFactor * region.Size.Width / bounds.Width)
-                Else
-                    polygon = atoms.Select(Function(a) a.pt).Enlarge(scaleFactor * region.Size.Height / bounds.Height)
-                End If
+                Dim polygon As PointF() = atoms.getPolygon(scaleFactor, region, bounds)
 
                 atoms = atoms _
                     .Select(Function(a, i)
@@ -132,7 +139,9 @@ Public Module Canvas
                     End If
                 Next
 
-                For Each atom In atoms
+                Dim left, top As Single
+
+                For Each atom As (pt As PointF, atom As Atom) In atoms
                     With atom
                         ' 只显示出非碳原子的标签
                         If .atom.Atom.TextEquals("C") Then
@@ -140,13 +149,15 @@ Public Module Canvas
                         End If
 
                         Dim pt As PointF = .pt.OffSet2D(centra)
-                        Dim label$ = .atom.KEGGAtom.view Or .atom.Atom.AsDefault
+                        Dim label$ = .atom.GetLabel
                         Dim brush = theme.GetBrush(.atom.Atom)
 
                         With g.MeasureString(label, atomFont)
                             pt = New PointF(pt.X - .Width / 2, pt.Y - .Height / 2)
                             labelSize = Math.Min(.Width, .Height)
-                            layoutPoint = New PointF(pt.X + (.Width - labelSize) / 2, pt.Y + (.Height - labelSize) / 2)
+                            left = pt.X + (.Width - labelSize) / 2
+                            top = pt.Y + (.Height - labelSize) / 2
+                            layoutPoint = New PointF(left, top)
                             layoutSize = New SizeF(labelSize, labelSize)
                             atomLabelLayout = New RectangleF(layoutPoint, layoutSize)
 
@@ -161,6 +172,12 @@ Public Module Canvas
             size.SizeParser, padding,
             bg,
             plotInternal)
+    End Function
+
+    <MethodImpl(MethodImplOptions.AggressiveInlining)>
+    <Extension>
+    Private Function GetLabel(atom As Atom) As String
+        Return atom.KEGGAtom.view Or atom.Atom.AsDefault
     End Function
 
     ''' <summary>
