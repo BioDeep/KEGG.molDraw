@@ -16,6 +16,10 @@ Public Structure KegAtomType
     ''' </summary>
     Dim name$
     ''' <summary>
+    ''' 在绘图的时候所绘制的标签文本，这个字段可能会为空值
+    ''' </summary>
+    Dim view$
+    ''' <summary>
     ''' 官能团的中心原子的类型
     ''' </summary>
     Dim type As Types
@@ -83,19 +87,22 @@ Public Structure KegAtomType
         Dim atom As NamedValue(Of String) = line.GetTagValue(" ")
         Dim data = Strings.Split(atom.Value, " / ")
         Dim formula$ = "", name$
+        Dim displayLabel$ = Nothing
 
         If data.Length = 1 Then
             name = data.First
         Else
-            formula = data.First
-            name = data.Last
+            formula = data.ElementAtOrDefault(0)
+            name = data.ElementAtOrDefault(1)
+            displayLabel = data.ElementAtOrDefault(2)
         End If
 
         Return New KegAtomType With {
             .code = atom.Name,
             .formula = formula,
             .name = name,
-            .type = type
+            .type = type,
+            .view = displayLabel
         }
     End Function
 

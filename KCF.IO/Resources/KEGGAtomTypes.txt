@@ -1,5 +1,5 @@
 +   Carbon atoms
-C1a R-CH3 / methyl
+C1a R-CH3 / methyl / CH3
 C1b R-CH2-R / methylene
 C1c R-CH(-R)-R / tertiary carbon
 C1d R-C(-R)2-R / quaternary carbon
@@ -25,7 +25,7 @@ C8y ring-C(-R)=ring / aromatic tertiary carbon
 C0 Undefined carbon
 
 +   Nitrogen atoms
-N1a R-NH2 / primary amine
+N1a R-NH2 / primary amine / NH2
 N1b R-NH-R / secondary amine
 N1c R-N(-R)2 / tertiary amine
 N1d R-N(-R)3+ / quaternary ammonium
@@ -43,10 +43,10 @@ N5y ring-N(-R)+=ring / aromatic tertiary imine
 N0 Undefined nitrogen
 
 +   Oxygen atoms
-O1a R-OH / hydroxy
-O1b N-OH / N-hydroxy
-O1c P-OH / P-hydroxy
-O1d S-OH / S-hydroxy
+O1a R-OH / hydroxy / OH
+O1b N-OH / N-hydroxy / OH
+O1c P-OH / P-hydroxy / OH
+O1d S-OH / S-hydroxy / OH
 O2a R-O-R / hydroxy ether
 O2b P-O-R / hydroxy phosphate bond
 O2c P-O-P / pyrophosphate bond

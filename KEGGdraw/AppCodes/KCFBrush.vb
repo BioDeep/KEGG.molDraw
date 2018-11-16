@@ -35,6 +35,10 @@ Public Class KCFBrush
         }
     End Function
 
+    ''' <summary>
+    ''' 所有的原子和化学键都是黑色画刷
+    ''' </summary>
+    ''' <returns></returns>
     Public Shared Function MonoColour() As DefaultValue(Of KCFBrush)
         Return New KCFBrush With {
             .N = Brushes.Black,

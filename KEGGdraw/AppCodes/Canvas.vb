@@ -68,7 +68,7 @@ Public Module Canvas
                     End Function) _
             .ToArray Or die("No atom elements to plot!")
 
-        theme = (theme Or KCFBrush.ChEBITheme) Or (KCFBrush.MonoColour + Function() monoColour)
+        theme = (theme Or KCFBrush.ChEBITheme) Or KCFBrush.MonoColour.When(monoColour)
 
         Dim plotInternal =
             Sub(ByRef g As IGraphics, region As GraphicsRegion)
@@ -140,7 +140,7 @@ Public Module Canvas
                         End If
 
                         Dim pt As PointF = .pt.OffSet2D(centra)
-                        Dim label$ = .atom.Atom
+                        Dim label$ = .atom.KEGGAtom.view Or .atom.Atom.AsDefault
                         Dim brush = theme.GetBrush(.atom.Atom)
 
                         With g.MeasureString(label, atomFont)
