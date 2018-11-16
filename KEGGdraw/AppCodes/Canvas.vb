@@ -55,12 +55,11 @@ Public Module Canvas
                          Optional size$ = "2000,2000",
                          Optional padding$ = g.DefaultPadding,
                          Optional bg$ = "white",
-                         Optional font$ = "font-style: strong; font-size: 81; font-family: " & FontFace.MicrosoftYaHei & ";",
+                         Optional font$ = "font-style: strong; font-size: 72; font-family: " & FontFace.MicrosoftYaHei & ";",
                          Optional scaleFactor# = 0.85,
                          Optional boundStroke$ = "stroke: black; stroke-width: 15px; stroke-dash: solid;",
                          Optional monoColour As Boolean = False,
-                         Optional theme As KCFBrush = Nothing,
-                         Optional dl! = 12) As GraphicsData
+                         Optional theme As KCFBrush = Nothing) As GraphicsData
 
         Dim background As Brush = bg.GetBrush
         Dim atomFont As Font = CSSFont.TryParse(font).GDIObject
@@ -120,12 +119,11 @@ Public Module Canvas
                             .Stroke = boundsPen
                         }
 
-                        line = line.ParallelShift(-dl)
-
-                        For i As Integer = 1 To bound.bounds
+                        If bound.bounds > 1 Then
+                            Call g.drawParallelLines(bound, line)
+                        Else
                             Call line.Draw(g)
-                            line = line.ParallelShift(dl * 2)
-                        Next
+                        End If
                     Else
                         If bound.dimentional_levels = "#Up" Then
                             Call UpArrow(a, b, boundsPen.Width * 2)(g, penColor)
@@ -158,7 +156,7 @@ Public Module Canvas
                             left = pt.X + (.Width - labelSize) / 2
                             top = pt.Y + (.Height - labelSize) / 2
                             layoutPoint = New PointF(left, top)
-                            layoutSize = New SizeF(labelSize, labelSize)
+                            layoutSize = New SizeF(labelSize / 2, labelSize / 2)
                             atomLabelLayout = New RectangleF(layoutPoint, layoutSize)
 
                             g.FillEllipse(background, atomLabelLayout)
@@ -173,6 +171,26 @@ Public Module Canvas
             bg,
             plotInternal)
     End Function
+
+    ''' <summary>
+    ''' 绘制双键或者三键
+    ''' </summary>
+    ''' <param name="g"></param>
+    ''' <param name="bound"></param>
+    ''' <param name="line"></param>
+    <Extension>
+    Private Sub drawParallelLines(g As IGraphics, bound As Bound, line As Line2D)
+        Dim lineWidth! = line.Stroke.Width / bound.bounds
+        Dim newPen As New Pen(line.Stroke.Brush, lineWidth)
+
+        line = New Line2D(line.A, line.B) With {.Stroke = newPen}
+        line = line.ParallelShift(lineWidth * (-bound.bounds + 1))
+
+        For i As Integer = 1 To bound.bounds
+            Call line.Draw(g)
+            line = line.ParallelShift(lineWidth * 2)
+        Next
+    End Sub
 
     <MethodImpl(MethodImplOptions.AggressiveInlining)>
     <Extension>
