@@ -1,3 +1,64 @@
+﻿#Region "Microsoft.VisualBasic::42d7f3bca20cb663384734bc368121bd, KCF\KEGGdraw\kegDraw\Bracket.vb"
+
+    ' Author:
+    ' 
+    '       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
+    ' 
+    ' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
+    ' 
+    ' 
+    ' MIT License
+    ' 
+    ' 
+    ' Permission is hereby granted, free of charge, to any person obtaining a copy
+    ' of this software and associated documentation files (the "Software"), to deal
+    ' in the Software without restriction, including without limitation the rights
+    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    ' copies of the Software, and to permit persons to whom the Software is
+    ' furnished to do so, subject to the following conditions:
+    ' 
+    ' The above copyright notice and this permission notice shall be included in all
+    ' copies or substantial portions of the Software.
+    ' 
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    ' SOFTWARE.
+
+
+
+    ' /********************************************************************************/
+
+    ' Summaries:
+
+    '     Class Bracket
+    ' 
+    '         Properties: Bonds, CoveredWholeMol, Label, Limited, LimitedNumber
+    '                     Mol, OneHand, Reaction, Recalc, SBL1
+    '                     SBL2, SelectAll, SelectSide, Sgroup, SgroupConnectivity
+    '                     SimpleRepeat, Size, Type
+    ' 
+    '         Constructor: (+3 Overloads) Sub New
+    ' 
+    '         Function: calc_CrossPoint, clone, confirm_Bond, containBracket, contains
+    '                   DX, DY, get0point, getBracketLabelMarkArea, getRect
+    '                   hasOnlyOneMol, isIntersect, isSameLocatedBonds, nearBracket, nearBracket_1stSide
+    '                   nearBracket_2ndSide, nearBracketLabel, size, (+2 Overloads) toKCFStrings, turn
+    ' 
+    '         Sub: [select], addMol, addSgroup, clearMol, clearSgroup
+    '              computeParentMol, flipHorizontal, flipVertical, move, moveInternal
+    '              moveInternaldependSelected, putSBL, recalcCoordinate, recalcCoordinateSub, removeMol
+    '              reset0point, resize, resizeDependSelected, rotate, rotateDependSelected
+    '              selectAll, (+2 Overloads) set0point, setCoordinate, (+2 Overloads) unselect, zoom
+    ' 
+    ' 
+    ' /********************************************************************************/
+
+#End Region
+
 Imports System.Runtime.CompilerServices
 Imports System.Collections
 Imports System.Drawing
@@ -1228,3 +1289,4 @@ Namespace keg.compound
 
     End Class
 End Namespace
+

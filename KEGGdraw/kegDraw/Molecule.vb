@@ -1,3 +1,65 @@
+﻿#Region "Microsoft.VisualBasic::c0b7dd02e522bfbf5d8e4d6c9325b994, KCF\KEGGdraw\kegDraw\Molecule.vb"
+
+    ' Author:
+    ' 
+    '       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
+    ' 
+    ' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
+    ' 
+    ' 
+    ' MIT License
+    ' 
+    ' 
+    ' Permission is hereby granted, free of charge, to any person obtaining a copy
+    ' of this software and associated documentation files (the "Software"), to deal
+    ' in the Software without restriction, including without limitation the rights
+    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    ' copies of the Software, and to permit persons to whom the Software is
+    ' furnished to do so, subject to the following conditions:
+    ' 
+    ' The above copyright notice and this permission notice shall be included in all
+    ' copies or substantial portions of the Software.
+    ' 
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    ' SOFTWARE.
+
+
+
+    ' /********************************************************************************/
+
+    ' Summaries:
+
+    '     Class Molecule
+    ' 
+    '         Properties: AtomNum, BondNum, BracketNum, LockOfCheckRing, OverlapedBracket
+    '                     Parent, Scale, Title, XpointTemp, YpointTemp
+    ' 
+    '         Function: confirmeIntersectionOfBondsAndBracketLine, (+2 Overloads) convertInternal, get0point, getAtom, getAtomNo
+    '                   getAtomsInBracket, getAtomsList, getBond, getBondNo, getBracket
+    '                   getExpressionAtomWithGroupedAtom, hasTheBracket, InlineAssignHelper, internalX, internalY
+    '                   isCarbon, mergeMol, (+3 Overloads) moleculeRange, moleculeRangeSub, (+2 Overloads) nearAtom
+    '                   (+2 Overloads) nearBond, refine, serchRing, ToString, whichSide
+    ' 
+    '         Sub: (+4 Overloads) [select], addAtom, addBond, addBracket, addBracketStrings
+    '              autoRotate, calcImplicitHydrogen, checkRing, (+3 Overloads) combineMol, decisideHydrogenDraw
+    '              deleteAtom, deleteBond, doFixedLength, fixLength, flipHorizontal
+    '              flipHorizontalIfSelected, flipStereoTypeofBonds, flipVertical, flipVerticalIfSelected, getAtomsList
+    '              lockOfCheckRing, moveInternal, register, removeBracket, rescale
+    '              resetKEGGAtomName, resetOpoint, resetSelect, searchConnection, searchConnection_For_Bracket_Sub
+    '              (+2 Overloads) select_reverse, selectAllItems, (+2 Overloads) selectItems, set0point, set0pointTemp
+    '              setBracketCoordinate, setDBond, setMiddleLeft, setSgroup, setUpperCenter
+    '              setUpperLeft, terminalCheck, unlockOfCheckRing, (+2 Overloads) unselect
+    ' 
+    ' 
+    ' /********************************************************************************/
+
+#End Region
+
 Imports System.Runtime.CompilerServices
 Imports System.Collections
 Imports Microsoft.VisualBasic.Imaging.LayoutModel
@@ -1816,3 +1878,4 @@ Namespace keg.compound
     '	 
 
 End Namespace
+

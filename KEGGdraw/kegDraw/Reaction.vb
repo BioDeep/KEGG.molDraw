@@ -1,3 +1,62 @@
+﻿#Region "Microsoft.VisualBasic::222786d68d0f8b461c5942f2e3ef2eea, KCF\KEGGdraw\kegDraw\Reaction.vb"
+
+    ' Author:
+    ' 
+    '       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
+    ' 
+    ' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
+    ' 
+    ' 
+    ' MIT License
+    ' 
+    ' 
+    ' Permission is hereby granted, free of charge, to any person obtaining a copy
+    ' of this software and associated documentation files (the "Software"), to deal
+    ' in the Software without restriction, including without limitation the rights
+    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    ' copies of the Software, and to permit persons to whom the Software is
+    ' furnished to do so, subject to the following conditions:
+    ' 
+    ' The above copyright notice and this permission notice shall be included in all
+    ' copies or substantial portions of the Software.
+    ' 
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    ' SOFTWARE.
+
+
+
+    ' /********************************************************************************/
+
+    ' Summaries:
+
+    ' 	Class Reaction
+    ' 
+    ' 	    Properties: OverlapedBracket, Parent, ReactionArrow, Texts, Title
+    ' 
+    ' 	    Function: bracketNum, (+2 Overloads) compareBracket, contain, getBound, getBracket
+    '                getBracketNo, getCategory, getObjectNo, InlineAssignHelper, isNoCategory
+    '                isProduct, isReactant, mergeMol, (+2 Overloads) nearAtom, (+2 Overloads) nearBond
+    '                nearBracket, nearBracketLabel, nearChemObject, numNoCategory, numProduct
+    '                numReactant, onText, refine, ToString
+    ' 
+    ' 	    Sub: (+2 Overloads) [select], add, addBracket, addObject, addText
+    '           (+2 Overloads) autoSetCategory, calcImplicitHydrogen, checkOverlapedBracket, checkOverlapedBracketWithRefine, clearOverlapedBracket
+    '           decisideHydrogenDraw, delAllObject, delBracket, delObject, flipHorizontal
+    '           flipHorizontalIfSelected, flipVertical, flipVerticalIfSelected, lockOfCheckRing, move
+    '           moveInternal, refineBracket, register, removeText, rescale
+    '           reset0point, select_reverse, selectAllItems, (+2 Overloads) selectItems, setAtomsIntoBracketRectangle
+    '           (+2 Overloads) setCategory, setDBond, setNoCategoryAll, unlockOfCheckRing, unselect
+    ' 
+    ' 
+    ' /********************************************************************************/
+
+#End Region
+
 Imports System.Collections
 
 Namespace keg.compound
@@ -989,3 +1048,4 @@ Namespace keg.compound
 '	 
 
 End Namespace
+
