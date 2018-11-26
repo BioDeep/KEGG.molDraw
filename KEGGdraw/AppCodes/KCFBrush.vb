@@ -74,7 +74,7 @@ Public Class KCFBrush
 
     Public Shared Function ChEBITheme() As DefaultValue(Of KCFBrush)
         Return New KCFBrush With {
-            .N = Brushes.Blue,
+            .N = New SolidBrush(Color.FromArgb(51, 51, 153)),
             .O = Brushes.Red,
             .P = Brushes.Orange,
             .S = Brushes.DarkOliveGreen
