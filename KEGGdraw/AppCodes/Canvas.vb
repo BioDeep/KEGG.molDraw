@@ -1,46 +1,46 @@
 ﻿#Region "Microsoft.VisualBasic::ef0aeaf377d0541271b6c413c7dcc615, KCF\KEGGdraw\AppCodes\Canvas.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
-    ' 
-    ' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
+' 
+' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
+' Summaries:
 
-    ' Module Canvas
-    ' 
-    '     Function: DownArrow, Draw, GetLabel, getPolygon, UpArrow
-    ' 
-    '     Sub: drawParallelLines
-    ' 
-    ' /********************************************************************************/
+' Module Canvas
+' 
+'     Function: DownArrow, Draw, GetLabel, getPolygon, UpArrow
+' 
+'     Sub: drawParallelLines
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -111,10 +111,6 @@ Public Module Canvas
         Dim atomFont As Font = CSSFont.TryParse(font).GDIObject
         Dim dot = Brushes.Gray
         Dim boundsPen As Pen = Stroke.TryParse(boundStroke).GDIObject
-        Dim labelSize!
-        Dim layoutPoint As PointF
-        Dim layoutSize As SizeF
-        Dim atomLabelLayout As RectangleF
         Dim atoms As (pt As PointF, atom As Atom)() =
             kcf _
             .Atoms _
@@ -183,31 +179,14 @@ Public Module Canvas
                     End If
                 Next
 
-                Dim left, top As Single
-
                 For Each atom As (pt As PointF, atom As Atom) In atoms
                     With atom
                         ' 只显示出非碳原子的标签
                         If .atom.Atom.TextEquals("C") Then
                             Continue For
+                        Else
+                            Call g.drawLabel(.pt, .atom, centra, theme, atomFont, background)
                         End If
-
-                        Dim pt As PointF = .pt.OffSet2D(centra)
-                        Dim label$ = .atom.GetLabel
-                        Dim brush = theme.GetBrush(.atom.Atom)
-
-                        With g.MeasureString(label, atomFont)
-                            pt = New PointF(pt.X - .Width / 2, pt.Y - .Height / 2)
-                            labelSize = Math.Min(.Width, .Height)
-                            left = pt.X + (.Width - labelSize) / 2
-                            top = pt.Y + (.Height - labelSize) / 2
-                            layoutPoint = New PointF(left, top)
-                            layoutSize = New SizeF(labelSize / 2, labelSize / 2)
-                            atomLabelLayout = New RectangleF(layoutPoint, layoutSize)
-
-                            g.FillEllipse(background, atomLabelLayout)
-                            g.DrawString(label, atomFont, brush, pt)
-                        End With
                     End With
                 Next
             End Sub
@@ -217,6 +196,37 @@ Public Module Canvas
             bg,
             plotInternal)
     End Function
+
+    <Extension> Private Sub drawLabel(g As IGraphics,
+                                      atomPt As PointF,
+                                      atom As Atom,
+                                      centra As PointF,
+                                      theme As KCFBrush,
+                                      atomFont As Font,
+                                      background As Brush)
+
+        Dim pt As PointF = atomPt.OffSet2D(centra)
+        Dim label$ = atom.GetLabel
+        Dim brush = theme.GetBrush(atom.Atom)
+        Dim labelSize!
+        Dim layoutPoint As PointF
+        Dim layoutSize As SizeF
+        Dim atomLabelLayout As RectangleF
+        Dim left, top As Single
+
+        With g.MeasureString(label, atomFont)
+            pt = New PointF(pt.X - .Width / 2, pt.Y - .Height / 2)
+            labelSize = Math.Min(.Width, .Height)
+            left = pt.X + (.Width - labelSize) / 2
+            top = pt.Y + (.Height - labelSize) / 2
+            layoutPoint = New PointF(left, top)
+            layoutSize = New SizeF(labelSize / 2, labelSize / 2)
+            atomLabelLayout = New RectangleF(layoutPoint, layoutSize)
+
+            g.FillEllipse(background, atomLabelLayout)
+            g.DrawString(label, atomFont, brush, pt)
+        End With
+    End Sub
 
     ''' <summary>
     ''' 绘制双键或者三键
