@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppCodes\KCFBrush.vb" />
+    <Compile Include="AppCodes\LabelHtml.vb" />
     <Compile Include="Groups.vb" />
     <Compile Include="CLI.vb" />
     <Compile Include="Program.vb" />
