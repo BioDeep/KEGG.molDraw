@@ -49,11 +49,13 @@ Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Shapes
+Imports Microsoft.VisualBasic.Imaging.Drawing2D.Text
 Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.Imaging.LayoutModel
 Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
+Imports Microsoft.VisualBasic.MIME.Markup.HTML
 Imports Microsoft.VisualBasic.MIME.Markup.HTML.CSS
 Imports Microsoft.VisualBasic.Scripting.Runtime
 Imports Microsoft.VisualBasic.Serialization.JSON
@@ -229,7 +231,7 @@ Public Module Canvas
 
         Dim pt As PointF = atomPt.OffSet2D(centra)
         Dim label$ = atom.GetLabel
-        Dim brush = theme.GetBrush(atom.Atom)
+        Dim brush As SolidBrush = theme.GetBrush(atom.Atom)
         Dim labelSize!
         Dim layoutPoint As PointF
         Dim layoutSize As SizeF
@@ -248,19 +250,25 @@ Public Module Canvas
                     .Width,
                     .Height
                 )
+                Dim html = LabelHtml.GetHtmlTuple(label)
+                Dim content As TextString()
+                Dim color As Color = brush.Color
 
                 If conflictions.Any(Function(line) Not line.GetIntersectLocation(layout) Is Nothing) Then
                     ' 存在冲突，则反过来，从右到左
-                    label = label.Reverse.CharString
+                    content = TextAPI.TryParse(html.left, atomFont, color)
                     layout = New Rectangle2D(
                         pt.X - .Width + singleCharSize.Width / 2,
                         pt.Y - .Height,
                         .Width,
                         .Height
                     )
+                Else
+                    content = TextAPI.TryParse(html.right, atomFont, color)
                 End If
 
                 pt = layout.Point.PointF
+                Call HTMLRender.RenderHTML(g, content, pt.ToPoint)
             Else
                 ' 只有一个原子标签的情况
                 ' 在该原子的位置上面居中显示
@@ -272,10 +280,9 @@ Public Module Canvas
                 layoutSize = New SizeF(labelSize / 2, labelSize / 2)
                 atomLabelLayout = New RectangleF(layoutPoint, layoutSize)
 
-                g.FillEllipse(background, atomLabelLayout)
+                Call g.FillEllipse(background, atomLabelLayout)
+                Call g.DrawString(label, atomFont, brush, pt)
             End If
-
-            g.DrawString(label, atomFont, brush, pt)
         End With
     End Sub
 

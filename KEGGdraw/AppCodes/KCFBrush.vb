@@ -52,12 +52,12 @@ Imports Microsoft.VisualBasic.Language.Default
 ''' </summary>
 Public Class KCFBrush
 
-    Public Property O As Brush
-    Public Property N As Brush
-    Public Property P As Brush
-    Public Property S As Brush
+    Public Property O As SolidBrush
+    Public Property N As SolidBrush
+    Public Property P As SolidBrush
+    Public Property S As SolidBrush
 
-    Public Function GetBrush(atom As String) As Brush
+    Public Function GetBrush(atom As String) As SolidBrush
         Select Case atom
             Case "O"
                 Return O
