@@ -181,9 +181,7 @@ Public Module Canvas
                         ElseIf bound.dimentional_levels = "#Down" Then
                             Call DownArrow(a, b, boundsPen.Width * 2)(g, boundsPen)
                         Else
-                            Dim ex As New NotImplementedException(bound.GetJson)
-                            ex = New NotImplementedException(kcf.Entry.Id, ex)
-                            Throw ex
+                            Call throwHelper(kcf.Entry.Id, bound)
                         End If
 
                         layoutElements += New Line2D(a, b)
@@ -211,8 +209,14 @@ Public Module Canvas
         Return g.GraphicsPlots(
             size.SizeParser, padding,
             bg,
-            plotInternal)
+            plotInternal
+        )
     End Function
+
+    Private Sub throwHelper(entryID$, bound As Bound)
+        Dim ex As New NotImplementedException(bound.GetJson)
+        Throw New NotImplementedException(entryID, ex)
+    End Sub
 
     <Extension> Private Sub drawLabel(g As IGraphics,
                                       atomPt As PointF,
