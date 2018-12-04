@@ -69,12 +69,17 @@ Public Module Canvas
                                 scaleFactor#,
                                 region As GraphicsRegion,
                                 bounds As RectangleF) As PointF()
+        Dim factor#
 
         If bounds.Width > bounds.Height Then
-            Return atoms.Select(Function(a) a.pt).Enlarge(scaleFactor * region.Size.Width / bounds.Width)
+            factor = region.Size.Width / bounds.Width
         Else
-            Return atoms.Select(Function(a) a.pt).Enlarge(scaleFactor * region.Size.Height / bounds.Height)
+            factor = region.Size.Height / bounds.Height
         End If
+
+        Return atoms _
+            .Select(Function(a) a.pt) _
+            .Enlarge(scaleFactor * factor)
     End Function
 
     ''' <summary>
