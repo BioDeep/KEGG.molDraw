@@ -50,6 +50,7 @@ Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Shapes
 Imports Microsoft.VisualBasic.Imaging.Driver
+Imports Microsoft.VisualBasic.Imaging.LayoutModel
 Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
@@ -143,6 +144,7 @@ Public Module Canvas
                 Dim centra As PointF = atoms _
                     .Select(Function(a) a.pt) _
                     .CentralOffset(region.Size)
+                Dim layoutElements As New List(Of Line2D)
 
                 For Each bound As Bound In kcf.Bounds
                     Dim U = atoms(bound.from - 1)
@@ -171,6 +173,8 @@ Public Module Canvas
                         Else
                             Call line.Draw(g)
                         End If
+
+                        layoutElements += line
                     Else
                         If bound.dimentional_levels = "#Up" Then
                             Call UpArrow(a, b, boundsPen.Width * 2)(g, penColor)
@@ -181,6 +185,8 @@ Public Module Canvas
                             ex = New NotImplementedException(kcf.Entry.Id, ex)
                             Throw ex
                         End If
+
+                        layoutElements += New Line2D(a, b)
                     End If
                 Next
 
@@ -190,7 +196,13 @@ Public Module Canvas
                         If .atom.Atom.TextEquals("C") Then
                             Continue For
                         Else
-                            Call g.drawLabel(.pt, .atom, centra, theme, atomFont, background)
+                            Call g.drawLabel(
+                                .pt, .atom, centra,
+                                theme,
+                                atomFont,
+                                background,
+                                conflictions:=layoutElements
+                            )
                         End If
                     End With
                 Next
@@ -208,7 +220,8 @@ Public Module Canvas
                                       centra As PointF,
                                       theme As KCFBrush,
                                       atomFont As Font,
-                                      background As Brush)
+                                      background As Brush,
+                                      conflictions As List(Of Line2D))
 
         Dim pt As PointF = atomPt.OffSet2D(centra)
         Dim label$ = atom.GetLabel
@@ -220,15 +233,44 @@ Public Module Canvas
         Dim left, top As Single
 
         With g.MeasureString(label, atomFont)
-            pt = New PointF(pt.X - .Width / 2, pt.Y - .Height / 2)
-            labelSize = Math.Min(.Width, .Height)
-            left = pt.X + (.Width - labelSize) / 2
-            top = pt.Y + (.Height - labelSize) / 2
-            layoutPoint = New PointF(left, top)
-            layoutSize = New SizeF(labelSize / 2, labelSize / 2)
-            atomLabelLayout = New RectangleF(layoutPoint, layoutSize)
+            If label.Length > 1 Then
+                ' 处理比较复杂的原子团标签的绘制布局
 
-            g.FillEllipse(background, atomLabelLayout)
+                ' 首先计算从左往右的顺序
+                Dim singleCharSize = g.MeasureString("C", atomFont)
+                Dim layout As New Rectangle2D(
+                    pt.X - singleCharSize.Width / 2,
+                    pt.Y - .Height,
+                    .Width,
+                    .Height
+                )
+
+                If conflictions.Any(Function(line) Not line.GetIntersectLocation(layout) Is Nothing) Then
+                    ' 存在冲突，则反过来，从右到左
+                    label = label.Reverse.CharString
+                    layout = New Rectangle2D(
+                        pt.X - .Width + singleCharSize.Width / 2,
+                        pt.Y - .Height,
+                        .Width,
+                        .Height
+                    )
+                End If
+
+                pt = layout.Point.PointF
+            Else
+                ' 只有一个原子标签的情况
+                ' 在该原子的位置上面居中显示
+                pt = New PointF(pt.X - .Width / 2, pt.Y - .Height / 2)
+                labelSize = Math.Min(.Width, .Height)
+                left = pt.X + (.Width - labelSize) / 2
+                top = pt.Y + (.Height - labelSize) / 2
+                layoutPoint = New PointF(left, top)
+                layoutSize = New SizeF(labelSize / 2, labelSize / 2)
+                atomLabelLayout = New RectangleF(layoutPoint, layoutSize)
+
+                g.FillEllipse(background, atomLabelLayout)
+            End If
+
             g.DrawString(label, atomFont, brush, pt)
         End With
     End Sub
