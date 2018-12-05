@@ -1,0 +1,1 @@
+"./app/KEGGdraw.exe" /cli.dev ---echo /namespace "External" > ./KEGGdraw.vb
