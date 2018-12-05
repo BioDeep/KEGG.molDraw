@@ -20,6 +20,8 @@ Module LabelHtml
                 Return ("H<sub>2</sub>N", "NH<sub>2</sub>")
             Case "OH"
                 Return ("HO", "OH")
+            Case "Cl"
+                Return ("Cl", "Cl")
             Case Else
                 Throw New NotImplementedException(label)
         End Select

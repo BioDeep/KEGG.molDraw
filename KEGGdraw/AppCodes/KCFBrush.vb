@@ -46,6 +46,7 @@
 
 Imports System.Drawing
 Imports Microsoft.VisualBasic.Language.Default
+Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel.DataFramework
 
 ''' <summary>
 ''' 原子和化学键的颜色画刷
@@ -56,20 +57,22 @@ Public Class KCFBrush
     Public Property N As SolidBrush
     Public Property P As SolidBrush
     Public Property S As SolidBrush
+    Public Property Cl As SolidBrush
+
+    Shared ReadOnly getAtomBrush As Dictionary(Of String, Func(Of KCFBrush, SolidBrush)) =
+        GetType(KCFBrush) _
+        .GetProperties(PublicProperty) _
+        .ToDictionary(Function(atom) atom.Name,
+                      Function(read) As Func(Of KCFBrush, SolidBrush)
+                          Return Function(colors) DirectCast(read.GetValue(colors), SolidBrush)
+                      End Function)
 
     Public Function GetBrush(atom As String) As SolidBrush
-        Select Case atom
-            Case "O"
-                Return O
-            Case "N"
-                Return N
-            Case "P"
-                Return P
-            Case "S"
-                Return S
-            Case Else
-                Return Brushes.Black
-        End Select
+        If getAtomBrush.ContainsKey(atom) Then
+            Return getAtomBrush(atom)(Me)
+        Else
+            Return Brushes.Black
+        End If
     End Function
 
     Public Shared Function ChEBITheme() As DefaultValue(Of KCFBrush)
@@ -77,7 +80,8 @@ Public Class KCFBrush
             .N = New SolidBrush(Color.FromArgb(51, 51, 153)),
             .O = Brushes.Red,
             .P = Brushes.Orange,
-            .S = Brushes.DarkOliveGreen
+            .S = Brushes.DarkOliveGreen,
+            .Cl = Brushes.Green
         }
     End Function
 
@@ -90,7 +94,8 @@ Public Class KCFBrush
             .N = Brushes.Black,
             .O = Brushes.Black,
             .P = Brushes.Black,
-            .S = Brushes.Black
+            .S = Brushes.Black,
+            .Cl = Brushes.Black
         }
     End Function
 End Class
