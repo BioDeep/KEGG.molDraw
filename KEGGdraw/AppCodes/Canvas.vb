@@ -240,35 +240,36 @@ Public Module Canvas
 
         With g.MeasureString(label, atomFont)
             If label.Length > 1 Then
-                ' 处理比较复杂的原子团标签的绘制布局
 
+                ' 处理比较复杂的原子团标签的绘制布局
+                Dim singleCharSize As SizeF = g.MeasureString("A", atomFont)
+                Dim html = LabelHtml.GetHtmlTuple(label)
+                Dim color As Color = brush.Color
+                Dim content As TextString() = TextAPI.TryParse(html.right, atomFont, color)
+                Dim htmlSize As SizeF = g.MeasureSize(content)
                 ' 首先计算从左往右的顺序
-                Dim singleCharSize = g.MeasureString("C", atomFont)
                 Dim layout As New Rectangle2D(
                     pt.X - singleCharSize.Width / 2,
                     pt.Y - .Height,
-                    .Width,
-                    .Height
+                    htmlSize.Width,
+                    htmlSize.Height
                 )
-                Dim html = LabelHtml.GetHtmlTuple(label)
-                Dim content As TextString()
-                Dim color As Color = brush.Color
 
-                If conflictions.Any(Function(line) Not line.GetIntersectLocation(layout) Is Nothing) Then
+                If conflictions _
+                    .Any(Function(line)
+                             Return Not line.GetIntersectLocation(layout) Is Nothing
+                         End Function) Then
                     ' 存在冲突，则反过来，从右到左
                     content = TextAPI.TryParse(html.left, atomFont, color)
                     layout = New Rectangle2D(
                         pt.X - .Width + singleCharSize.Width / 2,
                         pt.Y - .Height,
-                        .Width,
-                        .Height
+                        htmlSize.Width,
+                        htmlSize.Height
                     )
-                Else
-                    content = TextAPI.TryParse(html.right, atomFont, color)
                 End If
 
-                pt = layout.Point.PointF
-                Call HTMLRender.RenderHTML(g, content, pt.ToPoint)
+                Call HTMLRender.RenderHTML(g, content, layout.Point)
             Else
                 ' 只有一个原子标签的情况
                 ' 在该原子的位置上面居中显示
