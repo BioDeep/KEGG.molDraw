@@ -190,7 +190,9 @@ Public Module Canvas
                                                    boundsPen As Pen,
                                                    g As IGraphics,
                                                    charSize As SizeF) As IEnumerable(Of Line2D)
+
         Dim maxSize! = {charSize.Width, charSize.Height}.Max
+        Dim dashPen As New Pen(boundsPen.Color, boundsPen.Width / 2)
 
         For Each bound As Bound In kcf.Bounds
             Dim U = atoms(bound.from - 1)
@@ -216,10 +218,10 @@ Public Module Canvas
             boundsPen.Brush = penColor
 
             If aNotCarbon Then
-                la = New Line2D(la, lb).LengthVariationFromPointA(-maxSize / 2).A
+                la = New Line2D(la, lb).LengthVariationFromPointA(-maxSize / 3).A
             End If
             If bNotCarbon Then
-                lb = New Line2D(la, lb).LengthVariationFromPointB(-maxSize / 2).B
+                lb = New Line2D(la, lb).LengthVariationFromPointB(-maxSize / 3).B
             End If
 
             If bound.dimentional_levels.StringEmpty Then
@@ -238,7 +240,7 @@ Public Module Canvas
                 If bound.dimentional_levels = "#Up" Then
                     Call UpArrow(la, lb, boundsPen.Width * 2)(g, penColor)
                 ElseIf bound.dimentional_levels = "#Down" Then
-                    Call DownArrow(la, lb, boundsPen.Width * 2)(g, boundsPen)
+                    Call DownArrow(la, lb, boundsPen.Width * 1.25)(g, dashPen)
                 Else
                     Call throwHelper(kcf.Entry.Id, bound)
                 End If
@@ -323,7 +325,7 @@ Public Module Canvas
     End Function
 
     ''' <summary>
-    ''' 
+    ''' 大箭头
     ''' </summary>
     ''' <param name="a"></param>
     ''' <param name="b"></param>
@@ -335,7 +337,8 @@ Public Module Canvas
     ''' </param>
     ''' <returns></returns>
     Public Function UpArrow(a As PointF, b As PointF, c%) As Action(Of IGraphics, Brush)
-        Dim l As New Line2D(a, b)  ' 线段长度
+        ' 线段长度
+        Dim l As New Line2D(a, b)
 
         With New Path2D
             Dim vetx As PointF() = Arrow _
@@ -355,15 +358,17 @@ Public Module Canvas
     End Function
 
     ''' <summary>
-    ''' ``#Down``
+    ''' ``#Down`` 虚线箭头
     ''' </summary>
     ''' <param name="a"></param>
     ''' <param name="b"></param>
     ''' <param name="c%"></param>
     ''' <returns></returns>
     Public Function DownArrow(a As PointF, b As PointF, c%) As Action(Of IGraphics, Pen)
-        Dim l As New Line2D(a, b)  ' 线段长度
-        Dim vetx As PointF() = Arrow.ArrowHead(c, l.Length) ' 顶点， 底端1， 底端2
+        ' 线段长度
+        Dim l As New Line2D(a, b)
+        ' 顶点， 底端1， 底端2
+        Dim vetx As PointF() = Arrow.ArrowHead(c, l.Length)
 
         ' vetx 为基本模型
         '
