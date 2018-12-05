@@ -70,7 +70,7 @@ Module Module1
         Dim KCF = IO.LoadKCF("../DATA/NADPH.txt")
         Call KCF.Draw().Save("../DATA/NADPH.png")
 
-        Pause()
+        '  Pause()
 
 
         KCF = IO.LoadKCF("../DATA/L-Citrulline.txt")

@@ -71,11 +71,12 @@ Public Module Canvas
                                 region As GraphicsRegion,
                                 bounds As RectangleF) As PointF()
         Dim factor#
+        Dim canvas = region.PlotRegion
 
         If bounds.Width > bounds.Height Then
-            factor = region.Size.Width / bounds.Width
+            factor = canvas.Width / bounds.Width
         Else
-            factor = region.Size.Height / bounds.Height
+            factor = canvas.Height / bounds.Height
         End If
 
         Return atoms _
@@ -105,9 +106,9 @@ Public Module Canvas
     <Extension>
     Public Function Draw(kcf As KCF,
                          Optional size$ = "2700,2100",
-                         Optional padding$ = g.DefaultPadding,
+                         Optional padding$ = g.DefaultLargerPadding,
                          Optional bg$ = "white",
-                         Optional font$ = "font-style: normal; font-size: 72; font-family: " & FontFace.SegoeUI & ";",
+                         Optional font$ = "font-style: normal; font-size: 90; font-family: " & FontFace.SegoeUI & ";",
                          Optional scaleFactor# = 0.85,
                          Optional boundStroke$ = "stroke: black; stroke-width: 15px; stroke-dash: solid;",
                          Optional monoColour As Boolean = False,
@@ -280,7 +281,7 @@ Public Module Canvas
         Else
             With g.MeasureString(label, atomFont)
 
-                Call $"Draw single: {label}=[{ .Width},{ .Height}]".__DEBUG_ECHO
+                ' Call $"Draw single: {label}=[{ .Width},{ .Height}]".__DEBUG_ECHO
 
                 ' 只有一个原子标签的情况
                 ' 在该原子的位置上面居中显示
