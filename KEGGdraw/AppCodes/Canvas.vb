@@ -105,8 +105,8 @@ Public Module Canvas
     ''' </remarks>
     <Extension>
     Public Function Draw(kcf As KCF,
-                         Optional size$ = "2700,2100",
-                         Optional padding$ = g.DefaultLargerPadding,
+                         Optional size$ = "2700,2300",
+                         Optional padding$ = g.DefaultUltraLargePadding,
                          Optional bg$ = "white",
                          Optional font$ = "font-style: normal; font-size: 90; font-family: " & FontFace.SegoeUI & ";",
                          Optional scaleFactor# = 0.85,

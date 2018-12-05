@@ -20,10 +20,12 @@ Module LabelHtml
                 Return ("H<sub>2</sub>N", "NH<sub>2</sub>")
             Case "OH"
                 Return ("HO", "OH")
-            Case "Cl"
-                Return ("Cl", "Cl")
             Case Else
-                Throw New NotImplementedException(label)
+                If Strings.Len(label) = 2 AndAlso Char.IsUpper(label(0)) AndAlso Char.IsLower(label(1)) Then
+                    Return (label, label)
+                Else
+                    Throw New NotImplementedException($"Please add label for: [{label}]")
+                End If
         End Select
     End Function
 

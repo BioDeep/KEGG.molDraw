@@ -73,7 +73,7 @@ Imports SMRUCC.Chemistry.Model
 
         If [in].StringEmpty Then
             ' 没有/in参数, 则从标准输入之中得到绘图数据
-            Dim KCF = args.ReadInput("/in").LoadKCF(throwEmpty:=True)
+            Dim KCF = args.ReadInput("/in").LoadKCF(throwEmpty:=False)
             Dim out$ = $"./{KCF.Entry.Id}.png"
 
             Return KCF _
