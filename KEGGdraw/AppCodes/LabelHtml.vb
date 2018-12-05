@@ -159,6 +159,7 @@ Module LabelHtml
 
                 ' 对于金属单质或者离子之类的,只有一个原子标签
                 ' 这个时候就直接绘制吧
+                ' 例如 C19157 物质的KCF数据就只有一个原子的标签
                 If label.IsAtomLabel AndAlso dir = QuadrantRegions.Origin Then
                     content = left
                 Else
