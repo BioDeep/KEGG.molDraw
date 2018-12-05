@@ -36,7 +36,7 @@ Module LabelHtml
                         }.Min
                         Return (dist:=d, bound:=l)
                     End Function) _
-            .Where(Function(t) t.dist < 10) _
+            .Where(Function(t) t.dist < 5) _
             .Select(Function(d) d.bound) _
             .ToArray
         Dim directions As New List(Of QuadrantRegions)
@@ -80,10 +80,11 @@ Module LabelHtml
         Dim right As TextString() = TextAPI _
             .TryParse(html.left, atomFont, color) _
             .ToArray
+        Dim dir As QuadrantRegions = pt.getDrawDirection(bounds)
 
         ' pt是原子基团的位置, 相当于坐标轴的原点
         ' 则绘制的时候则是绘制在象限相反的位置
-        Select Case pt.getDrawDirection(bounds)
+        Select Case dir
 
             Case QuadrantRegions.LeftBottom
                 ' 左下角, 则标签应该绘制在右边 
@@ -149,6 +150,7 @@ Module LabelHtml
                 Throw New NotImplementedException(label)
         End Select
 
+        Call g.DrawString(dir.ToString, New Font(FontFace.MicrosoftYaHei, 16), Brushes.Green, pt.ToPoint)
         Call HTMLRender.RenderHTML(g, content, pt.ToPoint)
     End Sub
 End Module

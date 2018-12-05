@@ -202,27 +202,30 @@ Public Module Canvas
             Dim la As PointF = a
             Dim lb As PointF = b
             Dim penColor As Brush
-            Dim aNotCarbon As Boolean = False
-            Dim bNotCarbon As Boolean = False
 
             If U.atom.Atom <> "C" Then
                 penColor = theme.GetBrush(U.atom.Atom)
-                aNotCarbon = True
             ElseIf V.atom.Atom <> "C" Then
                 penColor = theme.GetBrush(V.atom.Atom)
-                bNotCarbon = True
             Else
                 penColor = Brushes.Black
             End If
 
-            boundsPen.Brush = penColor
+            Dim t = 1
 
-            If aNotCarbon Then
+            If U.atom.Atom <> "C" Then
                 la = New Line2D(la, lb).LengthVariationFromPointA(-maxSize / 3).A
+                t = 1.5
             End If
-            If bNotCarbon Then
-                lb = New Line2D(la, lb).LengthVariationFromPointB(-maxSize / 3).B
+            If V.atom.Atom <> "C" Then
+                If t > 1 Then
+                    lb = New Line2D(la, lb).LengthVariationFromPointB(-maxSize / 8).B
+                Else
+                    lb = New Line2D(la, lb).LengthVariationFromPointB(-maxSize / 3).B
+                End If
             End If
+
+            boundsPen.Brush = penColor
 
             If bound.dimentional_levels.StringEmpty Then
                 Dim line As New Line2D(la, lb) With {
