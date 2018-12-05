@@ -143,49 +143,9 @@ Public Module Canvas
                 Dim centra As PointF = atoms _
                     .Select(Function(a) a.pt) _
                     .CentralOffset(region.Size)
-                Dim layoutElements As New List(Of Line2D)
-
-                For Each bound As Bound In kcf.Bounds
-                    Dim U = atoms(bound.from - 1)
-                    Dim V = atoms(bound.to - 1)
-                    Dim a = U.pt.OffSet2D(centra)
-                    Dim b = V.pt.OffSet2D(centra)
-                    Dim penColor As Brush
-
-                    If U.atom.Atom <> "C" Then
-                        penColor = theme.GetBrush(U.atom.Atom)
-                    ElseIf V.atom.Atom <> "C" Then
-                        penColor = theme.GetBrush(V.atom.Atom)
-                    Else
-                        penColor = Brushes.Black
-                    End If
-
-                    boundsPen.Brush = penColor
-
-                    If bound.dimentional_levels.StringEmpty Then
-                        Dim line As New Line2D(a, b) With {
-                            .Stroke = boundsPen
-                        }
-
-                        If bound.bounds > 1 Then
-                            Call g.drawParallelLines(bound, line)
-                        Else
-                            Call line.Draw(g)
-                        End If
-
-                        layoutElements += line
-                    Else
-                        If bound.dimentional_levels = "#Up" Then
-                            Call UpArrow(a, b, boundsPen.Width * 2)(g, penColor)
-                        ElseIf bound.dimentional_levels = "#Down" Then
-                            Call DownArrow(a, b, boundsPen.Width * 2)(g, boundsPen)
-                        Else
-                            Call throwHelper(kcf.Entry.Id, bound)
-                        End If
-
-                        layoutElements += New Line2D(a, b)
-                    End If
-                Next
+                Dim layoutElements As Line2D() = kcf _
+                    .drawBoundsConnection(atoms, centra, theme, boundsPen, g) _
+                    .ToArray
 
                 For Each atom As (pt As PointF, atom As Atom) In atoms
                     With atom
@@ -212,6 +172,63 @@ Public Module Canvas
         )
     End Function
 
+    ''' <summary>
+    ''' 首先绘制原子基团之间的边链接
+    ''' </summary>
+    ''' <param name="kcf"></param>
+    ''' <param name="atoms"></param>
+    ''' <param name="centra"></param>
+    ''' <returns></returns>
+    <Extension>
+    Private Iterator Function drawBoundsConnection(kcf As KCF,
+                                                   atoms As (pt As PointF, atom As Atom)(),
+                                                   centra As PointF,
+                                                   theme As KCFBrush,
+                                                   boundsPen As Pen,
+                                                   g As IGraphics) As IEnumerable(Of Line2D)
+        For Each bound As Bound In kcf.Bounds
+            Dim U = atoms(bound.from - 1)
+            Dim V = atoms(bound.to - 1)
+            Dim a = U.pt.OffSet2D(centra)
+            Dim b = V.pt.OffSet2D(centra)
+            Dim penColor As Brush
+
+            If U.atom.Atom <> "C" Then
+                penColor = theme.GetBrush(U.atom.Atom)
+            ElseIf V.atom.Atom <> "C" Then
+                penColor = theme.GetBrush(V.atom.Atom)
+            Else
+                penColor = Brushes.Black
+            End If
+
+            boundsPen.Brush = penColor
+
+            If bound.dimentional_levels.StringEmpty Then
+                Dim line As New Line2D(a, b) With {
+                    .Stroke = boundsPen
+                }
+
+                If bound.bounds > 1 Then
+                    Call g.drawParallelLines(bound, line)
+                Else
+                    Call line.Draw(g)
+                End If
+
+                Yield line
+            Else
+                If bound.dimentional_levels = "#Up" Then
+                    Call UpArrow(a, b, boundsPen.Width * 2)(g, penColor)
+                ElseIf bound.dimentional_levels = "#Down" Then
+                    Call DownArrow(a, b, boundsPen.Width * 2)(g, boundsPen)
+                Else
+                    Call throwHelper(kcf.Entry.Id, bound)
+                End If
+
+                Yield New Line2D(a, b)
+            End If
+        Next
+    End Function
+
     Private Sub throwHelper(entryID$, bound As Bound)
         Dim ex As New NotImplementedException(bound.GetJson)
         Throw New NotImplementedException(entryID, ex)
@@ -224,7 +241,7 @@ Public Module Canvas
                                       theme As KCFBrush,
                                       atomFont As Font,
                                       background As Brush,
-                                      conflictions As List(Of Line2D))
+                                      conflictions As Line2D())
 
         Dim pt As PointF = atomPt.OffSet2D(centra)
         Dim label$ = atom.GetLabel
