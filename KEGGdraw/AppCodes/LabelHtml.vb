@@ -74,18 +74,39 @@ Module LabelHtml
         Dim html = LabelHtml.GetHtmlTuple(label)
         Dim color As Color = brush.Color
         Dim content As TextString()
+        Dim left As TextString() = TextAPI _
+            .TryParse(html.right, atomFont, color) _
+            .ToArray
+        Dim right As TextString() = TextAPI _
+            .TryParse(html.left, atomFont, color) _
+            .ToArray
 
         ' pt是原子基团的位置, 相当于坐标轴的原点
         ' 则绘制的时候则是绘制在象限相反的位置
         Select Case pt.getDrawDirection(bounds)
 
-            Case QuadrantRegions.LeftBottom, QuadrantRegions.XLeft, QuadrantRegions.LeftTop
-                ' 左下角,左边,左上角,则标签应该绘制在右边
+            Case QuadrantRegions.LeftBottom
+                ' 左下角, 则标签应该绘制在右边 
+                content = left
+                pt = New PointF With {
+                    .X = pt.X - singleCharSize.Width / 2,
+                    .Y = pt.Y
+                }
+
+            Case QuadrantRegions.LeftTop
+                content = left
+                pt = New PointF With {
+                    .X = pt.X - singleCharSize.Width / 3,
+                    .Y = pt.Y
+                }
+
+            Case QuadrantRegions.XLeft
+                ' 左边,左上角,则标签应该绘制在右边
                 content = TextAPI _
                     .TryParse(html.right, atomFont, color) _
                     .ToArray
                 pt = New PointF With {
-                    .X = pt.X + singleCharSize.Width / 2,
+                    .X = pt.X,
                     .Y = pt.Y - singleCharSize.Height / 2
                 }
             Case QuadrantRegions.YTop
@@ -95,27 +116,34 @@ Module LabelHtml
                     .ToArray
                 pt = New PointF With {
                     .X = pt.X - singleCharSize.Width / 2,
-                    .Y = pt.Y + singleCharSize.Height / 2
+                    .Y = pt.Y
                 }
             Case QuadrantRegions.YBottom
                 ' 垂直下方,则标签应该绘制在上方
-                content = TextAPI _
-                    .TryParse(html.right, atomFont, color) _
-                    .ToArray
+                content = left
                 pt = New PointF With {
                     .X = pt.X - singleCharSize.Width / 2,
-                    .Y = pt.Y - singleCharSize.Height * 1.25
+                    .Y = pt.Y - singleCharSize.Height
                 }
-            Case QuadrantRegions.XRight, QuadrantRegions.RightTop, QuadrantRegions.RightBottom
-                ' 右边,右上角和右下角,则标签应该绘制在左边
-                content = TextAPI _
-                    .TryParse(html.left, atomFont, color) _
-                    .ToArray
-                Dim htmlSize As SizeF = g.MeasureSize(content)
+            Case QuadrantRegions.XRight, QuadrantRegions.RightBottom
+                ' 右边,和右下角,则标签应该绘制在左边
+                Dim htmlSize As SizeF = g.MeasureSize(right)
+
                 pt = New PointF With {
                     .X = pt.X - htmlSize.Width,
                     .Y = pt.Y - singleCharSize.Height / 2
                 }
+                content = right
+
+            Case QuadrantRegions.RightTop
+                ' 右上角
+                Dim htmlSize As SizeF = g.MeasureSize(right)
+
+                pt = New PointF With {
+                    .X = pt.X - htmlSize.Width + singleCharSize.Width / 3,
+                    .Y = pt.Y
+                }
+                content = right
 
             Case Else
                 Throw New NotImplementedException(label)
