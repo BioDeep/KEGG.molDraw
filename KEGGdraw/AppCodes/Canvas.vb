@@ -49,13 +49,10 @@ Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Shapes
-Imports Microsoft.VisualBasic.Imaging.Drawing2D.Text
 Imports Microsoft.VisualBasic.Imaging.Driver
-Imports Microsoft.VisualBasic.Imaging.LayoutModel
 Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
-Imports Microsoft.VisualBasic.MIME.Markup.HTML
 Imports Microsoft.VisualBasic.MIME.Markup.HTML.CSS
 Imports Microsoft.VisualBasic.Scripting.Runtime
 Imports Microsoft.VisualBasic.Serialization.JSON
@@ -238,43 +235,11 @@ Public Module Canvas
         Dim atomLabelLayout As RectangleF
         Dim left, top As Single
 
-        With g.MeasureString(label, atomFont)
-            If label.Length > 1 Then
+        If label.Length > 1 Then
+            Call g.DrawHtmlLabel(label, atomFont, brush, pt, conflictions)
+        Else
+            With g.MeasureString(label, atomFont)
 
-                ' 处理比较复杂的原子团标签的绘制布局
-                Dim singleCharSize As SizeF = g.MeasureString("A", atomFont)
-                Dim html = LabelHtml.GetHtmlTuple(label)
-                Dim color As Color = brush.Color
-                Dim content As TextString() = TextAPI _
-                    .TryParse(html.right, atomFont, color) _
-                    .ToArray
-                Dim htmlSize As SizeF = g.MeasureSize(content)
-                ' 首先计算从左往右的顺序
-                Dim layout As New Rectangle2D(
-                    pt.X - singleCharSize.Width / 2,
-                    pt.Y - .Height,
-                    htmlSize.Width,
-                    htmlSize.Height
-                )
-
-                If conflictions _
-                    .Any(Function(line)
-                             Return Not line.GetIntersectLocation(layout) Is Nothing
-                         End Function) Then
-                    ' 存在冲突，则反过来，从右到左
-                    content = TextAPI _
-                        .TryParse(html.left, atomFont, color) _
-                        .ToArray
-                    layout = New Rectangle2D(
-                        pt.X - .Width + singleCharSize.Width / 2,
-                        pt.Y - .Height,
-                        htmlSize.Width,
-                        htmlSize.Height
-                    )
-                End If
-
-                Call HTMLRender.RenderHTML(g, content, layout.Point)
-            Else
                 ' 只有一个原子标签的情况
                 ' 在该原子的位置上面居中显示
                 pt = New PointF(pt.X - .Width / 2, pt.Y - .Height / 2)
@@ -284,11 +249,11 @@ Public Module Canvas
                 layoutPoint = New PointF(left, top)
                 layoutSize = New SizeF(labelSize / 2, labelSize / 2)
                 atomLabelLayout = New RectangleF(layoutPoint, layoutSize)
+            End With
 
-                Call g.FillEllipse(background, atomLabelLayout)
-                Call g.DrawString(label, atomFont, brush, pt)
-            End If
-        End With
+            Call g.FillEllipse(background, atomLabelLayout)
+            Call g.DrawString(label, atomFont, brush, pt)
+        End If
     End Sub
 
     ''' <summary>
