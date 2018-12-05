@@ -67,10 +67,10 @@ Module LabelHtml
     <Extension>
     Public Sub DrawHtmlLabel(g As IGraphics, label$, atomFont As Font, brush As SolidBrush,
                              pt As PointF,
-                             bounds As Line2D())
+                             bounds As Line2D(),
+                             charSize As SizeF)
 
         ' 处理比较复杂的原子团标签的绘制布局
-        Dim singleCharSize As SizeF = g.MeasureString("A", atomFont)
         Dim html = LabelHtml.GetHtmlTuple(label)
         Dim color As Color = brush.Color
         Dim content As TextString()
@@ -89,14 +89,14 @@ Module LabelHtml
                 ' 左下角, 则标签应该绘制在右边 
                 content = left
                 pt = New PointF With {
-                    .X = pt.X - singleCharSize.Width / 2,
+                    .X = pt.X - charSize.Width / 2,
                     .Y = pt.Y
                 }
 
             Case QuadrantRegions.LeftTop
                 content = left
                 pt = New PointF With {
-                    .X = pt.X - singleCharSize.Width / 3,
+                    .X = pt.X - charSize.Width / 3,
                     .Y = pt.Y
                 }
 
@@ -107,7 +107,7 @@ Module LabelHtml
                     .ToArray
                 pt = New PointF With {
                     .X = pt.X,
-                    .Y = pt.Y - singleCharSize.Height / 2
+                    .Y = pt.Y - charSize.Height / 2
                 }
             Case QuadrantRegions.YTop
                 ' 垂直上方,则标签应该绘制在下方
@@ -115,15 +115,15 @@ Module LabelHtml
                     .TryParse(html.right, atomFont, color) _
                     .ToArray
                 pt = New PointF With {
-                    .X = pt.X - singleCharSize.Width / 2,
+                    .X = pt.X - charSize.Width / 2,
                     .Y = pt.Y
                 }
             Case QuadrantRegions.YBottom
                 ' 垂直下方,则标签应该绘制在上方
                 content = left
                 pt = New PointF With {
-                    .X = pt.X - singleCharSize.Width / 2,
-                    .Y = pt.Y - singleCharSize.Height
+                    .X = pt.X - charSize.Width / 2,
+                    .Y = pt.Y - charSize.Height
                 }
             Case QuadrantRegions.XRight, QuadrantRegions.RightBottom
                 ' 右边,和右下角,则标签应该绘制在左边
@@ -131,7 +131,7 @@ Module LabelHtml
 
                 pt = New PointF With {
                     .X = pt.X - htmlSize.Width,
-                    .Y = pt.Y - singleCharSize.Height / 2
+                    .Y = pt.Y - charSize.Height / 2
                 }
                 content = right
 
@@ -140,7 +140,7 @@ Module LabelHtml
                 Dim htmlSize As SizeF = g.MeasureSize(right)
 
                 pt = New PointF With {
-                    .X = pt.X - htmlSize.Width + singleCharSize.Width / 3,
+                    .X = pt.X - htmlSize.Width + charSize.Width / 3,
                     .Y = pt.Y
                 }
                 content = right

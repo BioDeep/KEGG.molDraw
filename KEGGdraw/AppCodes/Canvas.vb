@@ -49,6 +49,7 @@ Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Shapes
+Imports Microsoft.VisualBasic.Imaging.Drawing2D.Text.ASCIIArt
 Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Microsoft.VisualBasic.Language
@@ -133,6 +134,7 @@ Public Module Canvas
             Sub(ByRef g As IGraphics, region As GraphicsRegion)
                 Dim bounds = atoms.Select(Function(a) a.pt).GetBounds
                 Dim polygon As PointF() = atoms.getPolygon(scaleFactor, region, bounds)
+                Dim charSize As SizeF = g.GetGeneralSize("ABCDEFGHIJKLMNOPQRSTUVWXYZ", atomFont)
 
                 atoms = atoms _
                     .Select(Function(a, i)
@@ -144,7 +146,7 @@ Public Module Canvas
                     .Select(Function(a) a.pt) _
                     .CentralOffset(region.Size)
                 Dim layoutElements As Line2D() = kcf _
-                    .drawBoundsConnection(atoms, centra, theme, boundsPen, g) _
+                    .drawBoundsConnection(atoms, centra, theme, boundsPen, g, charSize) _
                     .ToArray
 
                 For Each atom As (pt As PointF, atom As Atom) In atoms
@@ -158,7 +160,8 @@ Public Module Canvas
                                 theme,
                                 atomFont,
                                 background,
-                                bounds:=layoutElements
+                                bounds:=layoutElements,
+                                charSize:=charSize
                             )
                         End If
                     End With
@@ -185,26 +188,42 @@ Public Module Canvas
                                                    centra As PointF,
                                                    theme As KCFBrush,
                                                    boundsPen As Pen,
-                                                   g As IGraphics) As IEnumerable(Of Line2D)
+                                                   g As IGraphics,
+                                                   charSize As SizeF) As IEnumerable(Of Line2D)
+        Dim maxSize! = {charSize.Width, charSize.Height}.Max
+
         For Each bound As Bound In kcf.Bounds
             Dim U = atoms(bound.from - 1)
             Dim V = atoms(bound.to - 1)
             Dim a = U.pt.OffSet2D(centra)
             Dim b = V.pt.OffSet2D(centra)
+            Dim la As PointF = a
+            Dim lb As PointF = b
             Dim penColor As Brush
+            Dim aNotCarbon As Boolean = False
+            Dim bNotCarbon As Boolean = False
 
             If U.atom.Atom <> "C" Then
                 penColor = theme.GetBrush(U.atom.Atom)
+                aNotCarbon = True
             ElseIf V.atom.Atom <> "C" Then
                 penColor = theme.GetBrush(V.atom.Atom)
+                bNotCarbon = True
             Else
                 penColor = Brushes.Black
             End If
 
             boundsPen.Brush = penColor
 
+            If aNotCarbon Then
+                la = New Line2D(la, lb).LengthVariationFromPointA(-maxSize / 2).A
+            End If
+            If bNotCarbon Then
+                lb = New Line2D(la, lb).LengthVariationFromPointB(-maxSize / 2).B
+            End If
+
             If bound.dimentional_levels.StringEmpty Then
-                Dim line As New Line2D(a, b) With {
+                Dim line As New Line2D(la, lb) With {
                     .Stroke = boundsPen
                 }
 
@@ -214,12 +233,12 @@ Public Module Canvas
                     Call line.Draw(g)
                 End If
 
-                Yield line
+                Yield New Line2D(a, b)
             Else
                 If bound.dimentional_levels = "#Up" Then
-                    Call UpArrow(a, b, boundsPen.Width * 2)(g, penColor)
+                    Call UpArrow(la, lb, boundsPen.Width * 2)(g, penColor)
                 ElseIf bound.dimentional_levels = "#Down" Then
-                    Call DownArrow(a, b, boundsPen.Width * 2)(g, boundsPen)
+                    Call DownArrow(la, lb, boundsPen.Width * 2)(g, boundsPen)
                 Else
                     Call throwHelper(kcf.Entry.Id, bound)
                 End If
@@ -241,34 +260,38 @@ Public Module Canvas
                                       theme As KCFBrush,
                                       atomFont As Font,
                                       background As Brush,
-                                      bounds As Line2D())
+                                      bounds As Line2D(),
+                                      charSize As SizeF)
 
         Dim pt As PointF = atomPt.OffSet2D(centra)
         Dim label$ = atom.GetLabel
         Dim brush As SolidBrush = theme.GetBrush(atom.Atom)
         Dim labelSize!
-        Dim layoutPoint As PointF
         Dim layoutSize As SizeF
         Dim atomLabelLayout As RectangleF
-        Dim left, top As Single
 
         If label.Length > 1 Then
-            Call g.DrawHtmlLabel(label, atomFont, brush, pt, bounds)
+            Call g.DrawHtmlLabel(label, atomFont, brush, pt, bounds, charSize)
         Else
             With g.MeasureString(label, atomFont)
+
+                Call $"Draw single: {label}=[{ .Width},{ .Height}]".__DEBUG_ECHO
 
                 ' 只有一个原子标签的情况
                 ' 在该原子的位置上面居中显示
                 pt = New PointF(pt.X - .Width / 2, pt.Y - .Height / 2)
-                labelSize = Math.Min(.Width, .Height)
-                left = pt.X + (.Width - labelSize) / 2
-                top = pt.Y + (.Height - labelSize) / 2
-                layoutPoint = New PointF(left, top)
-                layoutSize = New SizeF(labelSize / 2, labelSize / 2)
-                atomLabelLayout = New RectangleF(layoutPoint, layoutSize)
+                labelSize = Math.Max(.Width, .Height)
+                layoutSize = New SizeF(.Width, .Height)
+                atomLabelLayout = New RectangleF With {
+                    .Location = New PointF With {
+                        .X = pt.X + layoutSize.Width / 2,
+                        .Y = pt.Y + layoutSize.Height / 2
+                    },
+                    .Size = New SizeF(labelSize / 2, labelSize / 2)
+                }
             End With
-
-            Call g.FillEllipse(background, atomLabelLayout)
+            background = Brushes.Green
+            ' Call g.FillEllipse(background, atomLabelLayout)
             Call g.DrawString(label, atomFont, brush, pt)
         End If
     End Sub
