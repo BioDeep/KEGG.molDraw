@@ -55,7 +55,11 @@ Public Module IO
     ''' </summary>
     ''' <param name="stream$">Can be text data or file path</param>
     ''' <returns></returns>
-    <Extension> Public Function LoadKCF(stream$) As KCF
+    <Extension> Public Function LoadKCF(stream$, Optional throwEmpty As Boolean = True) As KCF
+        If stream.StringEmpty AndAlso throwEmpty Then
+            Throw New NoNullAllowedException("Data input can not be empty!")
+        End If
+
         If stream.FileExists Then
             stream = stream.ReadAllText Or die("No content data!")
         ElseIf Not stream.Match("http(s)?[:]//", RegexICSng).StringEmpty Then
