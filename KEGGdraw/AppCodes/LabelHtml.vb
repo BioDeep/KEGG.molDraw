@@ -2,7 +2,6 @@
 Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Text
-Imports Microsoft.VisualBasic.Imaging.LayoutModel
 Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.MIME.Markup.HTML
@@ -150,7 +149,6 @@ Module LabelHtml
                 Throw New NotImplementedException(label)
         End Select
 
-        Call g.DrawString(dir.ToString, New Font(FontFace.MicrosoftYaHei, 16), Brushes.Green, pt.ToPoint)
         Call HTMLRender.RenderHTML(g, content, pt.ToPoint)
     End Sub
 End Module

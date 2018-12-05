@@ -104,10 +104,10 @@ Public Module Canvas
     ''' </remarks>
     <Extension>
     Public Function Draw(kcf As KCF,
-                         Optional size$ = "2000,2000",
+                         Optional size$ = "2700,2100",
                          Optional padding$ = g.DefaultPadding,
                          Optional bg$ = "white",
-                         Optional font$ = "font-style: strong; font-size: 72; font-family: " & FontFace.MicrosoftYaHei & ";",
+                         Optional font$ = "font-style: strong; font-size: 72; font-family: " & FontFace.SegoeUI & ";",
                          Optional scaleFactor# = 0.85,
                          Optional boundStroke$ = "stroke: black; stroke-width: 15px; stroke-dash: solid;",
                          Optional monoColour As Boolean = False,
@@ -387,7 +387,7 @@ Public Module Canvas
         Dim lines As New List(Of PointF)
         Dim len% = l.Length
 
-        For x As Double = 0 To len Step (len / 5)
+        For x As Double = 0 To len Step (len / 8)
             Dim a1 As New PointF(x, line1(x))
             Dim b1 As New PointF(x, line2(x))
 
