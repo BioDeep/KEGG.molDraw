@@ -107,7 +107,7 @@ Public Module Canvas
                          Optional size$ = "2700,2100",
                          Optional padding$ = g.DefaultPadding,
                          Optional bg$ = "white",
-                         Optional font$ = "font-style: strong; font-size: 72; font-family: " & FontFace.SegoeUI & ";",
+                         Optional font$ = "font-style: normal; font-size: 72; font-family: " & FontFace.SegoeUI & ";",
                          Optional scaleFactor# = 0.85,
                          Optional boundStroke$ = "stroke: black; stroke-width: 15px; stroke-dash: solid;",
                          Optional monoColour As Boolean = False,
