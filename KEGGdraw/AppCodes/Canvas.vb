@@ -158,7 +158,7 @@ Public Module Canvas
                                 theme,
                                 atomFont,
                                 background,
-                                conflictions:=layoutElements
+                                bounds:=layoutElements
                             )
                         End If
                     End With
@@ -241,7 +241,7 @@ Public Module Canvas
                                       theme As KCFBrush,
                                       atomFont As Font,
                                       background As Brush,
-                                      conflictions As Line2D())
+                                      bounds As Line2D())
 
         Dim pt As PointF = atomPt.OffSet2D(centra)
         Dim label$ = atom.GetLabel
@@ -253,7 +253,7 @@ Public Module Canvas
         Dim left, top As Single
 
         If label.Length > 1 Then
-            Call g.DrawHtmlLabel(label, atomFont, brush, pt, conflictions)
+            Call g.DrawHtmlLabel(label, atomFont, brush, pt, bounds)
         Else
             With g.MeasureString(label, atomFont)
 

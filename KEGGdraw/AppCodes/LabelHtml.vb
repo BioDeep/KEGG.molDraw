@@ -27,13 +27,13 @@ Module LabelHtml
     ''' <summary>
     ''' 处理比较复杂的原子团标签的绘制布局
     ''' </summary>
-    ''' <param name="conflictions">
+    ''' <param name="bounds">
     ''' a,b的位置都是原子基团的绘制位置
     ''' </param>
     <Extension>
     Public Sub DrawHtmlLabel(g As IGraphics, label$, atomFont As Font, brush As SolidBrush,
                              pt As PointF,
-                             conflictions As Line2D())
+                             bounds As Line2D())
 
         ' 处理比较复杂的原子团标签的绘制布局
         Dim singleCharSize As SizeF = g.MeasureString("A", atomFont)
@@ -51,7 +51,7 @@ Module LabelHtml
             htmlSize.Height
         )
 
-        If conflictions _
+        If bounds _
             .Any(Function(line)
                      Return Not line.GetIntersectLocation(layout) Is Nothing
                  End Function) Then
