@@ -21,12 +21,18 @@ Module LabelHtml
             Case "OH"
                 Return ("HO", "OH")
             Case Else
-                If Strings.Len(label) = 2 AndAlso Char.IsUpper(label(0)) AndAlso Char.IsLower(label(1)) Then
+                If label.IsAtomLabel Then
                     Return (label, label)
                 Else
                     Throw New NotImplementedException($"Please add label for: [{label}]")
                 End If
         End Select
+    End Function
+
+    <MethodImpl(MethodImplOptions.AggressiveInlining)>
+    <Extension>
+    Public Function IsAtomLabel(label As String) As Boolean
+        Return Strings.Len(label) = 2 AndAlso Char.IsUpper(label(0)) AndAlso Char.IsLower(label(1))
     End Function
 
     <Extension>
@@ -150,7 +156,14 @@ Module LabelHtml
                 content = right
 
             Case Else
-                Throw New NotImplementedException(label)
+
+                ' 对于金属单质或者离子之类的,只有一个原子标签
+                ' 这个时候就直接绘制吧
+                If label.IsAtomLabel AndAlso dir = QuadrantRegions.Origin Then
+                    content = left
+                Else
+                    Throw New NotImplementedException($"[{dir.Description}] {label}")
+                End If
         End Select
 
         Call HTMLRender.RenderHTML(g, content, pt.ToPoint)
