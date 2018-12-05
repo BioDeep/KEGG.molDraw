@@ -245,7 +245,9 @@ Public Module Canvas
                 Dim singleCharSize As SizeF = g.MeasureString("A", atomFont)
                 Dim html = LabelHtml.GetHtmlTuple(label)
                 Dim color As Color = brush.Color
-                Dim content As TextString() = TextAPI.TryParse(html.right, atomFont, color)
+                Dim content As TextString() = TextAPI _
+                    .TryParse(html.right, atomFont, color) _
+                    .ToArray
                 Dim htmlSize As SizeF = g.MeasureSize(content)
                 ' 首先计算从左往右的顺序
                 Dim layout As New Rectangle2D(
@@ -260,7 +262,9 @@ Public Module Canvas
                              Return Not line.GetIntersectLocation(layout) Is Nothing
                          End Function) Then
                     ' 存在冲突，则反过来，从右到左
-                    content = TextAPI.TryParse(html.left, atomFont, color)
+                    content = TextAPI _
+                        .TryParse(html.left, atomFont, color) _
+                        .ToArray
                     layout = New Rectangle2D(
                         pt.X - .Width + singleCharSize.Width / 2,
                         pt.Y - .Height,
