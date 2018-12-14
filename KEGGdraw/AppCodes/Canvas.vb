@@ -245,6 +245,8 @@ Public Module Canvas
                     Call UpArrow(la, lb, boundsPen.Width * 2)(g, penColor)
                 ElseIf bound.dimentional_levels = "#Down" Then
                     Call DownArrow(la, lb, boundsPen.Width * 1.25)(g, dashPen)
+                ElseIf bound.dimentional_levels = "#Either" Then
+                    Call ZigzagArrow(la, lb, boundsPen.Width * 1.25)(g, dashPen)
                 Else
                     Call throwHelper(kcf.Entry.Id, bound)
                 End If
@@ -296,8 +298,7 @@ Public Module Canvas
                     .Size = New SizeF(labelSize / 2, labelSize / 2)
                 }
             End With
-            background = Brushes.Green
-            ' Call g.FillEllipse(background, atomLabelLayout)
+
             Call g.DrawString(label, atomFont, brush, pt)
         End If
     End Sub
@@ -359,6 +360,53 @@ Public Module Canvas
                        Call g.FillPath(br, .Path)
                    End Sub
         End With
+    End Function
+
+    ''' <summary>
+    ''' 折线箭头
+    ''' </summary>
+    ''' <param name="a"></param>
+    ''' <param name="b"></param>
+    ''' <param name="c%"></param>
+    ''' <returns></returns>
+    Public Function ZigzagArrow(a As PointF, b As PointF, c%) As Action(Of IGraphics, Pen)
+        ' 线段长度
+        Dim l As New Line2D(a, b)
+        ' 顶点， 底端1， 底端2
+        Dim vetx As PointF() = Arrow.ArrowHead(c, l.Length)
+        Dim line1 As fx = PrimitiveLinearEquation(vetx(0), vetx(1))
+        Dim line2 As fx = PrimitiveLinearEquation(vetx(0), vetx(2))
+        Dim lines As New List(Of PointF)
+        Dim len% = l.Length
+        Dim previous As New PointF(0, line1(0))
+        Dim t As Boolean = True
+
+        ' 在这里构建Z字型的折线链接
+        For x As Double = 0 To len Step (len / 10)
+            Dim a1 As New PointF(x, line1(x))
+            Dim b1 As New PointF(x, line2(x))
+
+            If t Then
+                lines += {previous, a1}
+                previous = a1
+            Else
+                lines += {previous, b1}
+                previous = b1
+            End If
+
+            t = Not t
+        Next
+
+        ' 对所构成的新的shape进行旋转和位移即可
+        Return Sub(g, pen)
+                   For Each line As PointF() In lines _
+                       .Rotate(-l.Alpha - Math.PI) _
+                       .MoveTo(l.Center, MoveTypes.PolygonCentre) _
+                       .Split(2)
+
+                       Call g.DrawLine(pen, line(0), line(1))
+                   Next
+               End Sub
     End Function
 
     ''' <summary>
