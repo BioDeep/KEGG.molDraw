@@ -154,17 +154,23 @@ Public Module Canvas
                     With atom
                         ' 只显示出非碳原子的标签
                         If .atom.Atom.TextEquals("C") Then
-                            Continue For
-                        Else
-                            Call g.drawLabel(
-                                .pt, .atom, centra,
-                                theme,
-                                atomFont,
-                                background,
-                                bounds:=layoutElements,
-                                charSize:=charSize
-                            )
+                            Select Case .atom.KEGGAtom.code
+                                Case "C1a"
+                                    ' CH3 
+                                    ' Go on
+                                Case Else
+                                    Continue For
+                            End Select
                         End If
+
+                        Call g.drawLabel(
+                            .pt, .atom, centra,
+                            theme,
+                            atomFont,
+                            background,
+                            bounds:=layoutElements,
+                            charSize:=charSize
+                        )
                     End With
                 Next
             End Sub
@@ -326,7 +332,11 @@ Public Module Canvas
     <MethodImpl(MethodImplOptions.AggressiveInlining)>
     <Extension>
     Private Function GetLabel(atom As Atom) As String
-        Return atom.KEGGAtom.view Or atom.Atom.AsDefault
+        If atom.Atom = "C" Then
+            Return atom.KEGGAtom.code
+        Else
+            Return atom.KEGGAtom.view Or atom.Atom.AsDefault
+        End If
     End Function
 
     ''' <summary>

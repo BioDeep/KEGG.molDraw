@@ -20,6 +20,8 @@ Module LabelHtml
                 Return ("H<sub>2</sub>N", "NH<sub>2</sub>")
             Case "OH"
                 Return ("HO", "OH")
+            Case "C1a"
+                Return ("H<sub>3</sub>C", "CH<sub>3</sub>")
             Case Else
                 If label.IsAtomLabel Then
                     Return (label, label)

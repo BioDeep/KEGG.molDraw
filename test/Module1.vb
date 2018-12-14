@@ -54,6 +54,8 @@ Module Module1
 
     Sub Main()
 
+        Call fixLabelTest()
+
         Call test2()
 
         '  Call layerSourceTest()
@@ -63,6 +65,13 @@ Module Module1
         Dim KCF = IO.LoadKCF("G:\MassSpectrum-toolkits\KCF\DATA\NADPH.txt")
         Dim g = KCF.Graph
 
+
+        Pause()
+    End Sub
+
+    Sub fixLabelTest()
+        Dim kcf = IO.LoadKCF("D:\MassSpectrum-toolkits\visual\KCF\DATA\CoA.txt")
+        Call kcf.Draw.Save("D:\MassSpectrum-toolkits\visual\KCF\DATA\CoA.png")
 
         Pause()
     End Sub
