@@ -54,6 +54,8 @@ Module Module1
 
     Sub Main()
 
+        Call test2()
+
         '  Call layerSourceTest()
         Call drawTest()
 
@@ -61,6 +63,13 @@ Module Module1
         Dim KCF = IO.LoadKCF("G:\MassSpectrum-toolkits\KCF\DATA\NADPH.txt")
         Dim g = KCF.Graph
 
+
+        Pause()
+    End Sub
+
+    Sub test2()
+        Dim kcf = IO.LoadKCF("D:\MassSpectrum-toolkits\visual\KCF\DATA\C06599.txt")
+        Call kcf.Draw.Save("D:\MassSpectrum-toolkits\visual\KCF\DATA\C06599.png")
 
         Pause()
     End Sub

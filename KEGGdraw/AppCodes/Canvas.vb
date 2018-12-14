@@ -246,7 +246,7 @@ Public Module Canvas
                 ElseIf bound.dimentional_levels = "#Down" Then
                     Call DownArrow(la, lb, boundsPen.Width * 1.25)(g, dashPen)
                 ElseIf bound.dimentional_levels = "#Either" Then
-                    Call ZigzagArrow(la, lb, boundsPen.Width * 1.25)(g, dashPen)
+                    Call ZigzagArrow(la, lb, boundsPen.Width * 2.5)(g, dashPen)
                 Else
                     Call throwHelper(kcf.Entry.Id, bound)
                 End If
@@ -382,7 +382,7 @@ Public Module Canvas
         Dim t As Boolean = True
 
         ' 在这里构建Z字型的折线链接
-        For x As Double = 0 To len Step (len / 10)
+        For x As Double = 0 To len Step (len / 15)
             Dim a1 As New PointF(x, line1(x))
             Dim b1 As New PointF(x, line2(x))
 
