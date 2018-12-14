@@ -54,9 +54,9 @@ Module Module1
 
     Sub Main()
 
-        Call fixLabelTest()
+        'Call fixLabelTest()
 
-        Call test2()
+        ' Call test2()
 
         '  Call layerSourceTest()
         Call drawTest()
