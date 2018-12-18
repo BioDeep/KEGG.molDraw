@@ -47,6 +47,31 @@ Imports Microsoft.VisualBasic.Language.UnixBash
 
 Public Module Extensions
 
+    ReadOnly atoms$() = KegAtomType.KEGGAtomTypes.Keys.ToArray
+
+    ''' <summary>
+    ''' KEGG KCF molecular strucutre model to regression model factors.
+    ''' </summary>
+    ''' <param name="KCF"></param>
+    ''' <returns>Regression model factors</returns>
+    <Extension>
+    Public Function KCFComposition(KCF As KCF) As Dictionary(Of String, Double)
+        Dim table = KCF.Atoms _
+            .GroupBy(Function(a)
+                         Return a.KEGGAtom.code
+                     End Function) _
+            .ToDictionary(Function(a) a.Key,
+                          Function(a) CDbl(a.Count))
+
+        For Each code As String In atoms
+            If Not table.ContainsKey(code) Then
+                table(code) = 0
+            End If
+        Next
+
+        Return table
+    End Function
+
     ''' <summary>
     ''' 
     ''' </summary>
@@ -63,5 +88,7 @@ Public Module Extensions
             .Where(Function(file) file.FileLength > 0) _
             .Select(AddressOf LoadKCF)
     End Function
+
+
 End Module
 
