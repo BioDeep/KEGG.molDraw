@@ -12,7 +12,7 @@ Imports Microsoft.VisualBasic.ApplicationServices
 '  // 
 '  // 
 '  // VERSION:   1.0.0.*
-'  // COPYRIGHT: Copyright c  2017
+'  // COPYRIGHT: Copyright © gg.xie@bionovogene.com 2019
 '  // GUID:      7363f587-3c76-4d5e-b95c-36be7d823064
 '  // 
 ' 

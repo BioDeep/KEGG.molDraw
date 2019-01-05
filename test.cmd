@@ -1,0 +1,1 @@
+"./app/KEGGdraw.exe" /draw.kcf /in "DATA\L-Citrulline.txt" /transparent /corp 
