@@ -45,13 +45,13 @@
 Imports System.ComponentModel
 Imports System.Drawing
 Imports System.Runtime.CompilerServices
+Imports BioNovoGene.BioDeep.Chemistry.Model
 Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.InteropService.SharedORM
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.BitmapImage
 Imports Microsoft.VisualBasic.Language.UnixBash
-Imports SMRUCC.Chemistry.Model
 
 <CLI> Module CLI
 
