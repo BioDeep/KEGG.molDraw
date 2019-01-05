@@ -10,9 +10,9 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("KEGGdraw")>
 <Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyCompany("BioNovoGene")>
 <Assembly: AssemblyProduct("BioDeep")>
-<Assembly: AssemblyCopyright("Copyright © xieguigang 2018")>
+<Assembly: AssemblyCopyright("Copyright © gg.xie@bionovogene.com 2019")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>

@@ -8,12 +8,12 @@ Imports System.Runtime.InteropServices
 
 ' 檢閱組件屬性的值
 
-<Assembly: AssemblyTitle("KCF.Graph")>
+<Assembly: AssemblyTitle("KCF Graph Model")>
 <Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("HP Inc.")>
+<Assembly: AssemblyCompany("BioNovoGene")>
 <Assembly: AssemblyProduct("KCF.Graph")>
-<Assembly: AssemblyCopyright("Copyright © HP Inc. 2017")>
-<Assembly: AssemblyTrademark("")>
+<Assembly: AssemblyCopyright("Copyright © MIT Licensed. 2019")>
+<Assembly: AssemblyTrademark("BioDeep")>
 
 <Assembly: ComVisible(False)>
 
