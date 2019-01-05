@@ -1,5 +1,7 @@
 # KEGG.molDraw
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2532222.svg)](https://doi.org/10.5281/zenodo.2532222)
+
 Drawing chemical compound structures and glycan structures with capabilities to search against the KEGG databases
 
 ![](AppScreen.png)
