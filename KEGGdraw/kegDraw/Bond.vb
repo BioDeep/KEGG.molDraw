@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::3239346520e31de23f484aadc62aa170, KCF\KEGGdraw\kegDraw\Bond.vb"
+﻿#Region "Microsoft.VisualBasic::34c3f9666d349992f50d28bae507af7b, KCF\KEGGdraw\kegDraw\Bond.vb"
 
     ' Author:
     ' 
@@ -725,4 +725,3 @@ Namespace keg.compound
         End Property
     End Class
 End Namespace
-

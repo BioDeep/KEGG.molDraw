@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::42d7f3bca20cb663384734bc368121bd, KCF\KEGGdraw\kegDraw\Bracket.vb"
+﻿#Region "Microsoft.VisualBasic::a9361d167aa523cb01d43726aafd2c95, KCF\KEGGdraw\kegDraw\Bracket.vb"
 
     ' Author:
     ' 
@@ -1289,4 +1289,3 @@ Namespace keg.compound
 
     End Class
 End Namespace
-

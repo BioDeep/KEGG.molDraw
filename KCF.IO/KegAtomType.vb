@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::72b4b6c8fdc6f3e650d0d28eba084d0e, KCF\KCF.IO\KegAtomType.vb"
+﻿#Region "Microsoft.VisualBasic::f638deb46d96bc2114b0e98a56779462, KCF\KCF.IO\KegAtomType.vb"
 
     ' Author:
     ' 
@@ -168,4 +168,3 @@ Public Structure KegAtomType
         Return [Enum].Parse(GetType(Types), s)
     End Function
 End Structure
-

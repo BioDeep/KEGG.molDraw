@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::c0b7dd02e522bfbf5d8e4d6c9325b994, KCF\KEGGdraw\kegDraw\Molecule.vb"
+﻿#Region "Microsoft.VisualBasic::2f8614d59bae49987d03d50e783dc2da, KCF\KEGGdraw\kegDraw\Molecule.vb"
 
     ' Author:
     ' 
@@ -1878,4 +1878,3 @@ Namespace keg.compound
     '	 
 
 End Namespace
-

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::e93caf86bf67021ebb93422c29b629e9, KCF\KEGGdraw\kegDraw\Text.vb"
+﻿#Region "Microsoft.VisualBasic::78d873fea33955f7fac2438738272f13, KCF\KEGGdraw\kegDraw\Text.vb"
 
     ' Author:
     ' 
@@ -193,4 +193,3 @@ Namespace keg.compound
 '	 
 
 End Namespace
-

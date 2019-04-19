@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::b3ee13a87192cde5b4fe9036a465691c, KCF\KEGGdraw\kegDraw\DEBTPreference.vb"
+﻿#Region "Microsoft.VisualBasic::8c3947ada120eb15c0926b1797328178, KCF\KEGGdraw\kegDraw\DEBTPreference.vb"
 
     ' Author:
     ' 
@@ -43,7 +43,6 @@
     ' /********************************************************************************/
 
 #End Region
-
 
 Namespace keg.compound
 
@@ -92,4 +91,3 @@ Namespace keg.compound
 '	 
 
 End Namespace
-

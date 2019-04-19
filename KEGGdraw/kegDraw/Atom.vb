@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::b88ef67f65a10891afeee488d76717c9, KCF\KEGGdraw\kegDraw\Atom.vb"
+﻿#Region "Microsoft.VisualBasic::2fda5b453e64c870a177372a702cb6d1, KCF\KEGGdraw\kegDraw\Atom.vb"
 
     ' Author:
     ' 
@@ -1027,4 +1027,3 @@ Namespace keg.compound
         End Function
     End Class
 End Namespace
-

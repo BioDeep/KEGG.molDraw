@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::8b13f0eb7ff99d7d1bbe60123952d8d0, KCF\KCF.Graph\Cluster.vb"
+﻿#Region "Microsoft.VisualBasic::e271200dbc1ea3aec2d987a7a1b4f612, KCF\KCF.Graph\Cluster.vb"
 
     ' Author:
     ' 
@@ -116,4 +116,3 @@ Public Module Cluster
         End With
     End Function
 End Module
-

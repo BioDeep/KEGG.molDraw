@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::9089980e726f0c1cf468d11d028357e4, KCF\KCF.Graph\test\Module1.vb"
+﻿#Region "Microsoft.VisualBasic::0ab0d4b36ad8e97bb95af4c2e8b31223, KCF\KCF.Graph\test\Module1.vb"
 
     ' Author:
     ' 
@@ -80,4 +80,3 @@ Module Module1
         Pause()
     End Sub
 End Module
-

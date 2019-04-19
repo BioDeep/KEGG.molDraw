@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::4310a3e008daadfff00aac3f4638ccc2, KCF\KCF.IO\Extensions.vb"
+﻿#Region "Microsoft.VisualBasic::1f57e5ba281e45e5a59e7a4e401125f1, KCF\KCF.IO\Extensions.vb"
 
     ' Author:
     ' 
@@ -36,7 +36,7 @@
 
     ' Module Extensions
     ' 
-    '     Function: ScanDirectory
+    '     Function: KCFComposition, ScanDirectory
     ' 
     ' /********************************************************************************/
 
@@ -91,4 +91,3 @@ Public Module Extensions
 
 
 End Module
-

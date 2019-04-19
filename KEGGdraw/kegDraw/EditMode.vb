@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::a7e3e406f984af9cc06f16114a721899, KCF\KEGGdraw\kegDraw\EditMode.vb"
+﻿#Region "Microsoft.VisualBasic::fadb24e1524c1fc760e7adb58318a366, KCF\KEGGdraw\kegDraw\EditMode.vb"
 
     ' Author:
     ' 
@@ -1027,4 +1027,3 @@ Namespace keg.compound
         End Function
     End Class
 End Namespace
-

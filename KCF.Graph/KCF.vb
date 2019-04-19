@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::c03a4727e2b515f976d7cb726dfaaf13, KCF\KCF.Graph\KCF.vb"
+﻿#Region "Microsoft.VisualBasic::cccfe22e4aea3215afdd476872a49876, KCF\KCF.Graph\KCF.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,6 @@
     ' /********************************************************************************/
 
 #End Region
-
 
 Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.ComponentModel.Collection
@@ -108,4 +107,3 @@ Public Module KCF
         Return g
     End Function
 End Module
-

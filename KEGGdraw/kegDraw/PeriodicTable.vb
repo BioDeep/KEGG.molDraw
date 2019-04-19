@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::ecf239541f467c6efc4a675b031dcfa9, KCF\KEGGdraw\kegDraw\PeriodicTable.vb"
+﻿#Region "Microsoft.VisualBasic::f432cda0f29c6a5d5b1cae12fbfa117c, KCF\KEGGdraw\kegDraw\PeriodicTable.vb"
 
     ' Author:
     ' 
@@ -44,7 +44,6 @@
     ' /********************************************************************************/
 
 #End Region
-
 
 Namespace keg.compound
 
@@ -96,4 +95,3 @@ Namespace keg.compound
 '	 
 
 End Namespace
-

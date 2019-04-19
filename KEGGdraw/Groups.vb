@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::456cab7a25f6ee8f7fded97d22cf8fb7, KCF\KEGGdraw\Groups.vb"
+﻿#Region "Microsoft.VisualBasic::3968e7431d269c3dfc6929be43cb8b72, KCF\KEGGdraw\Groups.vb"
 
     ' Author:
     ' 
@@ -48,4 +48,3 @@ Public Class Groups
     Public Const KegDatabase$ = "KEGG database tool"
 
 End Class
-

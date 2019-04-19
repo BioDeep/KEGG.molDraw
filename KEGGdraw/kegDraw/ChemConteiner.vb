@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::58e7568ff2459a28f9b4e069cb160c82, KCF\KEGGdraw\kegDraw\ChemConteiner.vb"
+﻿#Region "Microsoft.VisualBasic::2eb1295f6ec6b553d0705fd3ddbc278d, KCF\KEGGdraw\kegDraw\ChemConteiner.vb"
 
     ' Author:
     ' 
@@ -118,4 +118,3 @@ Namespace keg.compound
         End Function
     End Class
 End Namespace
-
