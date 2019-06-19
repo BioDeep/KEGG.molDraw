@@ -51,9 +51,16 @@ Imports Microsoft.VisualBasic.Language
 ''' <summary>
 ''' The KCF network graph extension
 ''' </summary>
-Public Module KCF
+''' 
+<HideModuleName> Public Module KCF
 
-    <Extension> Public Function Graph(KCF As Model.KCF) As NetworkGraph
+    ''' <summary>
+    ''' Create network graph model from KCF molecule model
+    ''' </summary>
+    ''' <param name="KCF"></param>
+    ''' <returns></returns>
+    <Extension>
+    Public Function CreateGraph(KCF As Model.KCF) As NetworkGraph
         Dim g As New NetworkGraph
         Dim node As Node
         Dim point As FDGVector2
