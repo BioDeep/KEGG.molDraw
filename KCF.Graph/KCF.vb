@@ -80,7 +80,7 @@ Imports Microsoft.VisualBasic.Language
         Next
 
         ' key by node.label
-        Dim nodes As Dictionary(Of Node) = g.nodes.ToDictionary()
+        Dim nodes As Dictionary(Of Node) = g.vertex.ToDictionary()
         Dim a, b As String
         Dim edge As Edge
         Dim length#
