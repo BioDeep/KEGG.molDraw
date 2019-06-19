@@ -79,8 +79,8 @@ Public Module Cluster
         Return template.AsNumeric.Takes(atoms).AsVector
     End Function
 
-    ReadOnly KCFAtomVectorCos As New DefaultValue(Of ISimilarity(Of Vector))(Function(a, b) SSM(a, b))
-    ReadOnly GetKCFAtomVector As New DefaultValue(Of Func(Of Model.KCF, Vector))(AddressOf KCFAtomVector)
+    ReadOnly KCFAtomVectorCos As New [Default](Of ISimilarity(Of Vector))(Function(a, b) SSM(a, b))
+    ReadOnly GetKCFAtomVector As New [Default](Of Func(Of Model.KCF, Vector))(AddressOf KCFAtomVector)
 
     ''' <summary>
     ''' 利用二叉树对KCF模型之间的相似度进行聚类操作
