@@ -65,11 +65,12 @@ Imports Microsoft.VisualBasic.Language
         Dim node As Node
         Dim point As FDGVector2
 
-        For Each atom In KCF.Atoms
+        For Each atom As Atom In KCF.Atoms
             point = New FDGVector2(atom.Atom2D_coordinates.X, atom.Atom2D_coordinates.Y)
             node = New Node With {
-                .ID = "#" & atom.Index,
-                .Data = New NodeData With {
+                .ID = atom.Index,
+                .Label = $"#{atom.Index}",
+                .data = New NodeData With {
                     .label = atom.KEGGAtom.code,
                     .initialPostion = point
                 }
@@ -78,6 +79,7 @@ Imports Microsoft.VisualBasic.Language
             Call g.AddNode(node)
         Next
 
+        ' key by node.label
         Dim nodes As Dictionary(Of Node) = g.nodes.ToDictionary()
         Dim a, b As String
         Dim edge As Edge
@@ -91,8 +93,8 @@ Imports Microsoft.VisualBasic.Language
             node1 = nodes(a)
             node2 = nodes(b)
             length = Imaging.Math2D.Distance(
-                node1.Data.initialPostion.Point2D,
-                node2.Data.initialPostion.Point2D)
+                node1.data.initialPostion.Point2D,
+                node2.data.initialPostion.Point2D)
 
             label = $"{a} -> {b}" Or
                     $"{a} -> {b} ({bound.dimentional_levels})".When(Not bound.dimentional_levels.StringEmpty)
@@ -101,7 +103,7 @@ Imports Microsoft.VisualBasic.Language
                 .U = node1,
                 .V = node2,
                 .ID = label,
-                .Data = New EdgeData With {
+                .data = New EdgeData With {
                     .weight = bound.bounds,
                     .length = length,
                     .label = label
