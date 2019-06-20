@@ -58,7 +58,14 @@ Imports Microsoft.VisualBasic.Language
     ''' Create network graph model from KCF molecule model
     ''' </summary>
     ''' <param name="KCF"></param>
-    ''' <returns></returns>
+    ''' <returns>
+    ''' Some important data in this generated network graph model:
+    ''' 
+    ''' + bounds: edge.data.weight
+    ''' + atom code: node.data.label
+    ''' + bound length: edge.data.length
+    ''' 
+    ''' </returns>
     <Extension>
     Public Function CreateGraph(KCF As Model.KCF) As NetworkGraph
         Dim g As New NetworkGraph
