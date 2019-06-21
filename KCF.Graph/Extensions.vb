@@ -12,10 +12,16 @@ Public Module Extensions
     ''' <summary>
     ''' Calculate the charge value of ion graph model
     ''' </summary>
-    ''' <param name="group"></param>
+    ''' <param name="group">The atom group model</param>
     ''' <returns></returns>
+    ''' 
+    <MethodImpl(MethodImplOptions.AggressiveInlining)>
     <Extension>
     Public Function AtomGroupCharge(group As NetworkGraph) As Double
-        Throw New NotImplementedException
+        ' sum all charge value in nodes
+        Return Aggregate atom As Node
+               In group.vertex
+               Let charge As Double = Val(atom.data!charge)
+               Into Sum(charge)
     End Function
 End Module
