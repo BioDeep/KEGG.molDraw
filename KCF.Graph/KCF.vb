@@ -113,7 +113,10 @@ Imports Microsoft.VisualBasic.Language
                 .data = New EdgeData With {
                     .weight = bound.bounds,
                     .length = length,
-                    .label = label
+                    .label = label,
+                    .Properties = New Dictionary(Of String, String) From {
+                        {"bounds", bound.bounds}
+                    }
                 }
             }
 
