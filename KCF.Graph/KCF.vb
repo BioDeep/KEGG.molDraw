@@ -115,14 +115,19 @@ Imports r = System.Text.RegularExpressions.Regex
                     .label = atom.KEGGAtom.code,
                     .initialPostion = point,
                     .Properties = New Dictionary(Of String, String) From {
-                        {"charge", 0}
+                        {"charge", 0},
+                        {"atom", atom.Atom}
                     },
-                    .mass = atom.atomMass
+                    .mass = atomMass(atom.Atom)
                 }
             }
 
             Call g.AddNode(node)
         Next
+
+#If DEBUG Then
+        Call $"Total mass of {KCF.Entry} is {Aggregate atom In g.vertex Into Sum(atom.data.mass)}".__DEBUG_ECHO
+#End If
 
         ' key by node.label
         Dim nodes As Dictionary(Of Node) = g.vertex.ToDictionary()
