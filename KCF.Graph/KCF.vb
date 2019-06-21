@@ -44,17 +44,49 @@
 
 Imports System.Drawing
 Imports System.Runtime.CompilerServices
+Imports System.Text.RegularExpressions
 Imports Microsoft.VisualBasic.ComponentModel.Collection
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
 Imports Microsoft.VisualBasic.Data.visualize.Network.Layouts
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Language
+Imports r = System.Text.RegularExpressions.Regex
 
 ''' <summary>
 ''' The KCF network graph extension
 ''' </summary>
 ''' 
 <HideModuleName> Public Module KCF
+
+    <Extension>
+    Private Function atomMass(atom As Atom) As Double
+        Dim formula = atom.KEGGAtom.formula
+
+        formula = formula.Replace("ring-", "").Replace("-ring", "")
+        formula = formula.Replace("R-", "").Replace("-R", "")
+        formula = formula.Replace("()", "")
+        formula = formula.Trim("-"c)
+
+        Dim atoms = r.Matches(formula, "[A-Z][a-z]*\d*", RegexOptions.Singleline).ToArray
+        Dim mass As Double = atoms.Select(AddressOf atomMass).Sum
+
+        Return mass
+    End Function
+
+    ReadOnly atomWeights As Dictionary(Of String, AtomicWeight) = AtomicWeight.GetTable
+
+    Private Function atomMass(atoms As String) As Double
+        Dim n As Integer = Val(r.Match(atoms, "\d+").Value)
+
+        If n > 0 Then
+            atoms = atoms.Replace(n.ToString, "")
+        Else
+            ' 当n=1的时候是被忽略掉的
+            n = 1
+        End If
+
+        Return atomWeights(atoms).Mass * n
+    End Function
 
     ''' <summary>
     ''' Create network graph model from KCF molecule model
@@ -84,7 +116,8 @@ Imports Microsoft.VisualBasic.Language
                     .initialPostion = point,
                     .Properties = New Dictionary(Of String, String) From {
                         {"charge", 0}
-                    }
+                    },
+                    .mass = atom.atomMass
                 }
             }
 
