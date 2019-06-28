@@ -69,7 +69,7 @@ Public Class KCFBrush
                       Function(read) As Func(Of KCFBrush, SolidBrush)
                           Return Function(colors) DirectCast(read.GetValue(colors), SolidBrush)
                       End Function)
-    Shared ReadOnly Black As DefaultValue(Of SolidBrush) = Brushes.Black
+    Shared ReadOnly Black As [Default](Of SolidBrush) = Brushes.Black
 
     Public Function GetBrush(atom As String) As SolidBrush
         If getAtomBrush.ContainsKey(atom) Then
@@ -79,7 +79,7 @@ Public Class KCFBrush
         End If
     End Function
 
-    Public Shared Function ChEBITheme() As DefaultValue(Of KCFBrush)
+    Public Shared Function ChEBITheme() As [Default](Of KCFBrush)
         Return New KCFBrush With {
             .N = New SolidBrush(Color.FromArgb(51, 51, 153)),
             .O = Brushes.Red,
@@ -96,7 +96,7 @@ Public Class KCFBrush
     ''' <returns></returns>
     ''' 
     <MethodImpl(MethodImplOptions.AggressiveInlining)>
-    Public Shared Function MonoColour() As DefaultValue(Of KCFBrush)
+    Public Shared Function MonoColour() As [Default](Of KCFBrush)
         Return New KCFBrush
     End Function
 End Class
