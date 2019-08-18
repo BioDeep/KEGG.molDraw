@@ -4,6 +4,8 @@
 
 Drawing chemical compound structures and glycan structures with capabilities to search against the KEGG databases
 
+This application source project required reference to sciBASIC.NET framework: https://github.com/xieguigang/sciBASIC
+
 ![](AppScreen.png)
 
 ### Example
