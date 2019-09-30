@@ -45,6 +45,7 @@
 Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.Language.UnixBash
 
+<HideModuleName>
 Public Module Extensions
 
     Public ReadOnly Property atoms As String()
