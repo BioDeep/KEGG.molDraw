@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::fadb24e1524c1fc760e7adb58318a366, KCF\KEGGdraw\kegDraw\EditMode.vb"
+﻿#Region "Microsoft.VisualBasic::fadb24e1524c1fc760e7adb58318a366, visual\KCF\KEGGdraw\kegDraw\EditMode.vb"
 
     ' Author:
     ' 

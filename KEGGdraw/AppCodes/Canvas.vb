@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::9a8b489ae68e1208b6918766b321d203, KCF\KEGGdraw\AppCodes\Canvas.vb"
+﻿#Region "Microsoft.VisualBasic::2582af98e2dac94dc945c6d11f1c1fa0, visual\KCF\KEGGdraw\AppCodes\Canvas.vb"
 
     ' Author:
     ' 

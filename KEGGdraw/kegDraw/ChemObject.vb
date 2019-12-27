@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::759d177301af0e9749a11219c1aa05b8, KCF\KEGGdraw\kegDraw\ChemObject.vb"
+﻿#Region "Microsoft.VisualBasic::759d177301af0e9749a11219c1aa05b8, visual\KCF\KEGGdraw\kegDraw\ChemObject.vb"
 
     ' Author:
     ' 

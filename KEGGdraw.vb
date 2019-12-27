@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::a6d3330d5985e6e9d495c4c64ee4b858, KCF\KEGGdraw.vb"
+﻿#Region "Microsoft.VisualBasic::2a887d00df81db58f8612486ac64ccba, visual\KCF\KEGGdraw.vb"
 
     ' Author:
     ' 
@@ -129,7 +129,3 @@ Public Function DrawKCF([in] As String, Optional out As String = "", Optional tr
 End Function
 End Class
 End Namespace
-
-
-
-

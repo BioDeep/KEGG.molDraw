@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::25b7fc33635bbeca02d53b97526e02ee, KCF\KEGGdraw\AppCodes\LabelHtml.vb"
+﻿#Region "Microsoft.VisualBasic::c218ad08b1d8484c69581726325342cb, visual\KCF\KEGGdraw\AppCodes\LabelHtml.vb"
 
     ' Author:
     ' 
@@ -218,4 +218,3 @@ Module LabelHtml
         Call HTMLRender.RenderHTML(g, content, pt.ToPoint)
     End Sub
 End Module
-

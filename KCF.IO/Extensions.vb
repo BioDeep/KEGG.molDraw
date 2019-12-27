@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::1f57e5ba281e45e5a59e7a4e401125f1, KCF\KCF.IO\Extensions.vb"
+﻿#Region "Microsoft.VisualBasic::50f661c82373359faaab003e39aa0d62, visual\KCF\KCF.IO\Extensions.vb"
 
     ' Author:
     ' 
@@ -35,6 +35,8 @@
     ' Summaries:
 
     ' Module Extensions
+    ' 
+    '     Properties: atoms
     ' 
     '     Function: KCFComposition, ScanDirectory
     ' 

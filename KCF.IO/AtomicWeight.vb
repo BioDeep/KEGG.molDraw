@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::5a3fd22ec2ef4b8c95dde84d54c6d966, KCF\KCF.IO\AtomicWeight.vb"
+﻿#Region "Microsoft.VisualBasic::5a3fd22ec2ef4b8c95dde84d54c6d966, visual\KCF\KCF.IO\AtomicWeight.vb"
 
     ' Author:
     ' 

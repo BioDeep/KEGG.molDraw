@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::ac039fd5cf1b0a4d62bbf44b5b7f8479, KCF\KEGGdraw\AppCodes\KCFBrush.vb"
+﻿#Region "Microsoft.VisualBasic::d1069fca79ae5b7eb0e4f844b9a46c46, visual\KCF\KEGGdraw\AppCodes\KCFBrush.vb"
 
     ' Author:
     ' 

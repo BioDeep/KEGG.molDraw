@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::f432cda0f29c6a5d5b1cae12fbfa117c, KCF\KEGGdraw\kegDraw\PeriodicTable.vb"
+﻿#Region "Microsoft.VisualBasic::f432cda0f29c6a5d5b1cae12fbfa117c, visual\KCF\KEGGdraw\kegDraw\PeriodicTable.vb"
 
     ' Author:
     ' 
