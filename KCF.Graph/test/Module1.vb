@@ -44,6 +44,8 @@
 
 Imports BioNovoGene.BioDeep.Chemistry
 Imports BioNovoGene.BioDeep.Chemistry.Model
+Imports BioNovoGene.BioDeep.Chemistry.Model.Graph
+Imports Microsoft.VisualBasic.ComponentModel.Algorithm.BinaryTree
 
 Module Module1
 
@@ -51,11 +53,10 @@ Module Module1
 
         Call moleculeWeightTest()
 
-        Dim tree = "D:\KEGG-compounds\OtherUnknowns".ScanDirectory _
-                                                    .BinaryTree _
-                                                    .PopulateNodes _
-                                                    .OrderByDescending(Function(cluster) DirectCast(cluster!values, List(Of Model.KCF)).Count) _
-                                                    .ToArray
+        Dim clusters = "D:\KEGG-compounds\OtherUnknowns".ScanDirectory.BinaryTree
+        Dim tree = clusters.PopulateNodes _
+            .OrderByDescending(Function(cluster) DirectCast(cluster!values, List(Of Model.KCF)).Count) _
+            .ToArray
 
         For Each cluster In tree
             Dim members = DirectCast(cluster!values, List(Of Model.KCF))
