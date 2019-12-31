@@ -46,22 +46,15 @@
 
 Imports System.Runtime.CompilerServices
 Imports System.Xml.Serialization
-Imports Microsoft.VisualBasic.Data.csv
-Imports Microsoft.VisualBasic.Data.csv.StorageProvider.Reflection
 Imports Microsoft.VisualBasic.Language
 
 Public Class AtomicWeight
 
     <XmlAttribute> Public Property Symbol As String
     <XmlAttribute> Public Property Name As String
-
-    <Column("Atomic Weight")>
     <XmlAttribute> Public Property AtomicWeight As String
-
-    <Collection("Notes", ", ")>
     <XmlAttribute> Public Property Notes As Integer()
 
-    <Ignored>
     Public ReadOnly Property Mass As Double
         Get
             With AtomicWeight _
@@ -75,13 +68,25 @@ Public Class AtomicWeight
 
     <MethodImpl(MethodImplOptions.AggressiveInlining)>
     Public Shared Function GetTable() As Dictionary(Of String, AtomicWeight)
-        Return My.Resources _
-            .AtomicWeights _
-            .LineTokens _
-            .LoadStream(Of AtomicWeight) _
+        Return tableLoader _
             .ToDictionary(Function(a)
                               Return a.Symbol
                           End Function)
+    End Function
+
+    Private Shared Iterator Function tableLoader() As IEnumerable(Of AtomicWeight)
+        For Each line As String In My.Resources.AtomicWeights.LineTokens.Skip(1)
+            Dim tokens As String() = line.Split(","c)
+            Dim weight As New AtomicWeight With {
+                .Symbol = tokens(1),
+                .Name = tokens(2),
+                .AtomicWeight = tokens(3),
+                .Notes = tokens _
+                    .Skip(4) _
+                    .Select(Function(x) x.ParseInteger) _
+                    .ToArray
+            }
+        Next
     End Function
 
     Public Overrides Function ToString() As String
