@@ -83,9 +83,13 @@ Public Class AtomicWeight
                 .AtomicWeight = tokens(3),
                 .Notes = tokens _
                     .Skip(4) _
-                    .Select(Function(x) x.ParseInteger) _
+                    .Select(Function(t)
+                                Return t.Trim(""""c, " "c).ParseInteger
+                            End Function) _
                     .ToArray
             }
+
+            Yield weight
         Next
     End Function
 
