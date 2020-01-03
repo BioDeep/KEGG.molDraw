@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::739e6acf7c47f903c264657d6228173a, visual\KCF\KCF.Graph\Extensions.vb"
+﻿#Region "Microsoft.VisualBasic::6ecae4e6f298bfa7d3538b29ba4530c7, src\visualize\KCF\KCF.Graph\Extensions.vb"
 
     ' Author:
     ' 
@@ -42,7 +42,6 @@
 
 #End Region
 
-
 Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
 
@@ -69,4 +68,3 @@ Public Module Extensions
                Into Sum(charge)
     End Function
 End Module
-

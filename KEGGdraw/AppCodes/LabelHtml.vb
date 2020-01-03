@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::c218ad08b1d8484c69581726325342cb, visual\KCF\KEGGdraw\AppCodes\LabelHtml.vb"
+﻿#Region "Microsoft.VisualBasic::c218ad08b1d8484c69581726325342cb, src\visualize\KCF\KEGGdraw\AppCodes\LabelHtml.vb"
 
     ' Author:
     ' 

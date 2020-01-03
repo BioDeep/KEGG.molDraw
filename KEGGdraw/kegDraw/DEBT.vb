@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::122473cef7fc5a2d89b0e7847454547b, visual\KCF\KEGGdraw\kegDraw\DEBT.vb"
+﻿#Region "Microsoft.VisualBasic::122473cef7fc5a2d89b0e7847454547b, src\visualize\KCF\KEGGdraw\kegDraw\DEBT.vb"
 
     ' Author:
     ' 

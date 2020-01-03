@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::50f661c82373359faaab003e39aa0d62, visual\KCF\KCF.IO\Extensions.vb"
+﻿#Region "Microsoft.VisualBasic::50f661c82373359faaab003e39aa0d62, src\visualize\KCF\KCF.IO\Extensions.vb"
 
     ' Author:
     ' 

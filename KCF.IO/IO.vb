@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::99f30242a93c229736dc74f2ea7111bc, visual\KCF\KCF.IO\IO.vb"
+﻿#Region "Microsoft.VisualBasic::99f30242a93c229736dc74f2ea7111bc, src\visualize\KCF\KCF.IO\IO.vb"
 
     ' Author:
     ' 

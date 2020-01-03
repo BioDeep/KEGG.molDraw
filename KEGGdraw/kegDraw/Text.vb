@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::78d873fea33955f7fac2438738272f13, visual\KCF\KEGGdraw\kegDraw\Text.vb"
+﻿#Region "Microsoft.VisualBasic::78d873fea33955f7fac2438738272f13, src\visualize\KCF\KEGGdraw\kegDraw\Text.vb"
 
     ' Author:
     ' 
