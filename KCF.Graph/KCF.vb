@@ -57,7 +57,7 @@ Imports r = System.Text.RegularExpressions.Regex
 ''' The KCF network graph extension
 ''' </summary>
 ''' 
-<HideModuleName> Public Module KCF
+<HideModuleName> Public Module KCFGraph
 
     <Extension>
     Private Function atomMass(atom As Atom) As Double
