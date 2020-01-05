@@ -85,16 +85,19 @@ Public Module Extensions
     ''' 
     ''' </summary>
     ''' <param name="directory"></param>
-    ''' <param name="skipEmpty">
+    ''' <returns></returns>
+    ''' <remarks>
     ''' 可能会出现一类抽象代谢物，诸如：``Generic compound in reaction hierarchy``
     ''' 则这个时候KCF数据是空的
-    ''' </param>
-    ''' <returns></returns>
+    ''' 函数会自动跳过这些空的模型数据文件的加载
+    ''' </remarks>
     <MethodImpl(MethodImplOptions.AggressiveInlining)>
     <Extension>
-    Public Function ScanDirectory(directory As String, Optional skipEmpty As Boolean = True) As IEnumerable(Of KCF)
+    Public Function ScanDirectory(directory As String) As IEnumerable(Of KCF)
         Return (ls - l - r - "*.KCF" <= directory) _
-            .Where(Function(file) file.FileLength > 0) _
+            .Where(Function(file)
+                       Return file.FileLength > 0
+                   End Function) _
             .Select(AddressOf LoadKCF)
     End Function
 
