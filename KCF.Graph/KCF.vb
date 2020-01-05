@@ -86,7 +86,11 @@ Imports r = System.Text.RegularExpressions.Regex
             n = 1
         End If
 
-        Return atomWeights(atoms).Mass * n
+        If Not atomWeights.ContainsKey(atoms) Then
+            Return -n
+        Else
+            Return atomWeights(atoms).Mass * n
+        End If
     End Function
 
     ''' <summary>
