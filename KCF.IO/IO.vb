@@ -84,6 +84,11 @@ Public Module IO
             .StringSplit("\s+") _
             .Where(Function(s) Not s.StringEmpty) _
             .ToArray
+
+        If t.Length < 3 Then
+            Throw New Exception(stream)
+        End If
+
         Dim entry As New Entry With {
             .Id = t(1),
             .Type = t(2)
