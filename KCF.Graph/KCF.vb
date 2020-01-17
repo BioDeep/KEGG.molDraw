@@ -122,7 +122,8 @@ Imports r = System.Text.RegularExpressions.Regex
                     .Properties = New Dictionary(Of String, String) From {
                         {"charge", 0},
                         {"atom", atom.Atom},
-                        {NamesOf.REFLECTION_ID_MAPPING_NODETYPE, atom.KEGGAtom.type.Description}
+                        {"atom_type", atom.KEGGAtom.type.Description},
+                        {NamesOf.REFLECTION_ID_MAPPING_NODETYPE, atom.KEGGAtom.code}
                     },
                     .mass = atomMass(atom.Atom)
                 }
