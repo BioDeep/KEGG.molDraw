@@ -115,15 +115,17 @@ Public Module IO
             .Select(AddressOf Trim) _
             .Select(Function(s) s.StringSplit("\s+")) _
             .Select(Function(t)
-                        Dim type As KegAtomType = KegAtomType.GetAtom(t(1))
+                        Dim atom As KegAtomType = KegAtomType.GetAtom(t(1))
+                        Dim point2D As New Coordinate With {
+                            .X = Val(t(3)),
+                            .Y = Val(t(4))
+                        }
+
                         Return New Atom With {
                             .Index = Val(t(0)),
-                            .KEGGAtom = type,
+                            .KEGGAtom = atom,
                             .Atom = t(2),
-                            .Atom2D_coordinates = New Coordinate With {
-                                .X = Val(t(3)),
-                                .Y = Val(t(4))
-                            }
+                            .Atom2D_coordinates = point2D
                         }
                     End Function) _
             .ToArray
@@ -133,7 +135,9 @@ Public Module IO
     <Extension> Private Function parseBounds(bounds$()) As Bound()
         Return bounds _
             .Select(AddressOf Trim) _
-            .Select(Function(s) s.StringSplit("\s+")) _
+            .Select(Function(s)
+                        Return s.StringSplit("\s+")
+                    End Function) _
             .Select(Function(t)
                         Return New Bound With {
                             .from = Val(t(1)),
