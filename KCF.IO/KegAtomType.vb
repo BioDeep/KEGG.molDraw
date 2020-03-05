@@ -111,6 +111,11 @@ Public Structure KegAtomType
     ''' <returns>在这里值使用一个数组来表示是为了存储``X``分类的卤族元素</returns>
     Public Shared ReadOnly Property KEGGAtomTypes As New Dictionary(Of String, KegAtomType())
 
+    ''' <summary>
+    ''' Get atom information details for the atom code that defined in KCF file.
+    ''' </summary>
+    ''' <param name="code">KCF atom group code like ``C1a``, ``C1b``, etc...</param>
+    ''' <returns></returns>
     <MethodImpl(MethodImplOptions.AggressiveInlining)>
     Public Shared Function GetAtom(code As String) As KegAtomType
         Return KEGGAtomTypes(code)(Scan0)
