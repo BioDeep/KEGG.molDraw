@@ -55,9 +55,9 @@ Public Module IO
     ''' </summary>
     ''' <param name="stream$">Can be text data or file path</param>
     ''' <returns></returns>
-    <Extension> Public Function LoadKCF(stream$, Optional throwEmpty As Boolean = True) As KCF
+    <Extension> Public Function LoadKCF(stream$, Optional throwEx As Boolean = True) As KCF
         If stream.StringEmpty Then
-            If throwEmpty Then
+            If throwEx Then
                 Throw New NoNullAllowedException("Data input can not be empty!")
             Else
                 Return Nothing
@@ -70,7 +70,15 @@ Public Module IO
             stream = stream.GET Or die("No content data!")
         End If
 
-        Return parserInternal(stream)
+        Try
+            Return parserInternal(stream)
+        Catch ex As Exception
+            If throwEx Then
+                Throw
+            Else
+                Return Nothing
+            End If
+        End Try
     End Function
 
     <Extension> Private Function parserInternal(stream$) As KCF
