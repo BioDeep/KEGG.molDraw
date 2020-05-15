@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::f638deb46d96bc2114b0e98a56779462, src\visualize\KCF\KCF.IO\KegAtomType.vb"
+﻿#Region "Microsoft.VisualBasic::931464de327439523a705ab5696e4f05, src\visualize\KCF\KCF.IO\KegAtomType.vb"
 
     ' Author:
     ' 

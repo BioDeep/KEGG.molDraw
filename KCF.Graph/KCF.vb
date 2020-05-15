@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::17c3c17eabc09fae1f013bfaeded30d0, src\visualize\KCF\KCF.Graph\KCF.vb"
+﻿#Region "Microsoft.VisualBasic::e5e8a6a93ed7edbc8c09a48b4add5f2e, src\visualize\KCF\KCF.Graph\KCF.vb"
 
     ' Author:
     ' 
@@ -34,7 +34,7 @@
 
     ' Summaries:
 
-    ' Module KCF
+    ' Module KCFGraph
     ' 
     '     Function: (+2 Overloads) atomMass, CreateGraph
     ' 

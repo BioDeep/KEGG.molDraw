@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::6ecae4e6f298bfa7d3538b29ba4530c7, src\visualize\KCF\KCF.Graph\Extensions.vb"
+﻿#Region "Microsoft.VisualBasic::fe97251d0c606116fdec8eed245800d6, src\visualize\KCF\KCF.Graph\Extensions.vb"
 
     ' Author:
     ' 
@@ -36,7 +36,7 @@
 
     ' Module Extensions
     ' 
-    '     Function: AtomGroupCharge
+    ' 
     ' 
     ' /********************************************************************************/
 
