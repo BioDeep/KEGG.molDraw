@@ -143,7 +143,7 @@ Imports r = System.Text.RegularExpressions.Regex
         Dim length#
         Dim node1, node2 As Node
         Dim label$
-        Dim x, y As Point
+        Dim x, y As PointF
         Dim hasLevel As Boolean
 
         For Each bound As Bound In KCF.Bounds
