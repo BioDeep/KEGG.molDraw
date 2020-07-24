@@ -73,7 +73,7 @@ Imports Microsoft.VisualBasic.Language.UnixBash
 
         If [in].StringEmpty Then
             ' 没有/in参数, 则从标准输入之中得到绘图数据
-            Dim KCF = args.ReadInput("/in").LoadKCF(throwEmpty:=False)
+            Dim KCF = args.ReadInput("/in").LoadKCF(throwEx:=False)
 
             If KCF Is Nothing Then
                 Return -1
