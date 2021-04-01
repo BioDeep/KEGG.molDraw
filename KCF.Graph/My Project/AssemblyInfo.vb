@@ -1,7 +1,7 @@
 ﻿Imports System
 Imports System.Reflection
 Imports System.Runtime.InteropServices
-
+#If netcore5 = 0 Then
 ' 組件的一般資訊是由下列的屬性集控制。
 ' 變更這些屬性的值即可修改組件的相關
 ' 資訊。
@@ -33,3 +33,4 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyVersion("1.0.0.0")>
 <Assembly: AssemblyFileVersion("1.0.0.0")>
+#end if
