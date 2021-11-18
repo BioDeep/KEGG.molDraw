@@ -56,7 +56,7 @@ Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
-Imports Microsoft.VisualBasic.MIME.Markup.HTML.CSS
+Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports Microsoft.VisualBasic.Scripting.Runtime
 Imports Microsoft.VisualBasic.Serialization.JSON
 Imports Line2D = Microsoft.VisualBasic.Imaging.Drawing2D.Shapes.Line
@@ -116,7 +116,6 @@ Public Module Canvas
                          Optional theme As KCFBrush = Nothing) As GraphicsData
 
         Dim background As Brush = bg.GetBrush
-        Dim atomFont As Font = CSSFont.TryParse(font).GDIObject
         Dim dot = Brushes.Gray
         Dim boundsPen As Pen = Stroke.TryParse(boundStroke).GDIObject
         Dim atoms As (pt As PointF, atom As Atom)() =
@@ -135,6 +134,7 @@ Public Module Canvas
         Dim plotInternal =
             Sub(ByRef g As IGraphics, region As GraphicsRegion)
                 Dim bounds = atoms.Select(Function(a) a.pt).GetBounds
+                Dim atomFont As Font = CSSFont.TryParse(font).GDIObject(g.Dpi)
                 Dim polygon As PointF() = atoms.getPolygon(scaleFactor, region, bounds)
                 Dim charSize As SizeF = g.GetGeneralSize("ABCDEFGHIJKLMNOPQRSTUVWXYZ", atomFont)
 
