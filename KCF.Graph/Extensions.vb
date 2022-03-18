@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::fe97251d0c606116fdec8eed245800d6, src\visualize\KCF\KCF.Graph\Extensions.vb"
+﻿#Region "Microsoft.VisualBasic::fe97251d0c606116fdec8eed245800d6, mzkit\src\visualize\KCF\KCF.Graph\Extensions.vb"
 
     ' Author:
     ' 
@@ -33,6 +33,16 @@
     ' /********************************************************************************/
 
     ' Summaries:
+
+
+    ' Code Statistics:
+
+    '   Total Lines: 8
+    '    Code Lines: 5
+    ' Comment Lines: 0
+    '   Blank Lines: 3
+    '     File Size: 161.00 B
+
 
     ' Module Extensions
     ' 

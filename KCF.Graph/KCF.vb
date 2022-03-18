@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::2f45ede08e2a3f9d995cb10aee85fd05, src\visualize\KCF\KCF.Graph\KCF.vb"
+﻿#Region "Microsoft.VisualBasic::2f45ede08e2a3f9d995cb10aee85fd05, mzkit\src\visualize\KCF\KCF.Graph\KCF.vb"
 
     ' Author:
     ' 
@@ -33,6 +33,16 @@
     ' /********************************************************************************/
 
     ' Summaries:
+
+
+    ' Code Statistics:
+
+    '   Total Lines: 135
+    '    Code Lines: 99
+    ' Comment Lines: 18
+    '   Blank Lines: 18
+    '     File Size: 4.61 KB
+
 
     ' Module KCFGraph
     ' 

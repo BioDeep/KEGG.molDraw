@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::c219fda0c04346f04317f7e2b08db4c6, src\visualize\KCF\KCF.Graph\Cluster.vb"
+﻿#Region "Microsoft.VisualBasic::c219fda0c04346f04317f7e2b08db4c6, mzkit\src\visualize\KCF\KCF.Graph\Cluster.vb"
 
     ' Author:
     ' 
@@ -33,6 +33,16 @@
     ' /********************************************************************************/
 
     ' Summaries:
+
+
+    ' Code Statistics:
+
+    '   Total Lines: 75
+    '    Code Lines: 55
+    ' Comment Lines: 8
+    '   Blank Lines: 12
+    '     File Size: 2.80 KB
+
 
     ' Module Cluster
     ' 

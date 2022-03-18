@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::e9ce6d63660974e99a39c8c692218945, src\visualize\KCF\KCF.Graph\test\Module1.vb"
+﻿#Region "Microsoft.VisualBasic::e9ce6d63660974e99a39c8c692218945, mzkit\src\visualize\KCF\KCF.Graph\test\Module1.vb"
 
     ' Author:
     ' 
@@ -33,6 +33,16 @@
     ' /********************************************************************************/
 
     ' Summaries:
+
+
+    ' Code Statistics:
+
+    '   Total Lines: 37
+    '    Code Lines: 26
+    ' Comment Lines: 0
+    '   Blank Lines: 11
+    '     File Size: 1.12 KB
+
 
     ' Module Module1
     ' 

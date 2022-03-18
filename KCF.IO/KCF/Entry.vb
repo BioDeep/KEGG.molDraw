@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::42580730691973be0621e72014adacb6, src\visualize\KCF\KCF.IO\KCF\Entry.vb"
+﻿#Region "Microsoft.VisualBasic::42580730691973be0621e72014adacb6, mzkit\src\visualize\KCF\KCF.IO\KCF\Entry.vb"
 
     ' Author:
     ' 
@@ -33,6 +33,16 @@
     ' /********************************************************************************/
 
     ' Summaries:
+
+
+    ' Code Statistics:
+
+    '   Total Lines: 27
+    '    Code Lines: 21
+    ' Comment Lines: 0
+    '   Blank Lines: 6
+    '     File Size: 866.00 B
+
 
     ' Structure Entry
     ' 

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::67d8aa9765793a9d1efcf5877633d346, src\visualize\KCF\KEGGdraw\CLI.vb"
+﻿#Region "Microsoft.VisualBasic::67d8aa9765793a9d1efcf5877633d346, mzkit\src\visualize\KCF\KEGGdraw\CLI.vb"
 
     ' Author:
     ' 
@@ -33,6 +33,16 @@
     ' /********************************************************************************/
 
     ' Summaries:
+
+
+    ' Code Statistics:
+
+    '   Total Lines: 78
+    '    Code Lines: 66
+    ' Comment Lines: 1
+    '   Blank Lines: 11
+    '     File Size: 3.02 KB
+
 
     ' Module CLI
     ' 

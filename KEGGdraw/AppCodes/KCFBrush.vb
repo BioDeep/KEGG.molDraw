@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::d1069fca79ae5b7eb0e4f844b9a46c46, src\visualize\KCF\KEGGdraw\AppCodes\KCFBrush.vb"
+﻿#Region "Microsoft.VisualBasic::d1069fca79ae5b7eb0e4f844b9a46c46, mzkit\src\visualize\KCF\KEGGdraw\AppCodes\KCFBrush.vb"
 
     ' Author:
     ' 
@@ -33,6 +33,16 @@
     ' /********************************************************************************/
 
     ' Summaries:
+
+
+    ' Code Statistics:
+
+    '   Total Lines: 55
+    '    Code Lines: 41
+    ' Comment Lines: 8
+    '   Blank Lines: 6
+    '     File Size: 1.93 KB
+
 
     ' Class KCFBrush
     ' 

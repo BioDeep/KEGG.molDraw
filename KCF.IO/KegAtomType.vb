@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::931464de327439523a705ab5696e4f05, src\visualize\KCF\KCF.IO\KegAtomType.vb"
+﻿#Region "Microsoft.VisualBasic::931464de327439523a705ab5696e4f05, mzkit\src\visualize\KCF\KCF.IO\KegAtomType.vb"
 
     ' Author:
     ' 
@@ -33,6 +33,16 @@
     ' /********************************************************************************/
 
     ' Summaries:
+
+
+    ' Code Statistics:
+
+    '   Total Lines: 118
+    '    Code Lines: 77
+    ' Comment Lines: 27
+    '   Blank Lines: 14
+    '     File Size: 3.66 KB
+
 
     ' Structure KegAtomType
     ' 
