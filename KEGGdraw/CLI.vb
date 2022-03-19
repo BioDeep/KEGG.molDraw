@@ -56,6 +56,7 @@ Imports System.ComponentModel
 Imports System.Drawing
 Imports System.Runtime.CompilerServices
 Imports BioNovoGene.BioDeep.Chemistry.Model
+Imports BioNovoGene.BioDeep.Chemistry.Model.Drawing
 Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.InteropService.SharedORM
 Imports Microsoft.VisualBasic.CommandLine.Reflection

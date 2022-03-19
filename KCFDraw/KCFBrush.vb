@@ -56,9 +56,9 @@
 #End Region
 
 Imports System.Drawing
-Imports Microsoft.VisualBasic.Language.Default
-Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel.DataFramework
 Imports System.Runtime.CompilerServices
+Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel.DataFramework
+Imports Microsoft.VisualBasic.Language.Default
 
 ''' <summary>
 ''' 原子和化学键的颜色画刷
