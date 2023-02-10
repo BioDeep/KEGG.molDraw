@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::641107d8b09913aa02e45c1c9ccf8006, mzkit\src\visualize\KCF\KCF.Graph\test\My Project\AssemblyInfo.vb"
+﻿#Region "Microsoft.VisualBasic::192d26e8ae591382c4dcc60d079f9373, mzkit\src\visualize\KCF\KCF.Graph\test\My Project\AssemblyInfo.vb"
 
     ' Author:
     ' 
@@ -84,4 +84,3 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyVersion("1.0.0.0")>
 <Assembly: AssemblyFileVersion("1.0.0.0")>
-

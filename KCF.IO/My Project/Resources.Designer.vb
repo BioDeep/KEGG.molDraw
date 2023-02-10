@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::6dcfff8f8c72bcef7976b4cf4f4ed0ca, mzkit\src\visualize\KCF\KCF.IO\My Project\Resources.Designer.vb"
+﻿#Region "Microsoft.VisualBasic::3d2141dae2e8303d0029959e8b80aa0d, mzkit\src\visualize\KCF\KCF.IO\My Project\Resources.Designer.vb"
 
     ' Author:
     ' 
@@ -165,4 +165,3 @@ Namespace My.Resources
         End Property
     End Module
 End Namespace
-
