@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::fe1274226c4f4295e0ce6db1ba61ba21, mzkit\src\visualize\KCF\KCF.IO\KCF\Models.vb"
+﻿#Region "Microsoft.VisualBasic::1adeae9f732a090544aabbd372580d3d, mzkit\src\visualize\KCF\KCF.IO\KCF\Models.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 19
     ' Comment Lines: 9
     '   Blank Lines: 8
-    '     File Size: 1.12 KB
+    '     File Size: 1.08 KB
 
 
     ' Structure Atom

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::a2459c3068d02a4775d5b4ee3beab3cd, src\visualize\KCF\KEGGdraw\kegDraw\Canvas.vb"
+﻿#Region "Microsoft.VisualBasic::f7b7a9cef92a1316a031e5a35eb06110, mzkit\src\visualize\KCF\KEGGdraw\kegDraw\Canvas.vb"
 
     ' Author:
     ' 
@@ -33,6 +33,16 @@
     ' /********************************************************************************/
 
     ' Summaries:
+
+
+    ' Code Statistics:
+
+    '   Total Lines: 7483
+    '    Code Lines: 6937
+    ' Comment Lines: 4
+    '   Blank Lines: 542
+    '     File Size: 255.44 KB
+
 
     '     Class CompoundCanvas
     ' 

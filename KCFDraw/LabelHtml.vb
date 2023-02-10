@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::bb2356dd025c1a6c6503a857d846a13a, mzkit\src\visualize\KCF\KEGGdraw\AppCodes\LabelHtml.vb"
+﻿#Region "Microsoft.VisualBasic::70731ed960dd8ecfcaede3707070a786, mzkit\src\visualize\KCF\KCFDraw\LabelHtml.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 131
     ' Comment Lines: 24
     '   Blank Lines: 19
-    '     File Size: 6.44 KB
+    '     File Size: 6.27 KB
 
 
     ' Module LabelHtml

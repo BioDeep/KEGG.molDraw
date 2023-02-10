@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::3968e7431d269c3dfc6929be43cb8b72, mzkit\src\visualize\KCF\KEGGdraw\Groups.vb"
+﻿#Region "Microsoft.VisualBasic::822ed000b8e36fb0297a53a510d42163, mzkit\src\visualize\KCF\KEGGdraw\Groups.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 4
     ' Comment Lines: 0
     '   Blank Lines: 2
-    '     File Size: 149.00 B
+    '     File Size: 144 B
 
 
     ' Class Groups

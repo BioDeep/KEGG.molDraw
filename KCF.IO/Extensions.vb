@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::a9c02eb1e16298a68acf903861dc91e0, mzkit\src\visualize\KCF\KCF.IO\Extensions.vb"
+﻿#Region "Microsoft.VisualBasic::25657af6ba802a1df799299a9d97a003, mzkit\src\visualize\KCF\KCF.IO\Extensions.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 35
     ' Comment Lines: 15
     '   Blank Lines: 8
-    '     File Size: 1.90 KB
+    '     File Size: 1.84 KB
 
 
     ' Module Extensions

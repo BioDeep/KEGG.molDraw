@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::4caa8b1da7ea12d3b3d0fe9f62511567, mzkit\src\visualize\KCF\KCF.IO\IO.vb"
+﻿#Region "Microsoft.VisualBasic::0c62b24e8321701d106e07c40e8657d0, mzkit\src\visualize\KCF\KCF.IO\IO.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 96
     ' Comment Lines: 8
     '   Blank Lines: 11
-    '     File Size: 3.82 KB
+    '     File Size: 3.71 KB
 
 
     ' Module IO

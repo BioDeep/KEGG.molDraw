@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::2f8614d59bae49987d03d50e783dc2da, src\visualize\KCF\KEGGdraw\kegDraw\Molecule.vb"
+﻿#Region "Microsoft.VisualBasic::3cd8befd34b741ff4cb65d2522608c57, mzkit\src\visualize\KCF\KEGGdraw\kegDraw\Molecule.vb"
 
     ' Author:
     ' 
@@ -33,6 +33,16 @@
     ' /********************************************************************************/
 
     ' Summaries:
+
+
+    ' Code Statistics:
+
+    '   Total Lines: 1818
+    '    Code Lines: 1696
+    ' Comment Lines: 4
+    '   Blank Lines: 118
+    '     File Size: 86.42 KB
+
 
     '     Class Molecule
     ' 

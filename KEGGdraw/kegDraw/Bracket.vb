@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::a9361d167aa523cb01d43726aafd2c95, src\visualize\KCF\KEGGdraw\kegDraw\Bracket.vb"
+﻿#Region "Microsoft.VisualBasic::9f333283980a6363b5b8dd02f1502cd5, mzkit\src\visualize\KCF\KEGGdraw\kegDraw\Bracket.vb"
 
     ' Author:
     ' 
@@ -33,6 +33,16 @@
     ' /********************************************************************************/
 
     ' Summaries:
+
+
+    ' Code Statistics:
+
+    '   Total Lines: 1230
+    '    Code Lines: 1147
+    ' Comment Lines: 2
+    '   Blank Lines: 81
+    '     File Size: 51.44 KB
+
 
     '     Class Bracket
     ' 

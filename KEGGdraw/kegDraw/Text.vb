@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::78d873fea33955f7fac2438738272f13, src\visualize\KCF\KEGGdraw\kegDraw\Text.vb"
+﻿#Region "Microsoft.VisualBasic::7fecc9190f1208327b596e5141a31491, mzkit\src\visualize\KCF\KEGGdraw\kegDraw\Text.vb"
 
     ' Author:
     ' 
@@ -33,6 +33,16 @@
     ' /********************************************************************************/
 
     ' Summaries:
+
+
+    ' Code Statistics:
+
+    '   Total Lines: 143
+    '    Code Lines: 112
+    ' Comment Lines: 4
+    '   Blank Lines: 27
+    '     File Size: 2.81 KB
+
 
     ' 	Class Text
     ' 

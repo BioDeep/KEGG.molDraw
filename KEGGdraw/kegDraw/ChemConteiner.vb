@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::2eb1295f6ec6b553d0705fd3ddbc278d, src\visualize\KCF\KEGGdraw\kegDraw\ChemConteiner.vb"
+﻿#Region "Microsoft.VisualBasic::dd6196caa24f7d8a0e729bd094b15052, mzkit\src\visualize\KCF\KEGGdraw\kegDraw\ChemConteiner.vb"
 
     ' Author:
     ' 
@@ -33,6 +33,16 @@
     ' /********************************************************************************/
 
     ' Summaries:
+
+
+    ' Code Statistics:
+
+    '   Total Lines: 72
+    '    Code Lines: 52
+    ' Comment Lines: 0
+    '   Blank Lines: 20
+    '     File Size: 3.13 KB
+
 
     '     Class ChemConteiner
     ' 

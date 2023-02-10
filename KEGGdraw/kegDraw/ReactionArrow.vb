@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::9e9bfd06902adfe3137cb94471456b7d, src\visualize\KCF\KEGGdraw\kegDraw\ReactionArrow.vb"
+﻿#Region "Microsoft.VisualBasic::0f394d9a5e30a0694667dee580d383d3, mzkit\src\visualize\KCF\KEGGdraw\kegDraw\ReactionArrow.vb"
 
     ' Author:
     ' 
@@ -33,6 +33,16 @@
     ' /********************************************************************************/
 
     ' Summaries:
+
+
+    ' Code Statistics:
+
+    '   Total Lines: 247
+    '    Code Lines: 201
+    ' Comment Lines: 4
+    '   Blank Lines: 42
+    '     File Size: 7.58 KB
+
 
     ' 	Class ReactionArrow
     ' 

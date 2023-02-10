@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::30725c120a2365a02909ebf00684614b, mzkit\src\visualize\KCF\KCF.IO\AtomicWeight.vb"
+﻿#Region "Microsoft.VisualBasic::9d82db64700342b5a4ef760139a73dd5, mzkit\src\visualize\KCF\KCF.IO\AtomicWeight.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 45
     ' Comment Lines: 0
     '   Blank Lines: 8
-    '     File Size: 1.77 KB
+    '     File Size: 1.72 KB
 
 
     ' Class AtomicWeight
