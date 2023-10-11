@@ -139,7 +139,7 @@ Imports r = System.Text.RegularExpressions.Regex
                 }
             }
 
-            Call g.AddNode(node)
+            Call g.AddNode(node, assignId:=False)
         Next
 
 #If DEBUG Then
