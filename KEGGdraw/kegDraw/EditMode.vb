@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::a560f595b1b63e18c2bae2aa30e0f6a9, mzkit\src\visualize\KCF\KEGGdraw\kegDraw\EditMode.vb"
+﻿#Region "Microsoft.VisualBasic::fadb24e1524c1fc760e7adb58318a366, G:/mzkit/src/visualize/KCF/KEGGdraw//kegDraw/EditMode.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 938
     ' Comment Lines: 0
     '   Blank Lines: 38
-    '     File Size: 50.46 KB
+    '     File Size: 51.44 KB
 
 
     '     Class EditMode

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::862a5cb662bf30d713ecb65bb81ab48f, mzkit\src\visualize\KCF\KEGGdraw\kegDraw\Reaction.vb"
+﻿#Region "Microsoft.VisualBasic::29f67f43db484bb43837cb45e057077f, G:/mzkit/src/visualize/KCF/KEGGdraw//kegDraw/Reaction.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 901
     ' Comment Lines: 4
     '   Blank Lines: 86
-    '     File Size: 34.31 KB
+    '     File Size: 35.30 KB
 
 
     ' 	Class Reaction

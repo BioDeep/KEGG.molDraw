@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::c165d8fbbc079985f624807012ec9998, mzkit\src\visualize\KCF\KCFDraw\KCFBrush.vb"
+﻿#Region "Microsoft.VisualBasic::38da310c0962f858da9f8aa786174f9f, G:/mzkit/src/visualize/KCF/KCFDraw//KCFBrush.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 41
     ' Comment Lines: 8
     '   Blank Lines: 6
-    '     File Size: 1.88 KB
+    '     File Size: 1.93 KB
 
 
     ' Class KCFBrush

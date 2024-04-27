@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::c54a44150bd6060c56e2eb763b728709, mzkit\src\visualize\KCF\KEGGdraw\kegDraw\UndoUnit.vb"
+﻿#Region "Microsoft.VisualBasic::0fed77eba0de348e089d671ed4fe8c70, G:/mzkit/src/visualize/KCF/KEGGdraw//kegDraw/UndoUnit.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 11
     ' Comment Lines: 4
     '   Blank Lines: 6
-    '     File Size: 552 B
+    '     File Size: 572 B
 
 
     ' 	Class UndoUnit

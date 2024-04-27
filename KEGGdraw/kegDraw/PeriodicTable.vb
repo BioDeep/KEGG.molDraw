@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::e49101cb72ae46aeafa3086684c75aae, mzkit\src\visualize\KCF\KEGGdraw\kegDraw\PeriodicTable.vb"
+﻿#Region "Microsoft.VisualBasic::f432cda0f29c6a5d5b1cae12fbfa117c, G:/mzkit/src/visualize/KCF/KEGGdraw//kegDraw/PeriodicTable.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 39
     ' Comment Lines: 4
     '   Blank Lines: 7
-    '     File Size: 1.64 KB
+    '     File Size: 1.69 KB
 
 
     ' 	Class PeriodicTable

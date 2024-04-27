@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::827ddb2db56f72e2c975536173640d73, mzkit\src\visualize\KCF\KEGGdraw\kegDraw\Bond.vb"
+﻿#Region "Microsoft.VisualBasic::34c3f9666d349992f50d28bae507af7b, G:/mzkit/src/visualize/KCF/KEGGdraw//kegDraw/Bond.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 588
     ' Comment Lines: 0
     '   Blank Lines: 83
-    '     File Size: 31.17 KB
+    '     File Size: 31.84 KB
 
 
     '     Class Bond

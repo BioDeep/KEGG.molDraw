@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::8c3c317e53ba8a7940677e9ffc0d2705, mzkit\src\visualize\KCF\KCF.IO\KCF\KCF.vb"
+﻿#Region "Microsoft.VisualBasic::b5bc9fc5df393ca8c9a0a5b9e9c6a455, G:/mzkit/src/visualize/KCF/KCF.IO//KCF/KCF.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 8
     ' Comment Lines: 8
     '   Blank Lines: 2
-    '     File Size: 443 B
+    '     File Size: 460 B
 
 
     ' Class KCF

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::aa53062d35fa79ab6562ad48783fe02d, mzkit\src\visualize\KCF\KEGGdraw\kegDraw\Atom.vb"
+﻿#Region "Microsoft.VisualBasic::2fda5b453e64c870a177372a702cb6d1, G:/mzkit/src/visualize/KCF/KEGGdraw//kegDraw/Atom.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 869
     ' Comment Lines: 2
     '   Blank Lines: 97
-    '     File Size: 36.05 KB
+    '     File Size: 37.01 KB
 
 
     '     Class Atom

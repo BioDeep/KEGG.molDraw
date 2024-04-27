@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::2c2c71835f65393b3c280b58f277e1a4, mzkit\src\visualize\KCF\KCF.IO\My Project\AssemblyInfo.vb"
+﻿#Region "Microsoft.VisualBasic::70e4fefea89b1b928d0a6da051de785e, G:/mzkit/src/visualize/KCF/KCF.IO//My Project/AssemblyInfo.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 15
     ' Comment Lines: 15
     '   Blank Lines: 6
-    '     File Size: 1.05 KB
+    '     File Size: 1.09 KB
 
 
     ' 

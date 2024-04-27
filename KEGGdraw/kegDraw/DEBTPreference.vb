@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::4dd86e2eccf89c0193923dd747ad5a5f, mzkit\src\visualize\KCF\KEGGdraw\kegDraw\DEBTPreference.vb"
+﻿#Region "Microsoft.VisualBasic::8c3947ada120eb15c0926b1797328178, G:/mzkit/src/visualize/KCF/KEGGdraw//kegDraw/DEBTPreference.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 35
     ' Comment Lines: 4
     '   Blank Lines: 8
-    '     File Size: 1.54 KB
+    '     File Size: 1.59 KB
 
 
     ' 	Class DEBTPreference

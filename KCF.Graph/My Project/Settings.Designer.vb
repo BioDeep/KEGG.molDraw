@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::dfe06a40e605b7ae1c9ae2318c3cff8d, mzkit\src\visualize\KCF\KCF.Graph\My Project\Settings.Designer.vb"
+﻿#Region "Microsoft.VisualBasic::14039bc58c7861524a05109cc0741cec, G:/mzkit/src/visualize/KCF/KCF.Graph//My Project/Settings.Designer.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 53
     ' Comment Lines: 9
     '   Blank Lines: 12
-    '     File Size: 2.98 KB
+    '     File Size: 3.06 KB
 
 
     '     Class MySettings

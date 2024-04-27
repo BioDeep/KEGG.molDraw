@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::3b5e950be65c9f65bd79fe37998bbdd0, mzkit\src\visualize\KCF\KCFDraw\My Project\Resources.Designer.vb"
+﻿#Region "Microsoft.VisualBasic::b612422cd79288ab6dde87c32c40ed93, G:/mzkit/src/visualize/KCF/KCFDraw//My Project/Resources.Designer.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 32
     ' Comment Lines: 23
     '   Blank Lines: 8
-    '     File Size: 2.75 KB
+    '     File Size: 2.81 KB
 
 
     '     Module Resources

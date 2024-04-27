@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::60eb5f8d6885e926f4e463442b9df3b5, mzkit\src\visualize\KCF\KCFDraw\Canvas.vb"
+﻿#Region "Microsoft.VisualBasic::86c1dc9e65b5f815eb52d62b9ad818c9, G:/mzkit/src/visualize/KCF/KCFDraw//Canvas.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 286
     ' Comment Lines: 83
     '   Blank Lines: 53
-    '     File Size: 15.60 KB
+    '     File Size: 16.02 KB
 
 
     ' Module Canvas

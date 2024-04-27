@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::3b208be487a75e0a44e6fa72c154de17, mzkit\src\visualize\KCF\KEGGdraw\kegDraw\DEBT.vb"
+﻿#Region "Microsoft.VisualBasic::122473cef7fc5a2d89b0e7847454547b, G:/mzkit/src/visualize/KCF/KEGGdraw//kegDraw/DEBT.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 156
     ' Comment Lines: 4
     '   Blank Lines: 6
-    '     File Size: 7.52 KB
+    '     File Size: 7.69 KB
 
 
     ' 	Class DEBT

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::d147d80ded8a59fb7246a392479e3fd7, mzkit\src\visualize\KCF\KEGGdraw\kegDraw\ChemObject.vb"
+﻿#Region "Microsoft.VisualBasic::759d177301af0e9749a11219c1aa05b8, G:/mzkit/src/visualize/KCF/KEGGdraw//kegDraw/ChemObject.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 111
     ' Comment Lines: 0
     '   Blank Lines: 26
-    '     File Size: 4.22 KB
+    '     File Size: 4.36 KB
 
 
     '     Class ChemObject
