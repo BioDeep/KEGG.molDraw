@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::b2cfc483a6fe85ff10542bb89fa5e2bb, G:/mzkit/src/visualize/KCF/KCF.IO//My Project/Resources.Designer.vb"
+﻿#Region "Microsoft.VisualBasic::b2cfc483a6fe85ff10542bb89fa5e2bb, E:/mzkit/src/visualize/KCF/KCF.IO//My Project/Resources.Designer.vb"
 
     ' Author:
     ' 

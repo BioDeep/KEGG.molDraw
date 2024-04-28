@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::14039bc58c7861524a05109cc0741cec, G:/mzkit/src/visualize/KCF/KCF.Graph//My Project/Settings.Designer.vb"
+﻿#Region "Microsoft.VisualBasic::14039bc58c7861524a05109cc0741cec, E:/mzkit/src/visualize/KCF/KCF.Graph//My Project/Settings.Designer.vb"
 
     ' Author:
     ' 

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::2eb1295f6ec6b553d0705fd3ddbc278d, G:/mzkit/src/visualize/KCF/KEGGdraw//kegDraw/ChemConteiner.vb"
+﻿#Region "Microsoft.VisualBasic::2eb1295f6ec6b553d0705fd3ddbc278d, E:/mzkit/src/visualize/KCF/KEGGdraw//kegDraw/ChemConteiner.vb"
 
     ' Author:
     ' 

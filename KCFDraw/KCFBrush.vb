@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::38da310c0962f858da9f8aa786174f9f, G:/mzkit/src/visualize/KCF/KCFDraw//KCFBrush.vb"
+﻿#Region "Microsoft.VisualBasic::38da310c0962f858da9f8aa786174f9f, E:/mzkit/src/visualize/KCF/KCFDraw//KCFBrush.vb"
 
     ' Author:
     ' 

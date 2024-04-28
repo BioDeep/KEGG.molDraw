@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::c3ab9158bf968a65147bbb957b24b9a5, G:/mzkit/src/visualize/KCF/KCFDraw//My Project/AssemblyInfo.vb"
+﻿#Region "Microsoft.VisualBasic::c3ab9158bf968a65147bbb957b24b9a5, E:/mzkit/src/visualize/KCF/KCFDraw//My Project/AssemblyInfo.vb"
 
     ' Author:
     ' 
