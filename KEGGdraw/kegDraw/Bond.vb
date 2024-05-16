@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::34c3f9666d349992f50d28bae507af7b, E:/mzkit/src/visualize/KCF/KEGGdraw//kegDraw/Bond.vb"
+﻿#Region "Microsoft.VisualBasic::34c3f9666d349992f50d28bae507af7b, visualize\KCF\KEGGdraw\kegDraw\Bond.vb"
 
     ' Author:
     ' 

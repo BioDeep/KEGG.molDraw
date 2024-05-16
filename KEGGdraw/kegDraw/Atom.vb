@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::2fda5b453e64c870a177372a702cb6d1, E:/mzkit/src/visualize/KCF/KEGGdraw//kegDraw/Atom.vb"
+﻿#Region "Microsoft.VisualBasic::2fda5b453e64c870a177372a702cb6d1, visualize\KCF\KEGGdraw\kegDraw\Atom.vb"
 
     ' Author:
     ' 

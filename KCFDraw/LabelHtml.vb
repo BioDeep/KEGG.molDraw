@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::bb2356dd025c1a6c6503a857d846a13a, E:/mzkit/src/visualize/KCF/KCFDraw//LabelHtml.vb"
+﻿#Region "Microsoft.VisualBasic::bb2356dd025c1a6c6503a857d846a13a, visualize\KCF\KCFDraw\LabelHtml.vb"
 
     ' Author:
     ' 

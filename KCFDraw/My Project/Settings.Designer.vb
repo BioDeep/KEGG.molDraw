@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::513a4d7100f5966998667e64ace02cbd, E:/mzkit/src/visualize/KCF/KCFDraw//My Project/Settings.Designer.vb"
+﻿#Region "Microsoft.VisualBasic::513a4d7100f5966998667e64ace02cbd, visualize\KCF\KCFDraw\My Project\Settings.Designer.vb"
 
     ' Author:
     ' 

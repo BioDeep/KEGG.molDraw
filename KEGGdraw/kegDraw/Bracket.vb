@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::a9361d167aa523cb01d43726aafd2c95, E:/mzkit/src/visualize/KCF/KEGGdraw//kegDraw/Bracket.vb"
+﻿#Region "Microsoft.VisualBasic::a9361d167aa523cb01d43726aafd2c95, visualize\KCF\KEGGdraw\kegDraw\Bracket.vb"
 
     ' Author:
     ' 

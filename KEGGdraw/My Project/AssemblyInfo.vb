@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::074f66c41a00374471e187653968a3bf, E:/mzkit/src/visualize/KCF/KEGGdraw//My Project/AssemblyInfo.vb"
+﻿#Region "Microsoft.VisualBasic::074f66c41a00374471e187653968a3bf, visualize\KCF\KEGGdraw\My Project\AssemblyInfo.vb"
 
     ' Author:
     ' 

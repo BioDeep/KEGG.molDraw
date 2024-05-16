@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::42580730691973be0621e72014adacb6, E:/mzkit/src/visualize/KCF/KCF.IO//KCF/Entry.vb"
+﻿#Region "Microsoft.VisualBasic::42580730691973be0621e72014adacb6, visualize\KCF\KCF.IO\KCF\Entry.vb"
 
     ' Author:
     ' 
