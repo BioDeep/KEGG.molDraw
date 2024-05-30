@@ -68,6 +68,7 @@ Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
 Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
 Imports Microsoft.VisualBasic.Scripting.Runtime
 Imports Microsoft.VisualBasic.Serialization.JSON
 Imports Line2D = Microsoft.VisualBasic.Imaging.Drawing2D.Shapes.Line
@@ -145,7 +146,8 @@ Public Module Canvas
         Dim plotInternal =
             Sub(ByRef g As IGraphics, region As GraphicsRegion)
                 Dim bounds = atoms.Select(Function(a) a.pt).GetBounds
-                Dim atomFont As Font = CSSFont.TryParse(font).GDIObject(g.Dpi)
+                Dim css As CSSEnvirnment = g.LoadEnvironment
+                Dim atomFont As Font = css.GetFont(CSSFont.TryParse(font))
                 Dim polygon As PointF() = atoms.getPolygon(scaleFactor, region, bounds)
                 Dim charSize As SizeF = g.GetGeneralSize("ABCDEFGHIJKLMNOPQRSTUVWXYZ", atomFont)
 
