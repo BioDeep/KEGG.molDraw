@@ -129,7 +129,6 @@ Public Module Canvas
 
         Dim background As Brush = bg.GetBrush
         Dim dot = Brushes.Gray
-        Dim boundsPen As Pen = Stroke.TryParse(boundStroke).GDIObject
         Dim atoms As (pt As PointF, atom As Atom)() =
             kcf _
             .Atoms _
@@ -150,6 +149,7 @@ Public Module Canvas
                 Dim atomFont As Font = css.GetFont(CSSFont.TryParse(font))
                 Dim polygon As PointF() = atoms.getPolygon(scaleFactor, region, bounds)
                 Dim charSize As SizeF = g.GetGeneralSize("ABCDEFGHIJKLMNOPQRSTUVWXYZ", atomFont)
+                Dim boundsPen As Pen = css.GetPen(Stroke.TryParse(boundStroke))
 
                 atoms = atoms _
                     .Select(Function(a, i)
