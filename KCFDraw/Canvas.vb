@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::86c1dc9e65b5f815eb52d62b9ad818c9, visualize\KCF\KCFDraw\Canvas.vb"
+﻿#Region "Microsoft.VisualBasic::0678d1df8a7bb028d5bc3c39f3da80e3, visualize\KCF\KCFDraw\Canvas.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 422
-    '    Code Lines: 286 (67.77%)
-    ' Comment Lines: 83 (19.67%)
+    '   Total Lines: 424
+    '    Code Lines: 288 (67.92%)
+    ' Comment Lines: 83 (19.58%)
     '    - Xml Docs: 69.88%
     ' 
-    '   Blank Lines: 53 (12.56%)
-    '     File Size: 16.02 KB
+    '   Blank Lines: 53 (12.50%)
+    '     File Size: 16.14 KB
 
 
     ' Module Canvas
