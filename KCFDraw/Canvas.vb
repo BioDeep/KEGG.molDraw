@@ -83,8 +83,9 @@ Public Module Canvas
                                 scaleFactor#,
                                 region As GraphicsRegion,
                                 bounds As RectangleF) As PointF()
+        Dim css As New CSSEnvirnment(region.Size)
         Dim factor#
-        Dim canvas = region.PlotRegion
+        Dim canvas = region.PlotRegion(css)
 
         If bounds.Width > bounds.Height Then
             factor = canvas.Width / bounds.Width
