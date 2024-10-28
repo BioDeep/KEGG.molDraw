@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::38da310c0962f858da9f8aa786174f9f, visualize\KCF\KCFDraw\KCFBrush.vb"
+﻿#Region "Microsoft.VisualBasic::20af03cef39858b494c6df2d4cc1eabc, visualize\KCF\KCFDraw\KCFBrush.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 55
-    '    Code Lines: 41 (74.55%)
-    ' Comment Lines: 8 (14.55%)
+    '   Total Lines: 81
+    '    Code Lines: 66 (81.48%)
+    ' Comment Lines: 8 (9.88%)
     '    - Xml Docs: 87.50%
     ' 
-    '   Blank Lines: 6 (10.91%)
-    '     File Size: 1.93 KB
+    '   Blank Lines: 7 (8.64%)
+    '     File Size: 3.06 KB
 
 
     ' Class KCFBrush
