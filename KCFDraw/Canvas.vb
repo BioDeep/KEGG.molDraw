@@ -251,7 +251,7 @@ Public Module Canvas
 
             If bound.dimentional_levels.StringEmpty Then
                 Dim line As New Line2D(la, lb) With {
-                    .Stroke = boundsPen
+                    .Stroke = New Stroke(boundsPen)
                 }
 
                 If bound.bounds > 1 Then
@@ -335,7 +335,7 @@ Public Module Canvas
     <Extension>
     Private Sub drawParallelLines(g As IGraphics, bound As Bound, line As Line2D)
         Dim lineWidth! = line.Stroke.Width / bound.bounds
-        Dim newPen As New Pen(line.Stroke.Brush, lineWidth)
+        Dim newPen As New Stroke(line.Stroke) With {.width = lineWidth}
 
         line = New Line2D(line.A, line.B) With {.Stroke = newPen}
         line = line.ParallelShift(lineWidth * (-bound.bounds + 1))
