@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::7cda6efad6ff4785f8d273e2428703f1, visualize\KCF\KCFDraw\Canvas.vb"
+﻿#Region "Microsoft.VisualBasic::9cfb55226104475ae608588300dca496, visualize\KCF\KCFDraw\Canvas.vb"
 
     ' Author:
     ' 
@@ -43,7 +43,7 @@
     '    - Xml Docs: 69.88%
     ' 
     '   Blank Lines: 53 (12.47%)
-    '     File Size: 16.19 KB
+    '     File Size: 16.22 KB
 
 
     ' Module Canvas
