@@ -145,7 +145,7 @@ Imports r = System.Text.RegularExpressions.Regex
         Next
 
 #If DEBUG Then
-        Call $"Total mass of {KCF.Entry} is {Aggregate atom In g.vertex Into Sum(atom.data.mass)}".__DEBUG_ECHO
+        Call $"Total mass of {KCF.Entry} is {Aggregate atom In g.vertex Into Sum(atom.data.mass)}".debug
 #End If
 
         ' key by node.label

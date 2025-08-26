@@ -306,7 +306,7 @@ Public Module Canvas
         Else
             With g.MeasureString(label, atomFont)
 
-                ' Call $"Draw single: {label}=[{ .Width},{ .Height}]".__DEBUG_ECHO
+                ' Call $"Draw single: {label}=[{ .Width},{ .Height}]".debug
 
                 ' 只有一个原子标签的情况
                 ' 在该原子的位置上面居中显示
