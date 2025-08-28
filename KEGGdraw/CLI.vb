@@ -104,7 +104,7 @@ Imports Microsoft.VisualBasic.Language.UnixBash
                 Dim out$ = EXPORT & "/" & file.BaseName & ".png"
 
                 Call file.LoadKCF.TransCode(out, isTransparent, corpBlank)
-                Call out.GetFullPath.ToFileURL.__DEBUG_ECHO
+                Call out.GetFullPath.ToFileURL.debug
             Next
 
             Return 0
