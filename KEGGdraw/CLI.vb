@@ -120,7 +120,7 @@ Imports Microsoft.VisualBasic.Language.UnixBash
 
     <Extension>
     Public Function TransCode(kcf As KCF, out$, isTransparent As Boolean, corpBlank As Boolean) As Boolean
-        Dim image As Image = kcf.Draw.AsGDIImage
+        Dim image As Microsoft.VisualBasic.Imaging.Image = kcf.Draw.AsGDIImage
 
         If corpBlank Then
             ' image = image.CorpBlank(blankColor:=Color.White)
@@ -129,14 +129,8 @@ Imports Microsoft.VisualBasic.Language.UnixBash
             image = image.ColorReplace(Color.White, Color.Transparent)
         End If
 
-#If NET48 Then
         Return image _
             .SaveAs(out, ImageFormats.Png) _
             .CLICode
-#Else
-        Return image _
-            .SaveAs(out, ImageFormats.Png) _
-            .CLICode
-#End If
     End Function
 End Module
